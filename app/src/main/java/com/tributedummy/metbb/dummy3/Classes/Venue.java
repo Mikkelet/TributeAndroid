@@ -19,7 +19,9 @@ public class Venue {
     public void addReview(String review, double rating)
     {
         Review r = new Review(new User("Mikkel"), review, rating);
+        Review rtwo = new Review(new User("Anne"), "blah black",2);
         reviews.add(r);
+        reviews.add(rtwo);
     }
 
     // getters
