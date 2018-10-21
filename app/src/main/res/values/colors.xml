@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ff2d6e</color>
+    <color name="colorPrimaryDark">#b52d6e</color>
+    <color name="colorAccent">#ffffff</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="TributePink">#ff2d7e</color>
+    <color name="tributePinkDark">#ff2d64</color>
+    <color name="TributeGray">#a1a1a1</color>
+    <color name="textFieldTextgray">#FF757575</color>
+    <color name="textFieldGray">#FFF9F9F9</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="facebookBluelight">#3c6bfe</color>
+    <color name="facebookBluedark">#4861ae</color>
+</resources>

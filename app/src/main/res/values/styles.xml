@@ -1,0 +1,58 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+    </style>
+    <style name="LoginFont">
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_marginLeft">0dp</item>
+        <item name="android:layout_marginRight">0dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="RatingBar" parent="@android:style/Widget.RatingBar" >
+        <item name="android:minHeight">24dip</item>
+        <item name="android:maxHeight">24dip</item>
+        <item name="android:progressDrawable">@drawable/ratingbar</item>
+    </style>
+
+    <style name="H1">
+    <item name="android:textColor">#000</item>
+    <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="H1bold">
+        <item name="android:textColor">#000</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="subH1">
+        <item name="android:textColor">#FF38444F</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="H2">
+        <item name="android:textColor">#000</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="RatingDetails">
+        <item name="android:textSize">14sp</item>
+        <item name="android:background">@drawable/bgratingdetails</item>
+        <item name="android:textColor">@color/TributePink</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">Roboto</item>
+    </style>
+    <style name="TributeTextfield" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:backgroundTint">@color/TributePink</item>
+    </style>
+    <style name="testStyle">
+    </style>
+</resources>
