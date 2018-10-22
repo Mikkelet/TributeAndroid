@@ -25,6 +25,7 @@ import java.util.ArrayList;
 public class ReviewFragment extends Fragment {
 
     private MainActivity mainActivity;
+    ArrayList<Concert> concerts;
     View v;
 
     private static final String TAG = "ReviewFragment";
@@ -41,6 +42,8 @@ public class ReviewFragment extends Fragment {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_review, container, false);
         mainActivity = ((MainActivity)getActivity());
+        concerts =(ArrayList<Concert>) mainActivity.getConcerts();
+
         initRecyclerView();
 
         return v;
@@ -51,7 +54,7 @@ public class ReviewFragment extends Fragment {
         Log.d(TAG, "initRecyclerView: init recycler view");
         RecyclerView recyclerView = v.findViewById(R.id.RecyclerViewReviews);
         recyclerView.setLayoutManager(new LinearLayoutManager(v.getContext()));
-        ReviewRVA adapter = new ReviewRVA(v.getContext(),mainActivity.getConcerts());
+        ReviewRVA adapter = new ReviewRVA(v.getContext(),concerts);
         recyclerView.setAdapter(adapter);
     }
 }

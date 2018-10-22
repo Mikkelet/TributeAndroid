@@ -29,12 +29,13 @@ public class MainActivity extends AppCompatActivity {
     private SignupFragment signupFragment;
     private LoginFragment loginFragment;
     private ConcertFragment concertFragment;
+    private ArtistFragment artistFragment;
 
     private FrameLayout mainFrame;
     private BottomNavigationView bottomNavigationView;
     private static final String TAG = "MainActivity";
 
-    private ArrayList<Concert> concerts = new ArrayList<>();
+    public static ArrayList<Concert> concerts = new ArrayList<>();
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -70,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         profileFragment = new ProfileFragment();
         reviewFragment = new ReviewFragment();
         concertFragment = new ConcertFragment();
+        artistFragment = new ArtistFragment();
 
         Log.d(TAG,"onCreate: started");
 
@@ -123,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
         allVenues.add(venueRoyalArena);
         allVenues.add(venueVega);
 
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10; i++) {
             int rndArtist = new Random().nextInt(3);
             int rndVenue = new Random().nextInt(3);
 
@@ -145,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
 
 // Getters
 
-    public ArrayList<Concert> getConcerts() {
+    public Iterable<Concert> getConcerts() {
         return concerts;
     }
 
@@ -164,5 +166,10 @@ public class MainActivity extends AppCompatActivity {
     public ConcertFragment getConcertFragment(Concert concert) {
         concertFragment.setConcert(concert);
         return concertFragment;
+    }
+
+    public ArtistFragment getArtistFragment(Artist artist) {
+        artistFragment.setArtist(artist);
+        return artistFragment;
     }
 }

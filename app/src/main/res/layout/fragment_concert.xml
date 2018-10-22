@@ -18,7 +18,7 @@
         android:minHeight="600dp">
 
         <ImageView
-            android:id="@+id/artistImageviewCover"
+            android:id="@+id/concertImageviewCover"
             android:layout_width="match_parent"
             android:layout_height="220dp"
             android:layout_marginBottom="8dp"
@@ -42,14 +42,14 @@
             android:scaleType="centerCrop"
 
             android:src="@mipmap/judith_opener"
-            app:layout_constraintBottom_toBottomOf="@+id/artistImageviewCover"
+            app:layout_constraintBottom_toBottomOf="@+id/concertImageviewCover"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/artistImageviewCover"
+            app:layout_constraintStart_toStartOf="@+id/concertImageviewCover"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/artistImageviewVenue"
+            android:id="@+id/concertImageviewVenue"
 
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -59,8 +59,8 @@
             android:layout_marginBottom="8dp"
             android:scaleType="centerCrop"
             android:src="@mipmap/image1"
-            app:layout_constraintBottom_toBottomOf="@+id/artistImageviewCover"
-            app:layout_constraintEnd_toEndOf="@+id/artistImageviewCover"
+            app:layout_constraintBottom_toBottomOf="@+id/concertImageviewCover"
+            app:layout_constraintEnd_toEndOf="@+id/concertImageviewCover"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -74,7 +74,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="69dp"
             android:text="back"
-            app:layout_constraintBottom_toTopOf="@+id/concertImageviewArtist"
+            app:layout_constraintBottom_toTopOf="@+id/concertImageviewVenue"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -82,7 +82,7 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/artistTextviewRating"
+            android:id="@+id/concertTextviewRating"
             android:layout_width="192dp"
             android:layout_height="40dp"
             android:layout_marginStart="8dp"
@@ -109,14 +109,14 @@
             android:numStars="5"
             android:rating="3"
             android:stepSize="1"
-            app:layout_constraintBottom_toBottomOf="@+id/artistTextviewRating"
-            app:layout_constraintEnd_toEndOf="@+id/artistTextviewRating"
+            app:layout_constraintBottom_toBottomOf="@+id/concertTextviewRating"
+            app:layout_constraintEnd_toEndOf="@+id/concertTextviewRating"
             app:layout_constraintHorizontal_bias="0.75"
-            app:layout_constraintStart_toStartOf="@+id/artistTextviewRating"
-            app:layout_constraintTop_toTopOf="@+id/artistTextviewRating" />
+            app:layout_constraintStart_toStartOf="@+id/concertTextviewRating"
+            app:layout_constraintTop_toTopOf="@+id/concertTextviewRating" />
 
         <TextView
-            android:id="@+id/artistTextviewArtist"
+            android:id="@+id/concertTextviewArtist"
             style="@style/H1bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -127,7 +127,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/artistTextviewRating" />
+            app:layout_constraintTop_toBottomOf="@+id/concertTextviewRating" />
 
         <TextView
             android:id="@+id/concertTextviewAt"
@@ -139,8 +139,8 @@
             android:layout_marginBottom="8dp"
             android:text="at"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/artistTextviewArtist"
-            app:layout_constraintTop_toBottomOf="@+id/artistTextviewRating"
+            app:layout_constraintStart_toEndOf="@+id/concertTextviewArtist"
+            app:layout_constraintTop_toBottomOf="@+id/concertTextviewRating"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
@@ -155,10 +155,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/concertTextviewAt"
-            app:layout_constraintTop_toBottomOf="@+id/artistTextviewRating" />
+            app:layout_constraintTop_toBottomOf="@+id/concertTextviewRating" />
 
         <TextView
-            android:id="@+id/artistTextviewReviews"
+            android:id="@+id/concertTextviewReviews"
             style="@style/subH1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -169,7 +169,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/artistTextviewArtist" />
+            app:layout_constraintTop_toBottomOf="@+id/concertTextviewArtist" />
 
         <Button
             android:id="@+id/concertButtonRatingdetails"
@@ -179,10 +179,10 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:text="VIEW RATING DETAILS"
-            app:layout_constraintBottom_toTopOf="@+id/artistLinearlayoutReviews"
+            app:layout_constraintBottom_toTopOf="@+id/concertLinearlayoutReviews"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/artistTextviewReviews"
+            app:layout_constraintTop_toBottomOf="@+id/concertTextviewReviews"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
@@ -203,7 +203,7 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/artistRecycleviewConcerts"
+            android:id="@+id/concertRecycleviewConcerts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="0dp"
@@ -227,10 +227,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/artistRecycleviewConcerts" />
+            app:layout_constraintTop_toBottomOf="@+id/concertRecycleviewConcerts" />
 
         <TextView
-            android:id="@+id/artistTextviewReviewsexpanded"
+            android:id="@+id/concertTextviewReviewsexpanded"
             style="@style/H2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -238,14 +238,14 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:text="360 Reviews"
-            app:layout_constraintBottom_toTopOf="@+id/artistLinearlayoutReviews"
+            app:layout_constraintBottom_toTopOf="@+id/concertLinearlayoutReviews"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/concertButtonReviewconcert" />
 
         <LinearLayout
-            android:id="@+id/artistLinearlayoutReviews"
+            android:id="@+id/concertLinearlayoutReviews"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"

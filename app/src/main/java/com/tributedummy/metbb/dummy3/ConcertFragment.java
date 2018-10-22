@@ -83,13 +83,13 @@ public class ConcertFragment extends Fragment {
 
         textViewArtist = v.findViewById(R.id.concertTextviewArtist);
         textViewVenue = v.findViewById(R.id.concertTextviewVenue);
-        textViewDate = v.findViewById(R.id.artistTextviewReviews);
+        textViewDate = v.findViewById(R.id.concertTextviewReviews);
 
         buttonRatingdetails = v.findViewById(R.id.concertButtonRatingdetails);
         buttonReviewConcert = v.findViewById(R.id.concertButtonReviewconcert);
 
-        recyclerViewPhotos = v.findViewById(R.id.artistRecycleviewConcerts);
-        linearLayoutReviews = v.findViewById(R.id.artistLinearlayoutReviews);
+        recyclerViewPhotos = v.findViewById(R.id.concertRecycleviewConcerts);
+        linearLayoutReviews = v.findViewById(R.id.concertLinearlayoutReviews);
 
         buttonBack = v.findViewById(R.id.concertButtonBack);
     }
@@ -108,13 +108,13 @@ public class ConcertFragment extends Fragment {
 
         setupButtonRatingDetails();
         setupButtonReviewConcert();
+        setupButtonArtist();
         setupButtonBack();
         setupRecyclerviewPhotos();
     }
 
     private void setupButtonReviewConcert()
     {
-
         buttonReviewConcert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -132,6 +132,15 @@ public class ConcertFragment extends Fragment {
             }
         });
     }
+    private void setupButtonArtist()
+    {
+        imageViewArtist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainActivity.SwitchFragment(mainActivity.getArtistFragment(concert.getArtist()));
+            }
+        });
+    }
     private void setupButtonBack()
     {
         buttonBack.setOnClickListener(new View.OnClickListener() {
@@ -143,14 +152,14 @@ public class ConcertFragment extends Fragment {
     }
     private void setupRecyclerviewPhotos()
     {
-        recyclerViewPhotos = v.findViewById(R.id.artistRecycleviewConcerts);
+        recyclerViewPhotos = v.findViewById(R.id.concertRecycleviewConcerts);
         recyclerViewPhotos.setLayoutManager(new LinearLayoutManager(v.getContext(), LinearLayoutManager.HORIZONTAL,false));
         ConcertPhotosRVA adapter = new ConcertPhotosRVA(v.getContext(),concert.getPhotos());
         recyclerViewPhotos.setAdapter(adapter);
     }
     private void setupRecyclerviewReviews(LayoutInflater inflater)
     {
-        linearLayoutReviews = v.findViewById(R.id.artistLinearlayoutReviews);
+        linearLayoutReviews = v.findViewById(R.id.concertLinearlayoutReviews);
         for (int i = 0; i < concert.getReviews().size(); i++) {
             Review currentReview = concert.getReviews().get(i);
             View review = inflater.inflate(R.layout.layout_reviewcard, linearLayoutReviews,false);

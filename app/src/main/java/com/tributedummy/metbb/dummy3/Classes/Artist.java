@@ -1,5 +1,7 @@
 package com.tributedummy.metbb.dummy3.Classes;
 
+import com.tributedummy.metbb.dummy3.MainActivity;
+
 import java.util.ArrayList;
 
 public class Artist {
@@ -17,6 +19,23 @@ public class Artist {
     }
 
 
+    public void addReview(String review, double rating)
+    {
+        Review r = new Review(new User("Mikkel"), review, rating);
+        reviews.add(r);
+
+    }
+
+    public Iterable<Concert> getConcerts()
+    {
+        ArrayList<Concert> concerts = new ArrayList<>();
+        for (Concert c: MainActivity.concerts) {
+            if(c.getArtist().getName() == this.getName())
+                concerts.add(c);
+        }
+        return concerts;
+    }
+
     public String getName() {
         return name;
     }
@@ -31,12 +50,5 @@ public class Artist {
 
     public ArrayList<Review> getReviews() {
         return reviews;
-    }
-
-    public void addReview(String review, double rating)
-    {
-        Review r = new Review(new User("Mikkel"), review, rating);
-        reviews.add(r);
-
     }
 }

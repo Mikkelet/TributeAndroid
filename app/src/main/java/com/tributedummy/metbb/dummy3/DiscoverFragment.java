@@ -53,6 +53,7 @@ public class DiscoverFragment extends Fragment {
     private RecyclerView recyclerView;
     private CardView cardView;
     private MainActivity mainActivity;
+    private ArrayList<Concert> concerts;
 
     private View v;
 
@@ -74,7 +75,7 @@ public class DiscoverFragment extends Fragment {
         v = inflater.inflate(R.layout.fragment_discover, container, false);
         recyclerView = v.findViewById(R.id.discoverRecyclerview);
         mainActivity = ((MainActivity)getActivity());
-
+        concerts = MainActivity.concerts;
         setupSwipeRefresh();
         setupSearch();
         initImageBitmap();
@@ -83,7 +84,7 @@ public class DiscoverFragment extends Fragment {
     }
 
     private void initImageBitmap(){
-        Log.d(TAG, "initImageBitmap: "+mainActivity.getConcerts().size());
+        Log.d(TAG, "initImageBitmap: "+concerts.size());
         //TODO this gets added on every load
         addDiscoverBlock("Last reviewed concerts", new View.OnClickListener() {
             @Override
@@ -105,7 +106,7 @@ public class DiscoverFragment extends Fragment {
     {
         // TODO add different adapters for different lists
 
-        SmallCardRVA adapter = new SmallCardRVA(v.getContext(),mainActivity.getConcerts());
+        SmallCardRVA adapter = new SmallCardRVA(v.getContext(),concerts);
 
         // This gets called from OnCreateView, which gets called every time the fragment loads. This check is to make sure multiple blocks wont get added on every load.
         if(!discoverBlockHashMap.containsKey(title)) {
@@ -117,7 +118,7 @@ public class DiscoverFragment extends Fragment {
     {
         recyclerView.setLayoutManager(new LinearLayoutManager(v.getContext()));
         discoverBlockRVA = new DiscoverBlockRVA(v.getContext(), new ArrayList<>(discoverBlockHashMap.values()));
-        searchcardRVA = new SearchcardRVA(v.getContext(), mainActivity.getConcerts());
+        searchcardRVA = new SearchcardRVA(v.getContext(), concerts);
         recyclerView.setAdapter(discoverBlockRVA);
     }
 
@@ -155,8 +156,8 @@ public class DiscoverFragment extends Fragment {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                Log.d(TAG, "onQueryTextSubmit: "+mainActivity.getConcerts().size());
-                ArrayList<Concert> c = mainActivity.getConcerts();
+                Log.d(TAG, "onQueryTextSubmit: "+MainActivity.concerts.size());
+                ArrayList<Concert> c = MainActivity.concerts;
                 searchcardRVA.search(c ,query);
                 return false;
             }
