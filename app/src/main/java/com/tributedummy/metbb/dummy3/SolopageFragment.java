@@ -19,6 +19,7 @@ import com.tributedummy.metbb.dummy3.Adapters.ReviewFragmentRVA;
 import com.tributedummy.metbb.dummy3.Adapters.SmallCardRVA;
 import com.tributedummy.metbb.dummy3.Classes.Artist;
 import com.tributedummy.metbb.dummy3.Classes.Concert;
+import com.tributedummy.metbb.dummy3.Classes.ConcertElement;
 import com.tributedummy.metbb.dummy3.Classes.DiscoverBlock;
 
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ import java.util.HashMap;
 public class SolopageFragment extends Fragment {
 
     private View v;
-    private Artist solopage;
+    private ConcertElement concertElement;
     private HashMap<String,DiscoverBlock> discoverBlockHashMap = new HashMap<>();
     private ArrayList<Concert> concerts;
     private Fragment previousFragment;
@@ -67,7 +68,7 @@ public class SolopageFragment extends Fragment {
         v = inflater.inflate(R.layout.fragment_solopage, container, false);
 
         // Assign fieds
-        concerts = (ArrayList<Concert>) solopage.getConcerts();
+        concerts = (ArrayList<Concert>) concertElement.getConcerts();
         mainActivity = (MainActivity)getActivity();
 
         // statics
@@ -79,7 +80,6 @@ public class SolopageFragment extends Fragment {
         solopageTextviewConcerts = v.findViewById(R.id.solopageTextviewConcerts);
         solopageTextviewReviewsexpanded = v.findViewById(R.id.solopageTextviewReviewsexpanded);
 
-
         // setups
         setupPage();
         // Inflate the layout for this fragment
@@ -89,12 +89,12 @@ public class SolopageFragment extends Fragment {
     private void setupPage()
     {
         // statics
-        solopageImageviewCover.setImageResource(solopage.getImage());
-        solopageImageviewArtist.setImageResource(solopage.getImage());
-        solopageTextviewArtist.setText(solopage.getName());
-        solopageTextviewRating.setText(""+solopage.getRating());
+        solopageImageviewCover.setImageResource(concertElement.getImage());
+        solopageImageviewArtist.setImageResource(concertElement.getImage());
+        solopageTextviewArtist.setText(concertElement.getName());
+        solopageTextviewRating.setText(""+concertElement.getRating());
         solopageTextviewConcerts.setText("5 concerts");
-        solopageTextviewReviews.setText(solopage.getReviews().size()+" reviews");
+        solopageTextviewReviews.setText(concertElement.getReviews().size()+" reviews");
         setupRecycleview();
         setupLinearLayout();
         setupBackbutton();
@@ -162,7 +162,7 @@ public class SolopageFragment extends Fragment {
     public void setPreviousFragment(Fragment previousFragment) {
         this.previousFragment = previousFragment;
     }
-    public void setArtist(Artist solopage) {
-        this.solopage = solopage;
+    public void setConcertElement(ConcertElement solopage) {
+        this.concertElement = solopage;
     }
 }

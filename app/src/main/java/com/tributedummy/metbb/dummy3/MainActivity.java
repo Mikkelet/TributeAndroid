@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.tributedummy.metbb.dummy3.Classes.Artist;
 import com.tributedummy.metbb.dummy3.Classes.Concert;
+import com.tributedummy.metbb.dummy3.Classes.ConcertElement;
 import com.tributedummy.metbb.dummy3.Classes.Review;
 import com.tributedummy.metbb.dummy3.Classes.User;
 import com.tributedummy.metbb.dummy3.Classes.Venue;
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private SignupFragment signupFragment;
     private LoginFragment loginFragment;
     private ConcertFragment concertFragment;
-    private ArtistFragment artistFragment;
+    private SolopageFragment solopageFragment;
 
     private FrameLayout mainFrame;
     private BottomNavigationView bottomNavigationView;
@@ -71,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         profileFragment = new ProfileFragment();
         reviewFragment = new ReviewFragment();
         concertFragment = new ConcertFragment();
-        artistFragment = new ArtistFragment();
+        solopageFragment = new SolopageFragment();
 
         Log.d(TAG,"onCreate: started");
 
@@ -168,9 +169,9 @@ public class MainActivity extends AppCompatActivity {
         return concertFragment;
     }
 
-    public ArtistFragment getArtistFragment(Artist artist, Fragment previousFragment) {
-        artistFragment.setArtist(artist);
-        artistFragment.setPreviousFragment(previousFragment);
-        return artistFragment;
+    public SolopageFragment getSolopageFragment(ConcertElement concertElement, Fragment previousFragment) {
+        solopageFragment.setConcertElement(concertElement);
+        solopageFragment.setPreviousFragment(previousFragment);
+        return solopageFragment;
     }
 }

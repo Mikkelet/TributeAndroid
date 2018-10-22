@@ -10,6 +10,7 @@ public abstract class ConcertElement {
     protected int image;
     protected double rating = 5;
     protected ArrayList<Review> reviews = new ArrayList<>();
+    private ArrayList<Integer> photos;
 
     public ConcertElement(String name, int image) {
         this.name = name;
@@ -24,7 +25,7 @@ public abstract class ConcertElement {
 
     }
 
-    public Iterable<Concert> getConcerts()
+    public ArrayList<Concert> getConcerts()
     {
         ArrayList<Concert> concerts = new ArrayList<>();
         for (Concert c: MainActivity.concerts) {
@@ -49,5 +50,9 @@ public abstract class ConcertElement {
 
     public ArrayList<Review> getReviews() {
         return reviews;
+    }
+
+    public ArrayList<Integer> getPhotos() {
+        return photos;
     }
 }

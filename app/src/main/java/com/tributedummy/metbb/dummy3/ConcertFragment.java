@@ -109,6 +109,7 @@ public class ConcertFragment extends Fragment {
         setupButtonRatingDetails();
         setupButtonReviewConcert();
         setupButtonArtist();
+        setupButtonVenue();
         setupButtonBack();
         setupRecyclerviewPhotos();
     }
@@ -124,7 +125,6 @@ public class ConcertFragment extends Fragment {
     }
     private void setupButtonRatingDetails()
     {
-
         buttonRatingdetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -137,7 +137,16 @@ public class ConcertFragment extends Fragment {
         imageViewArtist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mainActivity.SwitchFragment(mainActivity.getArtistFragment(concert.getArtist(),mainActivity.getConcertFragment(concert)));
+                mainActivity.SwitchFragment(mainActivity.getSolopageFragment(concert.getArtist(), mainActivity.getConcertFragment(concert)));
+            }
+        });
+    }
+    private void setupButtonVenue()
+    {
+        imageViewVenue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainActivity.SwitchFragment(mainActivity.getSolopageFragment(concert.getVenue(), mainActivity.getConcertFragment(concert)));
             }
         });
     }
