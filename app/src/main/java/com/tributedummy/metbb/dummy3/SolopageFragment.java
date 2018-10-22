@@ -28,33 +28,33 @@ import java.util.HashMap;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ArtistFragment extends Fragment {
+public class SolopageFragment extends Fragment {
 
     private View v;
-    private Artist artist;
+    private Artist solopage;
     private HashMap<String,DiscoverBlock> discoverBlockHashMap = new HashMap<>();
     private ArrayList<Concert> concerts;
     private Fragment previousFragment;
     private MainActivity mainActivity;
 
     // layouts
-    private ImageView artistImageviewCover;
-    private ImageView artistImageviewArtist;
-    private Button artistButtonBack;
-    private TextView artistTextviewRating;
-    private TextView artistTextviewArtist;
-    private TextView artistTextviewReviews;
-    private TextView artistTextviewConcerts;
-    private RecyclerView artistRecycleviewConcerts;
-    private TextView artistTextviewReviewsexpanded;
-    private LinearLayout artistLinearlayoutReviews;
+    private ImageView solopageImageviewCover;
+    private ImageView solopageImageviewArtist;
+    private Button solopageButtonBack;
+    private TextView solopageTextviewRating;
+    private TextView solopageTextviewArtist;
+    private TextView solopageTextviewReviews;
+    private TextView solopageTextviewConcerts;
+    private RecyclerView solopageRecycleviewConcerts;
+    private TextView solopageTextviewReviewsexpanded;
+    private LinearLayout solopageLinearlayoutReviews;
 
     //adapters
     private ReviewFragmentRVA reviewRVA;
     private DiscoverBlockRVA discoverBlockRVA;
 
 
-    public ArtistFragment() {
+    public SolopageFragment() {
         // Required empty public constructor
     }
 
@@ -64,20 +64,20 @@ public class ArtistFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         // assign layout fields
-        v = inflater.inflate(R.layout.fragment_artist, container, false);
+        v = inflater.inflate(R.layout.fragment_solopage, container, false);
 
         // Assign fieds
-        concerts = (ArrayList<Concert>) artist.getConcerts();
+        concerts = (ArrayList<Concert>) solopage.getConcerts();
         mainActivity = (MainActivity)getActivity();
 
         // statics
-        artistImageviewCover = v.findViewById(R.id.artistImageviewCover);
-        artistImageviewArtist = v.findViewById(R.id.artistImageviewArtist);
-        artistTextviewRating = v.findViewById(R.id.artistTextviewRating);
-        artistTextviewArtist = v.findViewById(R.id.artistTextviewArtist);
-        artistTextviewReviews = v.findViewById(R.id.artistTextviewReviews);
-        artistTextviewConcerts = v.findViewById(R.id.artistTextviewConcerts);
-        artistTextviewReviewsexpanded = v.findViewById(R.id.artistTextviewReviewsexpanded);
+        solopageImageviewCover = v.findViewById(R.id.solopageImageviewCover);
+        solopageImageviewArtist = v.findViewById(R.id.solopageImageviewArtist);
+        solopageTextviewRating = v.findViewById(R.id.solopageTextviewRating);
+        solopageTextviewArtist = v.findViewById(R.id.solopageTextviewArtist);
+        solopageTextviewReviews = v.findViewById(R.id.solopageTextviewReviews);
+        solopageTextviewConcerts = v.findViewById(R.id.solopageTextviewConcerts);
+        solopageTextviewReviewsexpanded = v.findViewById(R.id.solopageTextviewReviewsexpanded);
 
 
         // setups
@@ -89,12 +89,12 @@ public class ArtistFragment extends Fragment {
     private void setupPage()
     {
         // statics
-        artistImageviewCover.setImageResource(artist.getImage());
-        artistImageviewArtist.setImageResource(artist.getImage());
-        artistTextviewArtist.setText(artist.getName());
-        artistTextviewRating.setText(""+artist.getRating());
-        artistTextviewConcerts.setText("5 concerts");
-        artistTextviewReviews.setText(artist.getReviews().size()+" reviews");
+        solopageImageviewCover.setImageResource(solopage.getImage());
+        solopageImageviewArtist.setImageResource(solopage.getImage());
+        solopageTextviewArtist.setText(solopage.getName());
+        solopageTextviewRating.setText(""+solopage.getRating());
+        solopageTextviewConcerts.setText("5 concerts");
+        solopageTextviewReviews.setText(solopage.getReviews().size()+" reviews");
         setupRecycleview();
         setupLinearLayout();
         setupBackbutton();
@@ -104,13 +104,13 @@ public class ArtistFragment extends Fragment {
 
     private void setupRecycleview()
     {
-        artistRecycleviewConcerts = v.findViewById(R.id.artistRecycleviewConcerts);
+        solopageRecycleviewConcerts = v.findViewById(R.id.solopageRecycleviewConcerts);
         addDiscoverBlock("Last concerts",concerts, new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Toast.makeText(getContext(), "last concercts", Toast.LENGTH_SHORT).show();
-        }
-    });
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "last concercts", Toast.LENGTH_SHORT).show();
+            }
+        });
         addDiscoverBlock("Upcoming concerts", concerts, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,19 +122,19 @@ public class ArtistFragment extends Fragment {
 
     private void setupLinearLayout()
     {
-        artistLinearlayoutReviews = v.findViewById(R.id.artistLinearlayoutReviews);
+        solopageLinearlayoutReviews = v.findViewById(R.id.solopageLinearlayoutReviews);
 
 
     }
 
     private void setupBackbutton()
     {
-        artistButtonBack = v.findViewById(R.id.artistButtonBack);
-        artistButtonBack.setOnClickListener(new View.OnClickListener() {
+        solopageButtonBack = v.findViewById(R.id.solopageButtonBack);
+        solopageButtonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(previousFragment != null)
-                mainActivity.SwitchFragment(previousFragment);
+                    mainActivity.SwitchFragment(previousFragment);
             }
         });
     }
@@ -152,9 +152,9 @@ public class ArtistFragment extends Fragment {
 
     private void applyDatatoAdapters()
     {
-        artistRecycleviewConcerts.setLayoutManager(new LinearLayoutManager(v.getContext()));
+        solopageRecycleviewConcerts.setLayoutManager(new LinearLayoutManager(v.getContext()));
         discoverBlockRVA = new DiscoverBlockRVA(v.getContext(), new ArrayList<>(discoverBlockHashMap.values()));
-        artistRecycleviewConcerts.setAdapter(discoverBlockRVA);
+        solopageRecycleviewConcerts.setAdapter(discoverBlockRVA);
     }
 
     // Setter
@@ -162,7 +162,7 @@ public class ArtistFragment extends Fragment {
     public void setPreviousFragment(Fragment previousFragment) {
         this.previousFragment = previousFragment;
     }
-    public void setArtist(Artist artist) {
-        this.artist = artist;
+    public void setArtist(Artist solopage) {
+        this.solopage = solopage;
     }
 }

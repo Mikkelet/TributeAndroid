@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/artistScrollview"
+    android:id="@+id/solopageScrollview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="0dp"
@@ -11,13 +11,13 @@
     <!-- TODO: Update blank fragment layout -->
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/artistConstraint"
+        android:id="@+id/solopageConstraint"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:minHeight="600dp">
 
         <ImageView
-            android:id="@+id/artistImageviewCover"
+            android:id="@+id/solopageImageviewCover"
             android:layout_width="match_parent"
             android:layout_height="220dp"
             android:layout_marginBottom="8dp"
@@ -31,7 +31,7 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
-            android:id="@+id/artistImageviewArtist"
+            android:id="@+id/solopageImageviewArtist"
 
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -41,14 +41,14 @@
             android:layout_marginBottom="8dp"
             android:scaleType="centerCrop"
             android:src="@mipmap/image1"
-            app:layout_constraintBottom_toTopOf="@+id/artistTextviewArtist"
-            app:layout_constraintEnd_toEndOf="@+id/artistImageviewCover"
+            app:layout_constraintBottom_toTopOf="@+id/solopageTextviewArtist"
+            app:layout_constraintEnd_toEndOf="@+id/solopageImageviewCover"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0" />
 
         <Button
-            android:id="@+id/artistButtonBack"
+            android:id="@+id/solopageButtonBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -61,7 +61,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/artistTextviewRating"
+            android:id="@+id/solopageTextviewRating"
             android:layout_width="82dp"
             android:layout_height="40dp"
             android:layout_marginStart="8dp"
@@ -76,10 +76,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/artistImageviewArtist" />
+            app:layout_constraintTop_toBottomOf="@+id/solopageImageviewArtist" />
 
         <TextView
-            android:id="@+id/artistTextviewArtist"
+            android:id="@+id/solopageTextviewArtist"
             style="@style/H1bold"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
@@ -87,13 +87,13 @@
             android:layout_marginTop="40dp"
             android:layout_marginEnd="11dp"
             android:text="Artist"
-            app:layout_constraintEnd_toStartOf="@+id/artistTextviewRating"
+            app:layout_constraintEnd_toStartOf="@+id/solopageTextviewRating"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/artistImageviewCover" />
+            app:layout_constraintTop_toBottomOf="@+id/solopageImageviewCover" />
 
         <TextView
-            android:id="@+id/artistTextviewReviews"
+            android:id="@+id/solopageTextviewReviews"
             style="@style/subH1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -103,10 +103,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/artistTextviewArtist" />
+            app:layout_constraintTop_toBottomOf="@+id/solopageTextviewArtist" />
 
         <TextView
-            android:id="@+id/artistTextviewConcerts"
+            android:id="@+id/solopageTextviewConcerts"
             style="@style/subH1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -116,10 +116,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/artistTextviewReviews" />
+            app:layout_constraintTop_toBottomOf="@+id/solopageTextviewReviews" />
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/artistRecycleviewConcerts"
+            android:id="@+id/solopageRecycleviewConcerts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="0dp"
@@ -128,12 +128,12 @@
             android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/artistTextviewConcerts">
+            app:layout_constraintTop_toBottomOf="@+id/solopageTextviewConcerts">
 
         </android.support.v7.widget.RecyclerView>
 
         <TextView
-            android:id="@+id/artistTextviewReviewsexpanded"
+            android:id="@+id/solopageTextviewReviewsexpanded"
             style="@style/H2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -144,10 +144,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/artistRecycleviewConcerts" />
+            app:layout_constraintTop_toBottomOf="@+id/solopageRecycleviewConcerts" />
 
         <LinearLayout
-            android:id="@+id/artistLinearlayoutReviews"
+            android:id="@+id/solopageLinearlayoutReviews"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -155,7 +155,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/artistTextviewReviewsexpanded"
+            app:layout_constraintTop_toBottomOf="@+id/solopageTextviewReviewsexpanded"
             app:layout_constraintVertical_bias="0.0" />
 
     </android.support.constraint.ConstraintLayout>

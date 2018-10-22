@@ -2,6 +2,7 @@ package com.tributedummy.metbb.dummy3.Classes;
 import java.util.ArrayList;
 
 public class Venue {
+
     private String name;
     private double rating;
     private int image;
