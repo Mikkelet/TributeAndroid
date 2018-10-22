@@ -18,7 +18,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tributedummy.metbb.dummy3.Adapters.ConcertPhotosRVA;
-import com.tributedummy.metbb.dummy3.Adapters.ConcertReviewsRVA;
 import com.tributedummy.metbb.dummy3.Classes.Concert;
 import com.tributedummy.metbb.dummy3.Classes.Review;
 
@@ -84,13 +83,13 @@ public class ConcertFragment extends Fragment {
 
         textViewArtist = v.findViewById(R.id.concertTextviewArtist);
         textViewVenue = v.findViewById(R.id.concertTextviewVenue);
-        textViewDate = v.findViewById(R.id.concertTextviewDate);
+        textViewDate = v.findViewById(R.id.artistTextviewReviews);
 
         buttonRatingdetails = v.findViewById(R.id.concertButtonRatingdetails);
         buttonReviewConcert = v.findViewById(R.id.concertButtonReviewconcert);
 
-        recyclerViewPhotos = v.findViewById(R.id.concertRecyclerviewPhotos);
-        linearLayoutReviews = v.findViewById(R.id.concertLinearlayoutReviews);
+        recyclerViewPhotos = v.findViewById(R.id.artistRecycleviewConcerts);
+        linearLayoutReviews = v.findViewById(R.id.artistLinearlayoutReviews);
 
         buttonBack = v.findViewById(R.id.concertButtonBack);
     }
@@ -144,14 +143,14 @@ public class ConcertFragment extends Fragment {
     }
     private void setupRecyclerviewPhotos()
     {
-        recyclerViewPhotos = v.findViewById(R.id.concertRecyclerviewPhotos);
+        recyclerViewPhotos = v.findViewById(R.id.artistRecycleviewConcerts);
         recyclerViewPhotos.setLayoutManager(new LinearLayoutManager(v.getContext(), LinearLayoutManager.HORIZONTAL,false));
         ConcertPhotosRVA adapter = new ConcertPhotosRVA(v.getContext(),concert.getPhotos());
         recyclerViewPhotos.setAdapter(adapter);
     }
     private void setupRecyclerviewReviews(LayoutInflater inflater)
     {
-        linearLayoutReviews = v.findViewById(R.id.concertLinearlayoutReviews);
+        linearLayoutReviews = v.findViewById(R.id.artistLinearlayoutReviews);
         for (int i = 0; i < concert.getReviews().size(); i++) {
             Review currentReview = concert.getReviews().get(i);
             View review = inflater.inflate(R.layout.layout_reviewcard, linearLayoutReviews,false);

@@ -126,6 +126,10 @@ public class DiscoverFragment extends Fragment {
         cardView = v.findViewById(R.id.discoverCardviewSearch);
         searchView = v.findViewById(R.id.discoverSearchview);
 
+        // needed to show close button when access search via tapping the bar instead of the icon.
+        final int closebuttonID = searchView.getContext().getResources().getIdentifier("android:id/search_close_btn", null, null);
+
+
         final SearchView.OnCloseListener onCloseListener = new SearchView.OnCloseListener() {
             @Override
             public boolean onClose() {
@@ -167,17 +171,9 @@ public class DiscoverFragment extends Fragment {
             @Override
             public void onClick(View v) {
                     searchView.onActionViewExpanded();
-                    int closebuttonID = searchView.getContext().getResources().getIdentifier("android:id/search_close_btn", null, null);
+                    // sets the close button to visible
                 ImageView closebutton = v.findViewById(closebuttonID);
                 closebutton.setVisibility(View.VISIBLE);
-                closebutton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        onCloseListener.onClose();
-                        getActivity().onBackPressed();
-                        searchView.onActionViewCollapsed();
-                    }
-                });
             }
         });
 

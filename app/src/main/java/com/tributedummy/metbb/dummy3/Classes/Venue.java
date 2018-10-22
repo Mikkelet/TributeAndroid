@@ -1,7 +1,4 @@
 package com.tributedummy.metbb.dummy3.Classes;
-
-import android.media.Image;
-
 import java.util.ArrayList;
 
 public class Venue {
