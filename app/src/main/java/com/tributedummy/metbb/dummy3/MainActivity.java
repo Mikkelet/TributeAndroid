@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.tributedummy.metbb.dummy3.Classes.Artist;
 import com.tributedummy.metbb.dummy3.Classes.Concert;
 import com.tributedummy.metbb.dummy3.Classes.ConcertElement;
+import com.tributedummy.metbb.dummy3.Classes.ConcertStatus;
 import com.tributedummy.metbb.dummy3.Classes.Review;
 import com.tributedummy.metbb.dummy3.Classes.User;
 import com.tributedummy.metbb.dummy3.Classes.Venue;
@@ -129,13 +130,22 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < 10; i++) {
             int rndArtist = new Random().nextInt(3);
             int rndVenue = new Random().nextInt(3);
-
+            int rndStatus = new Random().nextInt(2);
             Concert concert = new Concert(allArtists.get(rndArtist), allVenues.get(rndVenue));
             concert.addReview("<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3\n<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3",(double)2);
             concert.addReview("<3",(double)2);
             concert.addReview("<3",(double)2);
             concert.addReview("<3",(double)2);
             concert.addReview("<3",(double)2);
+            switch (rndStatus)
+            {
+                case 0:
+                    concert.setStatus(ConcertStatus.DONE);
+                    break;
+                case 1:
+                    concert.setStatus(ConcertStatus.UPCOMING);
+                    break;
+            }
 
             concerts.add(concert);
         }

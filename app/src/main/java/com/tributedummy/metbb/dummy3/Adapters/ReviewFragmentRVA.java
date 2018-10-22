@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tributedummy.metbb.dummy3.Classes.Concert;
+import com.tributedummy.metbb.dummy3.MainActivity;
 import com.tributedummy.metbb.dummy3.R;
 
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class ReviewFragmentRVA extends  RecyclerView.Adapter<ReviewFragmentRVA.V
 
     private Context mContext;
     private ArrayList<Concert> concerts;
+    private MainActivity mainActivity;
 
     public ReviewFragmentRVA(Context mContext, ArrayList<Concert> concerts) {
         this.mContext = mContext;
@@ -40,7 +42,7 @@ public class ReviewFragmentRVA extends  RecyclerView.Adapter<ReviewFragmentRVA.V
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int position) {
         Log.d(TAG, "onBindViewHolder: called");
-
+        mainActivity = (MainActivity)mContext;
         viewHolder.imageViewArtist.setImageResource(concerts.get(position).getArtist().getImage());
         viewHolder.textViewArtist.setText(concerts.get(position).getArtist().getName());
         viewHolder.textViewRating.setText("" + concerts.get(position).getRating());
@@ -48,7 +50,7 @@ public class ReviewFragmentRVA extends  RecyclerView.Adapter<ReviewFragmentRVA.V
         viewHolder.imageViewArtist.setOnClickListener(new View.OnClickListener() {
                                                           @Override
                                                           public void onClick(View v) {
-                                                              Toast.makeText(mContext, concerts.get(position).getArtist().getName(), Toast.LENGTH_SHORT).show();
+                                                              mainActivity.SwitchFragment(mainActivity.getConcertFragment(concerts.get(position)));
                                                           }
                                                       }
 

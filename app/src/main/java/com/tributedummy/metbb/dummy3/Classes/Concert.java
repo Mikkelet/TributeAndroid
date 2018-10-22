@@ -4,6 +4,7 @@ import com.tributedummy.metbb.dummy3.R;
 
 import java.util.ArrayList;
 
+
 public class Concert {
     private Artist artist;
     private Venue venue;
@@ -11,7 +12,7 @@ public class Concert {
     private double rating;
     private ArrayList<Review> reviews;
     private ArrayList<Integer> photos;
-
+    private ConcertStatus status = ConcertStatus.UPCOMING;
 
     public Concert(Artist artist, Venue venue) {
         this.artist = artist;
@@ -35,7 +36,7 @@ public class Concert {
         reviews.add(r);
     }
 
-    // getters
+    // getters & setters
     public Artist getArtist() {
         return artist;
     }
@@ -58,5 +59,13 @@ public class Concert {
 
     public ArrayList<Integer> getPhotos() {
         return photos;
+    }
+
+    public ConcertStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(ConcertStatus status) {
+        this.status = status;
     }
 }

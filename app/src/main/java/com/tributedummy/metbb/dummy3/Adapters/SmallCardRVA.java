@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tributedummy.metbb.dummy3.Classes.Concert;
+import com.tributedummy.metbb.dummy3.Classes.ConcertStatus;
 import com.tributedummy.metbb.dummy3.MainActivity;
 import com.tributedummy.metbb.dummy3.R;
 
@@ -45,7 +46,12 @@ public class SmallCardRVA extends  RecyclerView.Adapter<SmallCardRVA.ViewHolder>
         mainActivity = ((MainActivity)mContext);
         viewHolder.imageViewArtist.setImageResource(concerts.get(position).getArtist().getImage());
         viewHolder.textViewArtist.setText(concerts.get(position).getArtist().getName());
-        viewHolder.textViewRating.setText(""+concerts.get(position).getRating());
+        // hides rating if it is upcoming
+        if(concerts.get(position).getStatus() == ConcertStatus.DONE){
+        viewHolder.textViewRating.setText(""+concerts.get(position).getRating());}else{
+            viewHolder.textViewRating.setVisibility(View.INVISIBLE);
+        }
+
         viewHolder.textViewVenue.setText(concerts.get(position).getVenue().getName());
         viewHolder.imageViewArtist.setOnClickListener(new View.OnClickListener() {
                                                          @Override

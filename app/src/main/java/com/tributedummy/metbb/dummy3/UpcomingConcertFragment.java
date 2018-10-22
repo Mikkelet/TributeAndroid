@@ -7,12 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.tributedummy.metbb.dummy3.Adapters.LinearLayoutReviewsAdapter;
 import com.tributedummy.metbb.dummy3.Classes.Concert;
+import com.tributedummy.metbb.dummy3.Classes.Review;
 
 
 /**
@@ -59,7 +61,7 @@ public class UpcomingConcertFragment extends Fragment {
         upcomingTextViewDate.setText(concert.getDate());
         setupBackButton();
         setupButtonBuyTicket();
-        setupLinearLayout();
+        setupLinearLayoutReviews(inflater);
 
         return v;
     }
@@ -85,8 +87,33 @@ public class UpcomingConcertFragment extends Fragment {
     {
 
     }
-    private void setupLinearLayout()
+    private void setupLinearLayoutReviews(LayoutInflater inflater)
     {
+        for (int i = 0; i < concert.getReviews().size(); i++) {
+            Review currentReview = concert.getReviews().get(i);
+            // Inflate
+            View review = inflater.inflate(R.layout.layout_reviewcard, upcomingLinearLayout,false);
 
+            // inits
+            ImageView imageViewUser = review.findViewById(R.id.reviewImageviewUser);
+            TextView textViewUser = review.findViewById(R.id.reviewTextviewUser);
+            TextView textViewDate = review.findViewById(R.id.reviewTextviewDate);
+            TextView textViewRating = review.findViewById(R.id.reviewTextviewRating);
+            TextView textViewReview = review.findViewById(R.id.reviewTextviewReview);
+            TextView textViewFavourites = review.findViewById(R.id.reviewTextviewFavorites);
+            TextView textViewConcert = review.findViewById(R.id.reviewTextviewConcert);
+            ImageButton buttonGotoConcert = review.findViewById(R.id.reviewButtonGotoconcert);
+
+            // assigns
+            imageViewUser.setImageResource(currentReview.getSubmittedBy().getProfilePic());
+            textViewUser.setText(currentReview.getSubmittedBy().getName());
+            textViewDate.setText(currentReview.getDate());
+            textViewRating.setText(""+currentReview.getRating());
+            textViewReview.setText(currentReview.getReview());
+            textViewFavourites.setText(""+currentReview.getFavourites());
+            textViewConcert.setVisibility(View.INVISIBLE);
+            buttonGotoConcert.setVisibility(View.INVISIBLE);
+            upcomingLinearLayout.addView(review);
+        }
     }
 }
