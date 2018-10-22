@@ -34,6 +34,8 @@ public class ArtistFragment extends Fragment {
     private Artist artist;
     private HashMap<String,DiscoverBlock> discoverBlockHashMap = new HashMap<>();
     private ArrayList<Concert> concerts;
+    private Fragment previousFragment;
+    private MainActivity mainActivity;
 
     // layouts
     private ImageView artistImageviewCover;
@@ -64,8 +66,9 @@ public class ArtistFragment extends Fragment {
         // assign layout fields
         v = inflater.inflate(R.layout.fragment_artist, container, false);
 
-        // fieds
+        // Assign fieds
         concerts = (ArrayList<Concert>) artist.getConcerts();
+        mainActivity = (MainActivity)getActivity();
 
         // statics
         artistImageviewCover = v.findViewById(R.id.artistImageviewCover);
@@ -98,6 +101,7 @@ public class ArtistFragment extends Fragment {
         artistTextviewReviews.setText(artist.getReviews().size()+" reviews");
         setupRecycleview();
         setupLinearLayout();
+        setupBackbutton();
 
         applyDatatoAdapters();
     }
@@ -124,6 +128,17 @@ public class ArtistFragment extends Fragment {
 
     }
 
+    private void setupBackbutton()
+    {
+        artistButtonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(previousFragment != null)
+                mainActivity.SwitchFragment(previousFragment);
+            }
+        });
+    }
+
     public void addDiscoverBlock(String title,  ArrayList<Concert> concerts, View.OnClickListener action)
     {
         // TODO add different adapters for different lists
@@ -144,6 +159,9 @@ public class ArtistFragment extends Fragment {
 
     // Setter
 
+    public void setPreviousFragment(Fragment previousFragment) {
+        this.previousFragment = previousFragment;
+    }
     public void setArtist(Artist artist) {
         this.artist = artist;
     }

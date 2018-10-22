@@ -137,7 +137,7 @@ public class ConcertFragment extends Fragment {
         imageViewArtist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mainActivity.SwitchFragment(mainActivity.getArtistFragment(concert.getArtist()));
+                mainActivity.SwitchFragment(mainActivity.getArtistFragment(concert.getArtist(),mainActivity.getConcertFragment(concert)));
             }
         });
     }

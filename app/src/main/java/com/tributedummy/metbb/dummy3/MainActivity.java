@@ -168,8 +168,9 @@ public class MainActivity extends AppCompatActivity {
         return concertFragment;
     }
 
-    public ArtistFragment getArtistFragment(Artist artist) {
+    public ArtistFragment getArtistFragment(Artist artist, Fragment previousFragment) {
         artistFragment.setArtist(artist);
+        artistFragment.setPreviousFragment(previousFragment);
         return artistFragment;
     }
 }
