@@ -13,15 +13,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tributedummy.metbb.dummy3.Classes.Concert;
+import com.tributedummy.metbb.dummy3.MainActivity;
 import com.tributedummy.metbb.dummy3.R;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class SearchcardRVA extends  RecyclerView.Adapter<SearchcardRVA.ViewHolder> {
-    private static final String TAG = "RecyclerViewAdapter";
+    private static final String TAG = "";
 
     private Context mContext;
     private ArrayList<Concert> concerts;
+    private MainActivity mainActivity;
 
     public SearchcardRVA(Context mContext, ArrayList<Concert> concerts) {
         this.mContext = mContext;
@@ -38,15 +42,15 @@ public class SearchcardRVA extends  RecyclerView.Adapter<SearchcardRVA.ViewHolde
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int position) {
-        Log.d(TAG, "onBindViewHolder: called");
-
+        mainActivity = ((MainActivity)mContext);
         viewHolder.imageViewArtist.setImageResource(concerts.get(position).getArtist().getImage());
         viewHolder.textViewTitle.setText(concerts.get(position).getArtist().getName());
         viewHolder.textViewRating.setText(""+concerts.get(position).getRating());
         viewHolder.textViewSubtitle.setText(concerts.get(position).getVenue().getName()+"\n"+concerts.get(position).getDate());
         viewHolder.constraintLayout.setOnClickListener(new View.OnClickListener() {
                                                          @Override
-                                                         public void onClick(View v) { Toast.makeText(mContext, concerts.get(position).getArtist().getName(), Toast.LENGTH_SHORT).show();
+                                                         public void onClick(View v) {
+                                                             mainActivity.SwitchFragment(mainActivity.getConcertFragment(concerts.get(position)));
                                                          }
                                                      }
 
@@ -79,7 +83,10 @@ public class SearchcardRVA extends  RecyclerView.Adapter<SearchcardRVA.ViewHolde
 
     public void search(ArrayList<Concert> newConcerts, String query)
     {
+
         ArrayList<Concert> concertsFiltered = new ArrayList<>();
+
+
         ArrayList<Concert> venuesFiltered = new ArrayList<>();
         ArrayList<Concert> artistsFiltered = new ArrayList<>();
         String q = query.toLowerCase();

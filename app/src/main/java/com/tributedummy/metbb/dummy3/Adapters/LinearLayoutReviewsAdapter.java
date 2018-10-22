@@ -17,14 +17,14 @@ import com.tributedummy.metbb.dummy3.Classes.Concert;
 import com.tributedummy.metbb.dummy3.Classes.Review;
 import com.tributedummy.metbb.dummy3.R;
 
-public class LinearLayoutReviewsRVA extends  RecyclerView.Adapter<LinearLayoutReviewsRVA.ViewHolder> {
-    private static final String TAG = "RecyclerViewAdapter";
+public class LinearLayoutReviewsAdapter extends RecyclerView.Adapter<LinearLayoutReviewsAdapter.ViewHolder> {
+    private static final String TAG = "";
 
     private Context mContext;
     private Concert concerts;
     private LinearLayout linearLayout;
 
-    public LinearLayoutReviewsRVA(Context mContext, Concert concerts, LinearLayout linearLayout) {
+    public LinearLayoutReviewsAdapter(Context mContext, Concert concerts, LinearLayout linearLayout) {
         this.mContext = mContext;
         this.concerts = concerts;
         this.linearLayout = linearLayout;

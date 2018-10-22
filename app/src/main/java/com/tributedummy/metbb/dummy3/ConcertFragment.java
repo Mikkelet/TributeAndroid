@@ -64,7 +64,7 @@ public class ConcertFragment extends Fragment {
         mainActivity = ((MainActivity)getActivity());
         initLayouts();
         applyData();
-        setupRecyclerviewReviews(inflater);
+        setupLinearLayoutReviews(inflater);
         return v;
     }
 
@@ -166,7 +166,7 @@ public class ConcertFragment extends Fragment {
         ConcertPhotosRVA adapter = new ConcertPhotosRVA(v.getContext(),concert.getPhotos());
         recyclerViewPhotos.setAdapter(adapter);
     }
-    private void setupRecyclerviewReviews(LayoutInflater inflater)
+    private void setupLinearLayoutReviews(LayoutInflater inflater)
     {
         linearLayoutReviews = v.findViewById(R.id.concertLinearlayoutReviews);
         for (int i = 0; i < concert.getReviews().size(); i++) {
@@ -191,11 +191,10 @@ public class ConcertFragment extends Fragment {
             buttonGotoConcert.setVisibility(View.INVISIBLE);
             linearLayoutReviews.addView(review);
         }
-
-
     }
     public void setConcert(Concert concert)
     {
         this.concert = concert;
     }
+
 }

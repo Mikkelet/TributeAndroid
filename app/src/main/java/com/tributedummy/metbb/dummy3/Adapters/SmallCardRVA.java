@@ -19,7 +19,7 @@ import com.tributedummy.metbb.dummy3.R;
 import java.util.ArrayList;
 
 public class SmallCardRVA extends  RecyclerView.Adapter<SmallCardRVA.ViewHolder> {
-    private static final String TAG = "RecyclerViewAdapter";
+    private static final String TAG = "";
 
     private Context mContext;
     private ArrayList<Concert> concerts;
@@ -49,9 +49,7 @@ public class SmallCardRVA extends  RecyclerView.Adapter<SmallCardRVA.ViewHolder>
         viewHolder.textViewVenue.setText(concerts.get(position).getVenue().getName());
         viewHolder.imageViewArtist.setOnClickListener(new View.OnClickListener() {
                                                          @Override
-                                                         public void onClick(View v) {
-                                                             Toast.makeText(mContext, concerts.get(position).getArtist().getName(), Toast.LENGTH_SHORT).show();
-                                                             mainActivity.SwitchFragment(mainActivity.getConcertFragment(concerts.get(position)));
+                                                         public void onClick(View v) { mainActivity.SwitchFragment(mainActivity.getConcertFragment(concerts.get(position)));
                                                          }
                                                      }
 

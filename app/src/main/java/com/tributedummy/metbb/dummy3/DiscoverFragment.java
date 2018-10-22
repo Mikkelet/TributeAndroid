@@ -41,7 +41,6 @@ public class DiscoverFragment extends Fragment {
 
     private static final String TAG = "DiscoverFragment";
     // vars
-    private ArrayList<DiscoverBlock> discoverBlocks = new ArrayList<>();
     private HashMap<String,DiscoverBlock> discoverBlockHashMap = new HashMap<>();
 
     private DiscoverBlockRVA discoverBlockRVA;
@@ -54,6 +53,9 @@ public class DiscoverFragment extends Fragment {
     private CardView cardView;
     private MainActivity mainActivity;
     private ArrayList<Concert> concerts;
+
+    // eventlisteners
+
 
     private View v;
 
@@ -86,19 +88,8 @@ public class DiscoverFragment extends Fragment {
     private void initImageBitmap(){
         Log.d(TAG, "initImageBitmap: "+concerts.size());
         //TODO this gets added on every load
-        addDiscoverBlock("Last reviewed concerts", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(), "Go to your reviews", Toast.LENGTH_SHORT).show();
-            }
-        });
-        addDiscoverBlock("Upcoming concerts", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(), "Go to your reviews", Toast.LENGTH_SHORT).show();
-            }
-        });
-
+        addDiscoverBlock("Last reviewed concerts",onClickToast("last reviewed concert"));
+        addDiscoverBlock("Upcoming concerts", onClickToast("Upcoming concerts"));
         applyDatatoAdapters();
     }
 
@@ -130,7 +121,7 @@ public class DiscoverFragment extends Fragment {
         // needed to show close button when access search via tapping the bar instead of the icon.
         final int closebuttonID = searchView.getContext().getResources().getIdentifier("android:id/search_close_btn", null, null);
 
-
+        // On close
         final SearchView.OnCloseListener onCloseListener = new SearchView.OnCloseListener() {
             @Override
             public boolean onClose() {
@@ -139,6 +130,7 @@ public class DiscoverFragment extends Fragment {
                 return false;
             }
         };
+
         final SearchView.OnClickListener onSearchListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -192,6 +184,16 @@ public class DiscoverFragment extends Fragment {
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
+    }
+
+    // eventlisteners
+    private View.OnClickListener onClickToast(final String message){
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+            }
+        };
     }
 }
 

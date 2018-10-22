@@ -18,7 +18,7 @@ import com.tributedummy.metbb.dummy3.R;
 import java.util.ArrayList;
 
 public class ConcertPhotosRVA extends  RecyclerView.Adapter<ConcertPhotosRVA.ViewHolder> {
-    private static final String TAG = "RecyclerViewAdapter";
+    private static final String TAG = "";
 
     private Context mContext;
     private ArrayList<Integer> photos;
