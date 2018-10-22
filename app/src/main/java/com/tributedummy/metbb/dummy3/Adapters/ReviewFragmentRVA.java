@@ -17,13 +17,13 @@ import com.tributedummy.metbb.dummy3.R;
 
 import java.util.ArrayList;
 
-public class ReviewRVA extends  RecyclerView.Adapter<ReviewRVA.ViewHolder> {
+public class ReviewFragmentRVA extends  RecyclerView.Adapter<ReviewFragmentRVA.ViewHolder> {
     private static final String TAG = "reviewRVA";
 
     private Context mContext;
     private ArrayList<Concert> concerts;
 
-    public ReviewRVA(Context mContext, ArrayList<Concert> concerts) {
+    public ReviewFragmentRVA(Context mContext, ArrayList<Concert> concerts) {
         this.mContext = mContext;
         this.concerts = concerts;
     }

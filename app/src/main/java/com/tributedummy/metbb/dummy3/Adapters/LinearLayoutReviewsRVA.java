@@ -2,13 +2,11 @@ package com.tributedummy.metbb.dummy3.Adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -19,18 +17,14 @@ import com.tributedummy.metbb.dummy3.Classes.Concert;
 import com.tributedummy.metbb.dummy3.Classes.Review;
 import com.tributedummy.metbb.dummy3.R;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-
-public class ConcertReviewsRVA extends  RecyclerView.Adapter<ConcertReviewsRVA.ViewHolder> {
+public class LinearLayoutReviewsRVA extends  RecyclerView.Adapter<LinearLayoutReviewsRVA.ViewHolder> {
     private static final String TAG = "RecyclerViewAdapter";
 
     private Context mContext;
     private Concert concerts;
     private LinearLayout linearLayout;
 
-    public ConcertReviewsRVA(Context mContext, Concert concerts, LinearLayout linearLayout) {
+    public LinearLayoutReviewsRVA(Context mContext, Concert concerts, LinearLayout linearLayout) {
         this.mContext = mContext;
         this.concerts = concerts;
         this.linearLayout = linearLayout;

@@ -10,8 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.tributedummy.metbb.dummy3.Adapters.RecyclerViewAdapter;
-import com.tributedummy.metbb.dummy3.Adapters.ReviewRVA;
+import com.tributedummy.metbb.dummy3.Adapters.ReviewFragmentRVA;
 import com.tributedummy.metbb.dummy3.Classes.Concert;
 
 import java.util.ArrayList;
@@ -54,7 +53,7 @@ public class ReviewFragment extends Fragment {
         Log.d(TAG, "initRecyclerView: init recycler view");
         RecyclerView recyclerView = v.findViewById(R.id.RecyclerViewReviews);
         recyclerView.setLayoutManager(new LinearLayoutManager(v.getContext()));
-        ReviewRVA adapter = new ReviewRVA(v.getContext(),concerts);
+        ReviewFragmentRVA adapter = new ReviewFragmentRVA(v.getContext(),concerts);
         recyclerView.setAdapter(adapter);
     }
 }

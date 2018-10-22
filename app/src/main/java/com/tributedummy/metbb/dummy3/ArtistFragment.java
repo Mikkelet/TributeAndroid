@@ -15,8 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tributedummy.metbb.dummy3.Adapters.DiscoverBlockRVA;
-import com.tributedummy.metbb.dummy3.Adapters.ReviewRVA;
-import com.tributedummy.metbb.dummy3.Adapters.SearchcardRVA;
+import com.tributedummy.metbb.dummy3.Adapters.ReviewFragmentRVA;
 import com.tributedummy.metbb.dummy3.Adapters.SmallCardRVA;
 import com.tributedummy.metbb.dummy3.Classes.Artist;
 import com.tributedummy.metbb.dummy3.Classes.Concert;
@@ -49,7 +48,7 @@ public class ArtistFragment extends Fragment {
     private LinearLayout artistLinearlayoutReviews;
 
     //adapters
-    private ReviewRVA reviewRVA;
+    private ReviewFragmentRVA reviewRVA;
     private DiscoverBlockRVA discoverBlockRVA;
 
 
