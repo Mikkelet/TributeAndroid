@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
         allVenues.add(venueRoyalArena);
         allVenues.add(venueVega);
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 50; i++) {
             int rndArtist = new Random().nextInt(3);
             int rndVenue = new Random().nextInt(3);
             Concert concert = new Concert(allArtists.get(rndArtist), allVenues.get(rndVenue));

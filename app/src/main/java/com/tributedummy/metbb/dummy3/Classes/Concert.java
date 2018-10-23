@@ -22,7 +22,7 @@ public class Concert {
         this.rating = 5;
         reviews = new ArrayList<>();
         photos = new ArrayList<>();
-
+        status = ConcertStatus.TODAY;
         localDate = LocalDate.now();
 
         // TODO remove
@@ -33,11 +33,11 @@ public class Concert {
         if(newDays < 0)
         {
             localDate = localDate.minusDays(newDays);
+            status = ConcertStatus.UPCOMING;
         }else if(newDays > 0){
             localDate = localDate.plusDays(newDays);
+            status = ConcertStatus.DONE;
         }
-
-        updateStatus(localDate);
 
         photos.add(R.mipmap.warondrugs);
         photos.add(R.mipmap.warondrugs);
@@ -100,9 +100,5 @@ public class Concert {
 
     public ConcertStatus getStatus() {
         return status;
-    }
-
-    public void setStatus(ConcertStatus status) {
-        this.status = status;
     }
 }
