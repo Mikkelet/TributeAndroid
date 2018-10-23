@@ -34,12 +34,12 @@ public class MainActivity extends AppCompatActivity {
     private LoginFragment loginFragment;
     private ConcertFragment concertFragment;
     private SolopageFragment solopageFragment;
+    private ReviewConcertFragment reviewConcertFragment;
 
     private BottomNavigationView bottomNavigationView;
     private static final String TAG = "MainActivity";
 
     public static ArrayList<Concert> concerts = new ArrayList<>();
-
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
         reviewFragment = new ReviewFragment();
         concertFragment = new ConcertFragment();
         solopageFragment = new SolopageFragment();
+        reviewConcertFragment = new ReviewConcertFragment();
 
         Log.d(TAG,"onCreate: started");
 
@@ -181,6 +182,11 @@ public class MainActivity extends AppCompatActivity {
     public ConcertFragment getConcertFragment(Concert concert) {
         concertFragment.setConcert(concert);
         return concertFragment;
+    }
+
+    public ReviewConcertFragment getReviewConcertFragment(Concert concert) {
+        reviewConcertFragment.setConcert(concert);
+        return reviewConcertFragment;
     }
 
     public SolopageFragment getSolopageFragment(ConcertElement concertElement, Fragment previousFragment) {

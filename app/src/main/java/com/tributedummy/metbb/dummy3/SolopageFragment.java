@@ -123,8 +123,6 @@ public class SolopageFragment extends Fragment {
     private void setupLinearLayout()
     {
         solopageLinearlayoutReviews = v.findViewById(R.id.solopageLinearlayoutReviews);
-
-
     }
 
     private void setupBackbutton()

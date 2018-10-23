@@ -18,6 +18,7 @@ import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.CursorAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ResourceCursorAdapter;
 import android.widget.SearchView;
 import android.widget.SimpleCursorAdapter;
@@ -34,6 +35,7 @@ import com.tributedummy.metbb.dummy3.Classes.Venue;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -41,8 +43,17 @@ public class DiscoverFragment extends Fragment {
 
 
     private static final String TAG = "DiscoverFragment";
+
+    // Discover block
+    ArrayList<DiscoverBlock> discoverBlockArrayList = new ArrayList<>();
+    private String dbTitleToday = "Live Today";
+    private String dbTitleLastreviewed = "Last reviewed";
+    private String dbTitleUpcoming = "Upcoming concerts";
+
     // vars
-    private HashMap<String,DiscoverBlock> discoverBlockHashMap = new HashMap<>();
+    private MainActivity mainActivity;
+    private ArrayList<Concert> concerts;
+
 
     private DiscoverBlockRVA discoverBlockRVA;
     private SearchcardRVA searchcardRVA;
@@ -51,9 +62,8 @@ public class DiscoverFragment extends Fragment {
     private SwipeRefreshLayout swipeRefreshLayout;
     private SearchView searchView;
     private RecyclerView recyclerView;
-    private CardView cardView;
-    private MainActivity mainActivity;
-    private ArrayList<Concert> concerts;
+
+
 
     // eventlisteners
 
@@ -85,9 +95,9 @@ public class DiscoverFragment extends Fragment {
 
 
         // add horizontal scroll wheels
-        addDiscoverBlock("TODAY", onClickToast("TODAY"),MainActivity.getIndexedConcerts(ConcertStatus.TODAY));
-        addDiscoverBlock("Last reviewed concerts",onClickToast("last reviewed concert"),MainActivity.getIndexedConcerts(ConcertStatus.DONE));
-        addDiscoverBlock("Upcoming concerts", onClickToast("Upcoming concerts"),MainActivity.getIndexedConcerts(ConcertStatus.UPCOMING));
+        addDiscoverBlock(dbTitleToday, onClickToast(dbTitleToday),MainActivity.getIndexedConcerts(ConcertStatus.TODAY));
+        addDiscoverBlock(dbTitleLastreviewed,onClickToast(dbTitleLastreviewed),MainActivity.getIndexedConcerts(ConcertStatus.DONE));
+        addDiscoverBlock(dbTitleUpcoming, onClickToast(dbTitleUpcoming),MainActivity.getIndexedConcerts(ConcertStatus.UPCOMING));
         applyDatatoAdapters();
 
         return v;
@@ -98,24 +108,24 @@ public class DiscoverFragment extends Fragment {
         // TODO add different adapters for different lists
 
         SmallCardRVA adapter = new SmallCardRVA(v.getContext(), concerts);
-
+        DiscoverBlock discoverBlock = new DiscoverBlock(title,action,adapter);
         // This gets called from OnCreateView, which gets called every time the fragment loads. This check is to make sure multiple blocks wont get added on every load.
-        if(!discoverBlockHashMap.containsKey(title)) {
-            discoverBlockHashMap.put(title, new DiscoverBlock(title, action, adapter));
-        }
+        // it compares titles with contains
+        if(!discoverBlockArrayList.contains(discoverBlock))
+            discoverBlockArrayList.add(discoverBlock);
     }
 
     private void applyDatatoAdapters()
     {
         recyclerView.setLayoutManager(new LinearLayoutManager(v.getContext()));
-        discoverBlockRVA = new DiscoverBlockRVA(v.getContext(), new ArrayList<>(discoverBlockHashMap.values()));
+
+        discoverBlockRVA = new DiscoverBlockRVA(v.getContext(), discoverBlockArrayList);
         searchcardRVA = new SearchcardRVA(v.getContext(), concerts);
         recyclerView.setAdapter(discoverBlockRVA);
     }
 
     private void setupSearch()
     {
-        cardView = v.findViewById(R.id.discoverCardviewSearch);
         searchView = v.findViewById(R.id.discoverSearchview);
 
         // needed to show close button when access search via tapping the bar instead of the icon.

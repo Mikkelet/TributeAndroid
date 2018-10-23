@@ -13,8 +13,7 @@
     <android.support.constraint.ConstraintLayout
         android:id="@+id/discoverConstraint"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="250dp">
+        android:layout_height="match_parent">
 
         <android.support.v7.widget.CardView
             android:id="@+id/discoverCardviewSearch"
@@ -46,12 +45,15 @@
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/discoverSwiperefresh"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="500dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/discoverCardviewSearch">
+            app:layout_constraintTop_toBottomOf="@+id/discoverCardviewSearch"
+            app:layout_constraintVertical_bias="0.49">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/discoverRecyclerview"
@@ -63,7 +65,9 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/discoverSearchview"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintVertical_bias="0.0">
+
+            </android.support.v7.widget.RecyclerView>
 
         </android.support.v4.widget.SwipeRefreshLayout>
 

@@ -119,7 +119,7 @@ public class ConcertFragment extends Fragment {
         buttonReviewConcert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), "REVIEW CONCERT", Toast.LENGTH_SHORT).show();
+                mainActivity.SwitchFragment(mainActivity.getReviewConcertFragment(concert));
             }
         });
     }
