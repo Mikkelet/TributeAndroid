@@ -3,26 +3,42 @@ package com.tributedummy.metbb.dummy3.Classes;
 import com.tributedummy.metbb.dummy3.R;
 
 import java.util.ArrayList;
+import java.time.*;
+import java.util.Random;
 
 
 public class Concert {
     private Artist artist;
     private Venue venue;
-    private String date;
     private double rating;
     private ArrayList<Review> reviews;
     private ArrayList<Integer> photos;
-    private ConcertStatus status = ConcertStatus.UPCOMING;
+    private ConcertStatus status;
+    private LocalDate localDate;
 
     public Concert(Artist artist, Venue venue) {
         this.artist = artist;
         this.venue = venue;
         this.rating = 5;
-        this.date = "Sep. 2, 2018";
         reviews = new ArrayList<>();
         photos = new ArrayList<>();
 
+        localDate = LocalDate.now();
+
         // TODO remove
+        // subtract or add days to test upcoming concerts
+        int rndOne = new Random().nextInt(3);
+        int rndTwo = new Random().nextInt(3);
+        long newDays = rndOne - rndTwo;
+        if(newDays < 0)
+        {
+            localDate = localDate.minusDays(newDays);
+        }else if(newDays > 0){
+            localDate = localDate.plusDays(newDays);
+        }
+
+        updateStatus(localDate);
+
         photos.add(R.mipmap.warondrugs);
         photos.add(R.mipmap.warondrugs);
         photos.add(R.mipmap.warondrugs);
@@ -46,7 +62,28 @@ public class Concert {
     }
 
     public String getDate() {
-        return date;
+        String returnDate;
+        String month = localDate.getMonth().name().charAt(0)+""+localDate.getMonth().name().substring(1,3).toLowerCase();
+        returnDate = month+". "+localDate.getDayOfMonth()+", "+localDate.getYear();
+        return returnDate;
+    }
+
+    public LocalDate getLocalDate() {
+        return localDate;
+    }
+
+    private void updateStatus(LocalDate now)
+    {
+        if(localDate.isAfter(now))
+        {
+            status = ConcertStatus.DONE;
+        }else if(localDate == now)
+        {
+            status = ConcertStatus.TODAY;
+        }else if(localDate.isBefore(now))
+        {
+            status = ConcertStatus.UPCOMING;
+        }
     }
 
     public double getRating() {

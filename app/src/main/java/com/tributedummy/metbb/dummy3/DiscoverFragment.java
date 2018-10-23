@@ -28,6 +28,7 @@ import com.tributedummy.metbb.dummy3.Adapters.SearchcardRVA;
 import com.tributedummy.metbb.dummy3.Adapters.SmallCardRVA;
 import com.tributedummy.metbb.dummy3.Classes.Artist;
 import com.tributedummy.metbb.dummy3.Classes.Concert;
+import com.tributedummy.metbb.dummy3.Classes.ConcertStatus;
 import com.tributedummy.metbb.dummy3.Classes.DiscoverBlock;
 import com.tributedummy.metbb.dummy3.Classes.Venue;
 
@@ -80,24 +81,23 @@ public class DiscoverFragment extends Fragment {
         concerts = MainActivity.concerts;
         setupSwipeRefresh();
         setupSearch();
-        initImageBitmap();
+
+
+
+        // add horizontal scroll wheels
+        addDiscoverBlock("TODAY", onClickToast("TODAY"),MainActivity.getIndexedConcerts(ConcertStatus.TODAY));
+        addDiscoverBlock("Last reviewed concerts",onClickToast("last reviewed concert"),MainActivity.getIndexedConcerts(ConcertStatus.DONE));
+        addDiscoverBlock("Upcoming concerts", onClickToast("Upcoming concerts"),MainActivity.getIndexedConcerts(ConcertStatus.UPCOMING));
+        applyDatatoAdapters();
 
         return v;
     }
 
-    private void initImageBitmap(){
-        Log.d(TAG, "initImageBitmap: "+concerts.size());
-        //TODO this gets added on every load
-        addDiscoverBlock("Last reviewed concerts",onClickToast("last reviewed concert"));
-        addDiscoverBlock("Upcoming concerts", onClickToast("Upcoming concerts"));
-        applyDatatoAdapters();
-    }
-
-    public void addDiscoverBlock(String title, View.OnClickListener action)
+    private void addDiscoverBlock(String title, View.OnClickListener action, ArrayList<Concert> concerts)
     {
         // TODO add different adapters for different lists
 
-        SmallCardRVA adapter = new SmallCardRVA(v.getContext(),concerts);
+        SmallCardRVA adapter = new SmallCardRVA(v.getContext(), concerts);
 
         // This gets called from OnCreateView, which gets called every time the fragment loads. This check is to make sure multiple blocks wont get added on every load.
         if(!discoverBlockHashMap.containsKey(title)) {
@@ -169,8 +169,6 @@ public class DiscoverFragment extends Fragment {
                 closebutton.setVisibility(View.VISIBLE);
             }
         });
-
-
     }
 
     private void setupSwipeRefresh()
@@ -179,7 +177,6 @@ public class DiscoverFragment extends Fragment {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-
                 Toast.makeText(getContext(), "Feeling fresh yo", Toast.LENGTH_SHORT).show();
                 swipeRefreshLayout.setRefreshing(false);
             }

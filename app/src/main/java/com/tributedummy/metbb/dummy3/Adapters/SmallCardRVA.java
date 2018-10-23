@@ -46,6 +46,7 @@ public class SmallCardRVA extends  RecyclerView.Adapter<SmallCardRVA.ViewHolder>
         mainActivity = ((MainActivity)mContext);
         viewHolder.imageViewArtist.setImageResource(concerts.get(position).getArtist().getImage());
         viewHolder.textViewArtist.setText(concerts.get(position).getArtist().getName());
+        viewHolder.textViewDate.setText(concerts.get(position).getDate());
         // hides rating if it is upcoming
         if(concerts.get(position).getStatus() == ConcertStatus.DONE){
         viewHolder.textViewRating.setText(""+concerts.get(position).getRating());}else{
@@ -73,6 +74,7 @@ public class SmallCardRVA extends  RecyclerView.Adapter<SmallCardRVA.ViewHolder>
         TextView textViewArtist;
         TextView textViewVenue;
         TextView textViewRating;
+        TextView textViewDate;
         ConstraintLayout constraintLayout;
 
         public ViewHolder(@NonNull View itemView) {
@@ -81,7 +83,9 @@ public class SmallCardRVA extends  RecyclerView.Adapter<SmallCardRVA.ViewHolder>
             textViewArtist = itemView.findViewById(R.id.smallcardTextviewArtist);
             textViewVenue = itemView.findViewById(R.id.smallcardTextviewVenue);
             textViewRating = itemView.findViewById(R.id.smallcardTextviewRating);
+            textViewDate = itemView.findViewById(R.id.smallcardTextviewDate);
             constraintLayout = itemView.findViewById(R.id.smallcardConstraint);
+
         }
     }
 }
