@@ -1,6 +1,5 @@
 package com.tributedummy.metbb.dummy3;
 
-
 import android.app.SearchableInfo;
 import android.content.Context;
 import android.database.Cursor;
@@ -31,13 +30,8 @@ import com.tributedummy.metbb.dummy3.Classes.Artist;
 import com.tributedummy.metbb.dummy3.Classes.Concert;
 import com.tributedummy.metbb.dummy3.Classes.ConcertStatus;
 import com.tributedummy.metbb.dummy3.Classes.DiscoverBlock;
-import com.tributedummy.metbb.dummy3.Classes.Venue;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Random;
 
 public class DiscoverFragment extends Fragment {
 
@@ -88,11 +82,10 @@ public class DiscoverFragment extends Fragment {
         v = inflater.inflate(R.layout.fragment_discover, container, false);
         recyclerView = v.findViewById(R.id.discoverRecyclerview);
         mainActivity = ((MainActivity)getActivity());
+
         concerts = MainActivity.concerts;
         setupSwipeRefresh();
         setupSearch();
-
-
 
         // add horizontal scroll wheels
         addDiscoverBlock(dbTitleToday, onClickToast(dbTitleToday),MainActivity.getIndexedConcerts(ConcertStatus.TODAY));

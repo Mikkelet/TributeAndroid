@@ -89,15 +89,12 @@ public class Concert {
     public double getRating() {
         return rating;
     }
-
     public ArrayList<Review> getReviews() {
         return reviews;
     }
-
     public ArrayList<Integer> getPhotos() {
         return photos;
     }
-
     public ConcertStatus getStatus() {
         return status;
     }
