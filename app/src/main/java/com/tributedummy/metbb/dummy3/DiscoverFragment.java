@@ -34,8 +34,6 @@ import com.tributedummy.metbb.dummy3.Classes.DiscoverBlock;
 import java.util.ArrayList;
 
 public class DiscoverFragment extends Fragment {
-
-
     private static final String TAG = "DiscoverFragment";
 
     // Discover block
@@ -57,32 +55,24 @@ public class DiscoverFragment extends Fragment {
     private SearchView searchView;
     private RecyclerView recyclerView;
 
-
-
     // eventlisteners
-
-
     private View v;
 
     public DiscoverFragment() {
         // Required empty public constructor
     }
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
     }
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_discover, container, false);
         recyclerView = v.findViewById(R.id.discoverRecyclerview);
         mainActivity = ((MainActivity)getActivity());
-
         concerts = MainActivity.concerts;
         setupSwipeRefresh();
         setupSearch();
@@ -95,9 +85,7 @@ public class DiscoverFragment extends Fragment {
 
         return v;
     }
-
-    private void addDiscoverBlock(String title, View.OnClickListener action, ArrayList<Concert> concerts)
-    {
+    private void addDiscoverBlock(String title, View.OnClickListener action, ArrayList<Concert> concerts) {
         // TODO add different adapters for different lists
 
         SmallCardRVA adapter = new SmallCardRVA(v.getContext(), concerts);
@@ -108,8 +96,7 @@ public class DiscoverFragment extends Fragment {
             discoverBlockArrayList.add(discoverBlock);
     }
 
-    private void applyDatatoAdapters()
-    {
+    private void applyDatatoAdapters() {
         recyclerView.setLayoutManager(new LinearLayoutManager(v.getContext()));
 
         discoverBlockRVA = new DiscoverBlockRVA(v.getContext(), discoverBlockArrayList);
@@ -117,8 +104,7 @@ public class DiscoverFragment extends Fragment {
         recyclerView.setAdapter(discoverBlockRVA);
     }
 
-    private void setupSearch()
-    {
+    private void setupSearch() {
         searchView = v.findViewById(R.id.discoverSearchview);
 
         // needed to show close button when access search via tapping the bar instead of the icon.
@@ -174,8 +160,7 @@ public class DiscoverFragment extends Fragment {
         });
     }
 
-    private void setupSwipeRefresh()
-    {
+    private void setupSwipeRefresh() {
         swipeRefreshLayout = v.findViewById(R.id.discoverSwiperefresh);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
