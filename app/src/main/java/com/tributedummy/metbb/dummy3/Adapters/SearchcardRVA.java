@@ -50,7 +50,7 @@ public class SearchcardRVA extends  RecyclerView.Adapter<SearchcardRVA.ViewHolde
         viewHolder.constraintLayout.setOnClickListener(new View.OnClickListener() {
                                                          @Override
                                                          public void onClick(View v) {
-                                                             mainActivity.SwitchFragment(mainActivity.getConcertFragment(concerts.get(position)));
+                                                             mainActivity.switchFragment(mainActivity.getConcertFragment(concerts.get(position)),true);
                                                          }
                                                      }
 

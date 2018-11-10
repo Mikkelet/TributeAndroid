@@ -57,8 +57,7 @@ public class ConcertFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_concert, container, false);
         mainActivity = ((MainActivity)getActivity());
@@ -66,6 +65,11 @@ public class ConcertFragment extends Fragment {
         applyData();
         setupLinearLayoutReviews(inflater);
         return v;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
     }
 
     @Override
@@ -93,6 +97,7 @@ public class ConcertFragment extends Fragment {
 
         buttonBack = v.findViewById(R.id.concertButtonBack);
     }
+    // Apply data to list views
     private void applyData() {
         imageViewVenue.setImageResource(concert.getVenue().getImage());
         // TODO add concert image in class
@@ -113,18 +118,16 @@ public class ConcertFragment extends Fragment {
         setupButtonBack();
         setupRecyclerviewPhotos();
     }
-
-    private void setupButtonReviewConcert()
-    {
+    // Setups
+    private void setupButtonReviewConcert() {
         buttonReviewConcert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mainActivity.SwitchFragment(mainActivity.getReviewConcertFragment(concert));
+                mainActivity.switchFragment(mainActivity.getReviewConcertFragment(concert),true);
             }
         });
     }
-    private void setupButtonRatingDetails()
-    {
+    private void setupButtonRatingDetails() {
         buttonRatingdetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -132,42 +135,37 @@ public class ConcertFragment extends Fragment {
             }
         });
     }
-    private void setupButtonArtist()
-    {
+    private void setupButtonArtist() {
         imageViewArtist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mainActivity.SwitchFragment(mainActivity.getSolopageFragment(concert.getArtist(), mainActivity.getConcertFragment(concert)));
+                mainActivity.switchFragment(mainActivity.getSolopageFragment(concert.getArtist(), mainActivity.getConcertFragment(concert)),true);
             }
         });
     }
-    private void setupButtonVenue()
-    {
+    private void setupButtonVenue() {
         imageViewVenue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mainActivity.SwitchFragment(mainActivity.getSolopageFragment(concert.getVenue(), mainActivity.getConcertFragment(concert)));
+                mainActivity.switchFragment(mainActivity.getSolopageFragment(concert.getVenue(), mainActivity.getConcertFragment(concert)),true);
             }
         });
     }
-    private void setupButtonBack()
-    {
+    private void setupButtonBack() {
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mainActivity.SwitchFragment(mainActivity.getDiscoverFragment());
+                mainActivity.switchFragment(mainActivity.getDiscoverFragment(),false);
             }
         });
     }
-    private void setupRecyclerviewPhotos()
-    {
+    private void setupRecyclerviewPhotos() {
         recyclerViewPhotos = v.findViewById(R.id.concertRecycleviewConcerts);
         recyclerViewPhotos.setLayoutManager(new LinearLayoutManager(v.getContext(), LinearLayoutManager.HORIZONTAL,false));
         ConcertPhotosRVA adapter = new ConcertPhotosRVA(v.getContext(),concert.getPhotos());
         recyclerViewPhotos.setAdapter(adapter);
     }
-    private void setupLinearLayoutReviews(LayoutInflater inflater)
-    {
+    private void setupLinearLayoutReviews(LayoutInflater inflater) {
         linearLayoutReviews = v.findViewById(R.id.concertLinearlayoutReviews);
         for (int i = 0; i < concert.getReviews().size(); i++) {
             Review currentReview = concert.getReviews().get(i);
@@ -192,6 +190,8 @@ public class ConcertFragment extends Fragment {
             linearLayoutReviews.addView(review);
         }
     }
+
+    //getters and setters
     public void setConcert(Concert concert)
     {
         this.concert = concert;

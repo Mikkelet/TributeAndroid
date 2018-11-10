@@ -131,8 +131,8 @@ public class SolopageFragment extends Fragment {
         solopageButtonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(previousFragment != null)
-                    mainActivity.SwitchFragment(previousFragment);
+                if(previousFragment != null)//todo rewrite this to usue backstack
+                    mainActivity.switchFragment(previousFragment,false);
             }
         });
     }

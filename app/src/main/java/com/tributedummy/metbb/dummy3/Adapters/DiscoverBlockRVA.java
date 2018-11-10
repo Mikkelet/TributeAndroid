@@ -48,23 +48,26 @@ public class DiscoverBlockRVA extends  RecyclerView.Adapter<DiscoverBlockRVA.Vie
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int position) {
-        mainActivity = ((MainActivity)mContext);
+        mainActivity = ((MainActivity) mContext);
         RecyclerView recyclerView = viewHolder.getRecycleView();
-        recyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL,false));
+        final ArrayList<Concert> concertsFiltered = ((SmallCardRVA) discoverBlocks.get(position).getAdapter()).getConcerts();
+        final String blockTitle = discoverBlocks.get(position).getTitle();
+        recyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setAdapter(discoverBlocks.get(position).getAdapter());
-        viewHolder.textViewTitle.setText(discoverBlocks.get(position).getTitle());
+        viewHolder.textViewTitle.setText(blockTitle);
         viewHolder.textViewSeeall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(mContext, "SEE ALL", Toast.LENGTH_SHORT).show();
+                mainActivity.switchFragment(mainActivity.getSeeAllFragment(blockTitle, concertsFiltered),true);
             }
         });
         viewHolder.constraintLayout.setOnClickListener(new View.OnClickListener() {
-                                                         @Override
-                                                         public void onClick(View v) {
-                                                             Toast.makeText(mContext, discoverBlocks.get(position).getTitle(), Toast.LENGTH_SHORT).show();
-                                                         }
-                                                     }
+                                                           @Override
+                                                           public void onClick(View v) {
+                                                               Toast.makeText(mContext, discoverBlocks.get(position).getTitle(), Toast.LENGTH_SHORT).show();
+                                                           }
+                                                       }
 
         );
     }

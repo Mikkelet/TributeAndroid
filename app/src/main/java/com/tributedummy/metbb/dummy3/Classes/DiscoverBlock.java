@@ -2,13 +2,18 @@ package com.tributedummy.metbb.dummy3.Classes;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 
+import com.tributedummy.metbb.dummy3.R;
+
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class DiscoverBlock {
     private String title;
     private View.OnClickListener action;
     private RecyclerView.Adapter adapter;
+    private ArrayList<Concert> concerts;
 
     public DiscoverBlock(String title, View.OnClickListener action, RecyclerView.Adapter adapter) {
         this.title = title;
@@ -28,6 +33,13 @@ public class DiscoverBlock {
         return adapter;
     }
 
+    public ArrayList<Concert> getConcerts() {
+        return concerts;
+    }
+    public void setConcerts(ArrayList<Concert> concerts) {
+        this.concerts = concerts;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -35,10 +47,9 @@ public class DiscoverBlock {
         DiscoverBlock that = (DiscoverBlock) o;
         return Objects.equals(title, that.title);
     }
-
     @Override
     public int hashCode() {
 
-        return Objects.hash(title, action, adapter);
+        return Objects.hash(title);
     }
 }

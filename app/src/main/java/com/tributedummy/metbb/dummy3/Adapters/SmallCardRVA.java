@@ -31,7 +31,6 @@ public class SmallCardRVA extends  RecyclerView.Adapter<SmallCardRVA.ViewHolder>
         this.mContext = mContext;
         this.concerts = concerts;
     }
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -39,7 +38,6 @@ public class SmallCardRVA extends  RecyclerView.Adapter<SmallCardRVA.ViewHolder>
         ViewHolder holder = new ViewHolder(view);
         return holder;
     }
-
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int position) {
         Log.d(TAG, "onBindViewHolder: called");
@@ -56,7 +54,8 @@ public class SmallCardRVA extends  RecyclerView.Adapter<SmallCardRVA.ViewHolder>
         viewHolder.textViewVenue.setText(concerts.get(position).getVenue().getName());
         viewHolder.imageViewArtist.setOnClickListener(new View.OnClickListener() {
                                                          @Override
-                                                         public void onClick(View v) { mainActivity.SwitchFragment(mainActivity.getConcertFragment(concerts.get(position)));
+                                                         public void onClick(View v) { mainActivity.switchFragment(mainActivity.getConcertFragment(concerts.get(position)),true);
+                                                             Log.d(TAG, "onClick: imageViewArtist");
                                                          }
                                                      }
 
@@ -67,6 +66,7 @@ public class SmallCardRVA extends  RecyclerView.Adapter<SmallCardRVA.ViewHolder>
     public int getItemCount() {
         return concerts.size();
     }
+
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
@@ -87,5 +87,9 @@ public class SmallCardRVA extends  RecyclerView.Adapter<SmallCardRVA.ViewHolder>
             constraintLayout = itemView.findViewById(R.id.smallcardConstraint);
 
         }
+    }
+
+    public ArrayList<Concert> getConcerts() {
+        return concerts;
     }
 }

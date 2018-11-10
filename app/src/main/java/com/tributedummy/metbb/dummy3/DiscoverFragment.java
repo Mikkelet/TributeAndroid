@@ -46,7 +46,6 @@ public class DiscoverFragment extends Fragment {
     private MainActivity mainActivity;
     private ArrayList<Concert> concerts;
 
-
     private DiscoverBlockRVA discoverBlockRVA;
     private SearchcardRVA searchcardRVA;
 
@@ -85,6 +84,13 @@ public class DiscoverFragment extends Fragment {
 
         return v;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mainActivity.setActionBarVisibility(false);
+    }
+
     private void addDiscoverBlock(String title, View.OnClickListener action, ArrayList<Concert> concerts) {
         // TODO add different adapters for different lists
 
@@ -95,7 +101,6 @@ public class DiscoverFragment extends Fragment {
         if(!discoverBlockArrayList.contains(discoverBlock))
             discoverBlockArrayList.add(discoverBlock);
     }
-
     private void applyDatatoAdapters() {
         recyclerView.setLayoutManager(new LinearLayoutManager(v.getContext()));
 
@@ -103,7 +108,6 @@ public class DiscoverFragment extends Fragment {
         searchcardRVA = new SearchcardRVA(v.getContext(), concerts);
         recyclerView.setAdapter(discoverBlockRVA);
     }
-
     private void setupSearch() {
         searchView = v.findViewById(R.id.discoverSearchview);
 
@@ -159,7 +163,6 @@ public class DiscoverFragment extends Fragment {
             }
         });
     }
-
     private void setupSwipeRefresh() {
         swipeRefreshLayout = v.findViewById(R.id.discoverSwiperefresh);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

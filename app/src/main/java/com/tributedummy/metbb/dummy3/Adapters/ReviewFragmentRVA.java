@@ -50,7 +50,7 @@ public class ReviewFragmentRVA extends  RecyclerView.Adapter<ReviewFragmentRVA.V
         viewHolder.imageViewArtist.setOnClickListener(new View.OnClickListener() {
                                                           @Override
                                                           public void onClick(View v) {
-                                                              mainActivity.SwitchFragment(mainActivity.getConcertFragment(concerts.get(position)));
+                                                              mainActivity.switchFragment(mainActivity.getConcertFragment(concerts.get(position)),true);
                                                           }
                                                       }
 
@@ -72,7 +72,7 @@ public class ReviewFragmentRVA extends  RecyclerView.Adapter<ReviewFragmentRVA.V
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageViewArtist = itemView.findViewById(R.id.imageViewArtist);
+            imageViewArtist = itemView.findViewById(R.id.bigcardImageViewArtist);
             textViewArtist = itemView.findViewById(R.id.artistTexView);
             textViewVenue = itemView.findViewById(R.id.venueTextView);
             textViewRating = itemView.findViewById(R.id.ratingTextView);

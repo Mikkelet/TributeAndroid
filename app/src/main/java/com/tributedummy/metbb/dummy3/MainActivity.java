@@ -4,13 +4,16 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.tributedummy.metbb.dummy3.Classes.Artist;
 import com.tributedummy.metbb.dummy3.Classes.Concert;
@@ -28,6 +31,7 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
     private DiscoverFragment discoverFragment;
+    private SeeAllFragment seeAllFragment;
     private ProfileFragment profileFragment;
     private ReviewFragment reviewFragment;
     private SignupFragment signupFragment;
@@ -38,23 +42,24 @@ public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
     private static final String TAG = "MainActivity";
-
+    private ActionBar actionBar;
+    private FragmentManager fragmentManager;
+    private Toolbar toolbar;
     public static ArrayList<Concert> concerts = new ArrayList<>();
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_discover:
-                    SwitchFragment(discoverFragment);
+                    switchFragment(discoverFragment,false);
                     return true;
                 case R.id.navigation_review:
-                    SwitchFragment(reviewFragment);
+                    switchFragment(reviewFragment,true);
                     return true;
                 case R.id.navigation_profile:
-                    SwitchFragment(profileFragment);
+                    switchFragment(profileFragment,true);
                     return true;
             }
             return false;
@@ -65,13 +70,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        actionBar = getSupportActionBar();
+        fragmentManager = getSupportFragmentManager();
+
         bottomNavigationView = findViewById(R.id.navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         signupFragment = new SignupFragment();
         loginFragment = new LoginFragment();
         discoverFragment = new DiscoverFragment();
+        seeAllFragment = new SeeAllFragment();
         profileFragment = new ProfileFragment();
         reviewFragment = new ReviewFragment();
         concertFragment = new ConcertFragment();
@@ -79,21 +87,20 @@ public class MainActivity extends AppCompatActivity {
         reviewConcertFragment = new ReviewConcertFragment();
 
         Log.d(TAG,"onCreate: started");
-
         generateData();
 
-        SwitchFragment(signupFragment);
+        switchFragment(signupFragment,false);
         toggleMenu(false);
     }
+    // Used for swithing fragments
+    public void switchFragment(Fragment fragment, Boolean addToBackStack) {
+        FragmentTransaction transaction = fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
 
-
-    public void SwitchFragment(Fragment fragment)
-    {
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.main_frame,fragment);
-        fragmentTransaction.commit();
+        transaction.replace(R.id.main_frame,fragment);
+        if(addToBackStack)
+            transaction.addToBackStack(null);
+        transaction.commit();
     }
-
     public void toggleMenu(boolean toggle) {
         if (toggle) {
             bottomNavigationView.setVisibility(View.VISIBLE);
@@ -143,9 +150,7 @@ public class MainActivity extends AppCompatActivity {
             concerts.add(concert);
         }
     }
-
-    private void setupDiscoverFragment()
-    {
+    private void setupDiscoverFragment() {
 
     }
 
@@ -161,37 +166,53 @@ public class MainActivity extends AppCompatActivity {
         return indexed;
     }
 
-    // Getters
+    @Override
+    public void onBackPressed() {
+        if(fragmentManager.getBackStackEntryCount() > 0) {
+            fragmentManager.popBackStack();
+        }else super.onBackPressed();
+    }
 
+    // Fragments Getters and settersF
     public Iterable<Concert> getConcerts() {
         return concerts;
     }
-
     public SignupFragment getSignupFragment() {
         return signupFragment;
     }
-
     public LoginFragment getLoginFragment() {
         return loginFragment;
     }
-
     public DiscoverFragment getDiscoverFragment() {
         return discoverFragment;
     }
-
     public ConcertFragment getConcertFragment(Concert concert) {
         concertFragment.setConcert(concert);
         return concertFragment;
     }
-
     public ReviewConcertFragment getReviewConcertFragment(Concert concert) {
         reviewConcertFragment.setConcert(concert);
         return reviewConcertFragment;
     }
-
     public SolopageFragment getSolopageFragment(ConcertElement concertElement, Fragment previousFragment) {
         solopageFragment.setConcertElement(concertElement);
         solopageFragment.setPreviousFragment(previousFragment);
         return solopageFragment;
+    }
+    public SeeAllFragment getSeeAllFragment(String title,ArrayList<Concert> concerts) {
+        seeAllFragment.setFilterTitle(title);
+        seeAllFragment.setConcerts(concerts);
+        return seeAllFragment;
+    }
+    //gettes and setters other
+    public void setActionBarVisibility(boolean visibility) {
+        if (visibility)
+            actionBar.show();
+        else
+            actionBar.hide();
+    }
+    public void addBackButton()
+    {
+        actionBar.setDisplayShowHomeEnabled(true);
     }
 }

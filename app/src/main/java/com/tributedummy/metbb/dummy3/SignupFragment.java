@@ -46,7 +46,7 @@ public class SignupFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Toast.makeText(v.getContext(), "Email", Toast.LENGTH_SHORT).show();
-                mainActivity.SwitchFragment(mainActivity.getLoginFragment());
+                mainActivity.switchFragment(mainActivity.getLoginFragment(),false);
                 mainActivity.toggleMenu(true);
             }
         });

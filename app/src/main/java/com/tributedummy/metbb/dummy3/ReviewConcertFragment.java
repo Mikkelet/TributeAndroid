@@ -47,8 +47,7 @@ public class ReviewConcertFragment extends Fragment {
         return v;
     }
 
-    private void setupData()
-    {
+    private void setupData() {
         reviewconcertRatingBarArtist = v.findViewById(R.id.reviewconcertRatingBarArtist);
         reviewconcertRatingBarVenue = v.findViewById(R.id.reviewconcertRatingBarVenue);
         reviewconcertEditTextReview = v.findViewById(R.id.reviewconcertEditTextReview);
@@ -70,18 +69,13 @@ public class ReviewConcertFragment extends Fragment {
         });
 
     }
-
     public void setConcert(Concert concert) {
         this.concert = concert;
     }
-
-    private void addReview()
-    {
+    private void addReview() {
         concert.addReview(reviewconcertEditTextReview.getText().toString(),calculateRating());
     }
-
-    private double calculateRating()
-    {
+    private double calculateRating() {
         return (reviewconcertRatingBarVenue.getRating() + reviewconcertRatingBarArtist.getRating())/2;
     }
 
