@@ -30,21 +30,20 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    private DiscoverFragment discoverFragment;
-    private SeeAllFragment seeAllFragment;
-    private ProfileFragment profileFragment;
-    private ReviewFragment reviewFragment;
-    private SignupFragment signupFragment;
-    private LoginFragment loginFragment;
-    private ConcertFragment concertFragment;
-    private SolopageFragment solopageFragment;
-    private ReviewConcertFragment reviewConcertFragment;
+    private DiscoverFragment discoverFragment = new DiscoverFragment();
+    private SeeAllFragment seeAllFragment = new SeeAllFragment();
+    private ProfileFragment profileFragment = new ProfileFragment();
+    private ReviewFragment reviewFragment = new ReviewFragment();
+    private SignupFragment signupFragment = new SignupFragment();
+    private LoginFragment loginFragment = new LoginFragment();
+    private ConcertFragment concertFragment = new ConcertFragment();
+    private SolopageFragment solopageFragment = new SolopageFragment();
+    private ReviewConcertFragment reviewConcertFragment = new ReviewConcertFragment();
 
     private BottomNavigationView bottomNavigationView;
     private static final String TAG = "MainActivity";
     private ActionBar actionBar;
     private FragmentManager fragmentManager;
-    private Toolbar toolbar;
     public static ArrayList<Concert> concerts = new ArrayList<>();
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -56,10 +55,10 @@ public class MainActivity extends AppCompatActivity {
                     switchFragment(discoverFragment,false);
                     return true;
                 case R.id.navigation_review:
-                    switchFragment(reviewFragment,true);
+                    switchFragment(reviewFragment,false);
                     return true;
                 case R.id.navigation_profile:
-                    switchFragment(profileFragment,true);
+                    switchFragment(profileFragment,false);
                     return true;
             }
             return false;
@@ -69,22 +68,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
         actionBar = getSupportActionBar();
         fragmentManager = getSupportFragmentManager();
 
         bottomNavigationView = findViewById(R.id.navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
-        signupFragment = new SignupFragment();
-        loginFragment = new LoginFragment();
-        discoverFragment = new DiscoverFragment();
-        seeAllFragment = new SeeAllFragment();
-        profileFragment = new ProfileFragment();
-        reviewFragment = new ReviewFragment();
-        concertFragment = new ConcertFragment();
-        solopageFragment = new SolopageFragment();
-        reviewConcertFragment = new ReviewConcertFragment();
 
         Log.d(TAG,"onCreate: started");
         generateData();
@@ -95,8 +85,7 @@ public class MainActivity extends AppCompatActivity {
     // Used for swithing fragments
     public void switchFragment(Fragment fragment, Boolean addToBackStack) {
         FragmentTransaction transaction = fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-
-        transaction.replace(R.id.main_frame,fragment);
+        transaction.replace(R.id.main_frame, fragment);
         if(addToBackStack)
             transaction.addToBackStack(null);
         transaction.commit();
@@ -170,7 +159,18 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         if(fragmentManager.getBackStackEntryCount() > 0) {
             fragmentManager.popBackStack();
-        }else super.onBackPressed();
+        }else if(!bottomNavigationView.getMenu().getItem(0).isChecked()){
+                switchFragment(getDiscoverFragment(), false);
+                bottomNavigationView.getMenu().getItem(0).setChecked(true);
+        }else
+            super.onBackPressed();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+            fragmentManager.popBackStack();
+
+        return super.onSupportNavigateUp();
     }
 
     // Fragments Getters and settersF
@@ -204,6 +204,9 @@ public class MainActivity extends AppCompatActivity {
         seeAllFragment.setConcerts(concerts);
         return seeAllFragment;
     }
+
+    //Helpers
+
     //gettes and setters other
     public void setActionBarVisibility(boolean visibility) {
         if (visibility)
@@ -211,8 +214,8 @@ public class MainActivity extends AppCompatActivity {
         else
             actionBar.hide();
     }
-    public void addBackButton()
-    {
-        actionBar.setDisplayShowHomeEnabled(true);
+    public void addBackButton() {
+        //actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 }
