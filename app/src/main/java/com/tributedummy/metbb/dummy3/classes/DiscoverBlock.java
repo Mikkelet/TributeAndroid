@@ -1,10 +1,7 @@
-package com.tributedummy.metbb.dummy3.Classes;
+package com.tributedummy.metbb.dummy3.classes;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.TextView;
-
-import com.tributedummy.metbb.dummy3.R;
 
 import java.util.ArrayList;
 import java.util.Objects;

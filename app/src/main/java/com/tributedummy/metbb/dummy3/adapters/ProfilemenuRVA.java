@@ -1,4 +1,4 @@
-package com.tributedummy.metbb.dummy3.Adapters;
+package com.tributedummy.metbb.dummy3.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

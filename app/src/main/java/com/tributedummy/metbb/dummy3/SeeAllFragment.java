@@ -4,16 +4,14 @@ package com.tributedummy.metbb.dummy3;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.tributedummy.metbb.dummy3.Adapters.ReviewFragmentRVA;
-import com.tributedummy.metbb.dummy3.Classes.Concert;
-import com.tributedummy.metbb.dummy3.R;
+import com.tributedummy.metbb.dummy3.adapters.ReviewFragmentRVA;
+import com.tributedummy.metbb.dummy3.classes.Concert;
 
 import java.util.ArrayList;
 
@@ -53,8 +51,6 @@ public class SeeAllFragment extends Fragment {
         ReviewFragmentRVA adapter = new ReviewFragmentRVA(getContext(),concerts);
         recyclerView.setAdapter(adapter);
         getActivity().setTitle(filterTitle);
-        ((MainActivity)getActivity()).setActionBarVisibility(true);
-        ((MainActivity)getActivity()).addBackButton();
     }
 
     public void setFilterTitle(String filterTitle) {

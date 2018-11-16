@@ -22,7 +22,18 @@
     <style name="RatingBar" parent="@android:style/Widget.RatingBar" >
         <item name="android:minHeight">24dip</item>
         <item name="android:maxHeight">24dip</item>
-        <item name="android:progressDrawable">@drawable/ic_action_plussign</item>
+        <item name="android:progressDrawable">@drawable/ic_star_big</item>
+        <!--<item android:id="@android:id/background"
+            android:drawable="@drawable/ic_star_big" />
+        <item android:id="@android:id/secondaryProgress"
+            android:drawable="@drawable/abc_ic_star_half_black_16dp" />
+        <item android:id="@android:id/progress">
+            <bitmap
+                android:src="@drawable/ic_star_big"
+                android:tileModeX="repeat"/>
+
+        </item>
+                        -->
     </style>
 
     <style name="H1">

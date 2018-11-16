@@ -1,4 +1,4 @@
-package com.tributedummy.metbb.dummy3.Adapters;
+package com.tributedummy.metbb.dummy3.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -10,9 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.tributedummy.metbb.dummy3.Classes.Concert;
+import com.tributedummy.metbb.dummy3.classes.Concert;
 import com.tributedummy.metbb.dummy3.MainActivity;
 import com.tributedummy.metbb.dummy3.R;
 

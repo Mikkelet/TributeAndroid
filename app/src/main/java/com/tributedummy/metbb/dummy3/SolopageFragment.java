@@ -14,13 +14,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.tributedummy.metbb.dummy3.Adapters.DiscoverBlockRVA;
-import com.tributedummy.metbb.dummy3.Adapters.ReviewFragmentRVA;
-import com.tributedummy.metbb.dummy3.Adapters.SmallCardRVA;
-import com.tributedummy.metbb.dummy3.Classes.Artist;
-import com.tributedummy.metbb.dummy3.Classes.Concert;
-import com.tributedummy.metbb.dummy3.Classes.ConcertElement;
-import com.tributedummy.metbb.dummy3.Classes.DiscoverBlock;
+import com.tributedummy.metbb.dummy3.adapters.DiscoverBlockRVA;
+import com.tributedummy.metbb.dummy3.adapters.ReviewFragmentRVA;
+import com.tributedummy.metbb.dummy3.adapters.SmallCardRVA;
+import com.tributedummy.metbb.dummy3.classes.Concert;
+import com.tributedummy.metbb.dummy3.classes.ConcertElement;
+import com.tributedummy.metbb.dummy3.classes.DiscoverBlock;
 
 import java.util.ArrayList;
 import java.util.HashMap;

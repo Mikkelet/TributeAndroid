@@ -1,4 +1,4 @@
-package com.tributedummy.metbb.dummy3.Classes;
+package com.tributedummy.metbb.dummy3.classes;
 
 import com.tributedummy.metbb.dummy3.R;
 

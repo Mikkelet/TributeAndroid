@@ -1,4 +1,4 @@
-package com.tributedummy.metbb.dummy3.Classes;
+package com.tributedummy.metbb.dummy3.classes;
 
 import com.tributedummy.metbb.dummy3.MainActivity;
 
@@ -8,7 +8,7 @@ public abstract class ConcertElement {
 
     protected String name;
     protected int image;
-    protected double rating = 5;
+    protected float rating = 5;
     protected ArrayList<Review> reviews = new ArrayList<>();
     private ArrayList<Integer> photos;
 
@@ -18,18 +18,16 @@ public abstract class ConcertElement {
     }
 
     // methods
-    public void addReview(String review, double rating)
-    {
+    public void addReview(String review, double rating) {
         Review r = new Review(new User("Mikkel"), review, rating);
         reviews.add(r);
 
     }
 
-    public ArrayList<Concert> getConcerts()
-    {
+    public ArrayList<Concert> getConcerts() {
         ArrayList<Concert> concerts = new ArrayList<>();
         for (Concert c: MainActivity.concerts) {
-            if(c.getArtist().getName() == this.getName())
+            if(c.getArtist().getName().equals(this.getName()))
                 concerts.add(c);
         }
         return concerts;
@@ -39,19 +37,15 @@ public abstract class ConcertElement {
     public String getName() {
         return name;
     }
-
     public int getImage() {
         return image;
     }
-
-    public double getRating() {
+    public float getRating() {
         return rating;
     }
-
     public ArrayList<Review> getReviews() {
         return reviews;
     }
-
     public ArrayList<Integer> getPhotos() {
         return photos;
     }

@@ -1,6 +1,7 @@
 package com.tributedummy.metbb.dummy3;
 
 
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -17,9 +18,11 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.tributedummy.metbb.dummy3.Adapters.ConcertPhotosRVA;
-import com.tributedummy.metbb.dummy3.Classes.Concert;
-import com.tributedummy.metbb.dummy3.Classes.Review;
+import com.tributedummy.metbb.dummy3.adapters.ConcertPhotosRVA;
+import com.tributedummy.metbb.dummy3.classes.Concert;
+import com.tributedummy.metbb.dummy3.classes.ConcertElement;
+import com.tributedummy.metbb.dummy3.classes.Review;
+import com.tributedummy.metbb.dummy3.databinding.FragmentConcertBinding;
 
 
 /**
@@ -30,26 +33,23 @@ public class ConcertFragment extends Fragment {
     private ImageView imageViewCover;
     private ImageView imageViewArtist;
     private ImageView imageViewVenue;
-
     private RatingBar ratingBar;
     private TextView textViewRating;
-
     private TextView textViewArtist;
     private TextView textViewVenue;
     private TextView textViewDate;
-
     private Button buttonRatingdetails;
     private Button buttonReviewConcert;
-
     private RecyclerView recyclerViewPhotos;
     private LinearLayout linearLayoutReviews;
-
     private Button buttonBack;
 
     private Concert concert;
 
     private View v;
-    private MainActivity mainActivity;
+
+    FragmentConcertBinding concertBinding;
+    MainActivity mainActivity;
 
     public ConcertFragment() {
         // Required empty public constructor
@@ -59,10 +59,12 @@ public class ConcertFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        v = inflater.inflate(R.layout.fragment_concert, container, false);
-        mainActivity = ((MainActivity)getActivity());
-        initLayouts();
-        applyData();
+        //v = inflater.inflate(R.layout.fragment_concert, container, false);
+        concertBinding = DataBindingUtil.inflate(
+                inflater, R.layout.fragment_concert, container, false);
+        v = concertBinding.getRoot();
+        concertBinding.setConcert(concert);
+
         setupLinearLayoutReviews(inflater);
         return v;
     }
@@ -76,7 +78,7 @@ public class ConcertFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
-
+/*
     private void initLayouts(){
         imageViewArtist = v.findViewById(R.id.concertImageviewArtist);
         imageViewCover = v.findViewById(R.id.concertImageviewCover);
@@ -118,6 +120,7 @@ public class ConcertFragment extends Fragment {
         setupButtonBack();
         setupRecyclerviewPhotos();
     }
+    */
     // Setups
     private void setupButtonReviewConcert() {
         buttonReviewConcert.setOnClickListener(new View.OnClickListener() {
@@ -198,3 +201,4 @@ public class ConcertFragment extends Fragment {
     }
 
 }
+

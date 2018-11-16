@@ -34,8 +34,9 @@
                                   <option name="values">
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
-                                      <entry key="imageAsset" value="C:\Users\METBB\Dropbox\Trubute\Images\inspect\tributeandroid\Page 1\Singlefiles\Ic_Review_Grey@4x.png" />
-                                      <entry key="outputName" value="ic_action_reviewgray" />
+                                      <entry key="imageAsset" value="C:\Users\METBB\Dropbox\Trubute\Images\inspect\tributeandroid\Page 1\Singlefiles\Ic_Star_big_pink@4x.png" />
+                                      <entry key="outputName" value="ic_star_big" />
+                                      <entry key="theme" value="CUSTOM" />
                                       <entry key="themeColor" value="ff2d63" />
                                     </map>
                                   </option>

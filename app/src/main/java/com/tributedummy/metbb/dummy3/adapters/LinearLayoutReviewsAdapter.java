@@ -1,4 +1,4 @@
-package com.tributedummy.metbb.dummy3.Adapters;
+package com.tributedummy.metbb.dummy3.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -13,8 +13,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.tributedummy.metbb.dummy3.Classes.Concert;
-import com.tributedummy.metbb.dummy3.Classes.Review;
+import com.tributedummy.metbb.dummy3.classes.Concert;
+import com.tributedummy.metbb.dummy3.classes.Review;
 import com.tributedummy.metbb.dummy3.R;
 
 public class LinearLayoutReviewsAdapter extends RecyclerView.Adapter<LinearLayoutReviewsAdapter.ViewHolder> {

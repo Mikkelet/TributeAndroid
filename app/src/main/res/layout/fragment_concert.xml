@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="Concert"
+            type="com.tributedummy.metbb.dummy3.classes.Concert"/>
+    </data>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -14,8 +20,9 @@
     <android.support.constraint.ConstraintLayout
         android:id="@+id/concertConstraint"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:minHeight="600dp">
+        android:layout_height="wrap_content"
+        android:minHeight="600dp"
+        >
 
         <ImageView
             android:id="@+id/concertImageviewCover"
@@ -40,8 +47,8 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:scaleType="centerCrop"
-
             android:src="@mipmap/judith_opener"
+            imageUrl="@{Concert.getArtist().getImage()}"
             app:layout_constraintBottom_toBottomOf="@+id/concertImageviewCover"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -58,6 +65,7 @@
             android:layout_marginBottom="8dp"
             android:scaleType="centerCrop"
             android:src="@mipmap/image1"
+            imageUrl="@{Concert.getVenue().getImage()}"
             app:layout_constraintBottom_toBottomOf="@+id/concertImageviewCover"
             app:layout_constraintEnd_toEndOf="@+id/concertImageviewCover"
             app:layout_constraintHorizontal_bias="1.0"
@@ -91,7 +99,7 @@
             android:background="@drawable/bgconcertrating"
             android:gravity="start|center"
             android:paddingLeft="@dimen/standardpadding"
-            android:text="5.0"
+            android:text="@{String.valueOf(Concert.getRating())}"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -102,17 +110,21 @@
 
         <RatingBar
             android:id="@+id/concertRatingbar"
-            style="@style/RatingBar"
-            android:layout_width="120dp"
-            android:layout_height="24dp"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:isIndicator="true"
+            android:minWidth="32dp"
+            android:minHeight="32dp"
             android:numStars="5"
-            android:rating="5"
-            android:stepSize="1"
+            android:rating="2.5"
+            android:stepSize="0.5"
             app:layout_constraintBottom_toBottomOf="@+id/concertTextviewRating"
             app:layout_constraintEnd_toEndOf="@+id/concertTextviewRating"
-            app:layout_constraintHorizontal_bias="0.75"
+            app:layout_constraintHorizontal_bias="0.758"
             app:layout_constraintStart_toStartOf="@+id/concertTextviewRating"
-            app:layout_constraintTop_toTopOf="@+id/concertTextviewRating" />
+            app:layout_constraintTop_toTopOf="@+id/concertTextviewRating"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/concertTextviewArtist"
@@ -122,7 +134,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:text="Artist"
+            android:text="@{Concert.getArtist().getName()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -150,7 +162,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:text="venue"
+            android:text="@{Concert.getVenue().getName()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/concertTextviewAt"
@@ -209,7 +221,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/concertTextviewConcertphotos">
+            app:layout_constraintTop_toBottomOf="@+id/concertTextviewConcertphotos"
+            concertPhotosAdapter="@{Concert.getPhotos()}">
 
         </android.support.v7.widget.RecyclerView>
 
@@ -219,7 +232,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/bgsignupbuttonemail"
             android:text="REVIEW CONCERT"
@@ -236,7 +249,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:text="360 Reviews"
+            android:text=""
             app:layout_constraintBottom_toTopOf="@+id/concertLinearlayoutReviews"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -256,3 +269,4 @@
     </android.support.constraint.ConstraintLayout>
 
 </ScrollView>
+</layout>

@@ -1,5 +1,6 @@
 package com.tributedummy.metbb.dummy3;
 
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -11,20 +12,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.Toast;
-import android.widget.Toolbar;
 
-import com.tributedummy.metbb.dummy3.Classes.Artist;
-import com.tributedummy.metbb.dummy3.Classes.Concert;
-import com.tributedummy.metbb.dummy3.Classes.ConcertElement;
-import com.tributedummy.metbb.dummy3.Classes.ConcertStatus;
-import com.tributedummy.metbb.dummy3.Classes.Venue;
+import com.tributedummy.metbb.dummy3.classes.Artist;
+import com.tributedummy.metbb.dummy3.classes.Concert;
+import com.tributedummy.metbb.dummy3.classes.ConcertElement;
+import com.tributedummy.metbb.dummy3.classes.ConcertStatus;
+import com.tributedummy.metbb.dummy3.classes.Venue;
+import com.tributedummy.metbb.dummy3.databinding.ActivityMainBinding;
 
-import java.time.LocalDate;
-import java.util.EnumMap;
-import java.util.HashMap;
-import java.util.Map.Entry;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -40,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     private SolopageFragment solopageFragment = new SolopageFragment();
     private ReviewConcertFragment reviewConcertFragment = new ReviewConcertFragment();
 
+    ActivityMainBinding mainBinding;
+
     private BottomNavigationView bottomNavigationView;
     private static final String TAG = "MainActivity";
     private ActionBar actionBar;
@@ -47,18 +44,20 @@ public class MainActivity extends AppCompatActivity {
     public static ArrayList<Concert> concerts = new ArrayList<>();
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_discover:
                     switchFragment(discoverFragment,false);
+                    actionBar.setDisplayHomeAsUpEnabled(false);
                     return true;
                 case R.id.navigation_review:
                     switchFragment(reviewFragment,false);
+                    actionBar.setDisplayHomeAsUpEnabled(false);
                     return true;
                 case R.id.navigation_profile:
                     switchFragment(profileFragment,false);
+                    actionBar.setDisplayHomeAsUpEnabled(false);
                     return true;
             }
             return false;
@@ -69,7 +68,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_main);
+
+        mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+
         actionBar = getSupportActionBar();
         fragmentManager = getSupportFragmentManager();
 
@@ -168,8 +169,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp() {
-            fragmentManager.popBackStack();
-
+        fragmentManager.popBackStack();
         return super.onSupportNavigateUp();
     }
 
@@ -178,44 +178,51 @@ public class MainActivity extends AppCompatActivity {
         return concerts;
     }
     public SignupFragment getSignupFragment() {
+        actionBar.setDisplayHomeAsUpEnabled(false);
         return signupFragment;
     }
     public LoginFragment getLoginFragment() {
+        actionBar.setDisplayHomeAsUpEnabled(false);
         return loginFragment;
     }
     public DiscoverFragment getDiscoverFragment() {
+        actionBar.setDisplayHomeAsUpEnabled(false);
         return discoverFragment;
     }
     public ConcertFragment getConcertFragment(Concert concert) {
+        actionBar.setDisplayHomeAsUpEnabled(false);
         concertFragment.setConcert(concert);
         return concertFragment;
     }
     public ReviewConcertFragment getReviewConcertFragment(Concert concert) {
+        actionBar.setDisplayHomeAsUpEnabled(false);
         reviewConcertFragment.setConcert(concert);
         return reviewConcertFragment;
     }
     public SolopageFragment getSolopageFragment(ConcertElement concertElement, Fragment previousFragment) {
+        setActionBarVisibility(false);
         solopageFragment.setConcertElement(concertElement);
         solopageFragment.setPreviousFragment(previousFragment);
         return solopageFragment;
     }
     public SeeAllFragment getSeeAllFragment(String title,ArrayList<Concert> concerts) {
+        setActionBarVisibility(true);
         seeAllFragment.setFilterTitle(title);
         seeAllFragment.setConcerts(concerts);
         return seeAllFragment;
     }
-
     //Helpers
 
     //gettes and setters other
     public void setActionBarVisibility(boolean visibility) {
-        if (visibility)
+
+        if (visibility) {
             actionBar.show();
-        else
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+        else {
+            actionBar.setDisplayHomeAsUpEnabled(false);
             actionBar.hide();
-    }
-    public void addBackButton() {
-        //actionBar.setDisplayShowHomeEnabled(true);
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        }
     }
 }

@@ -1,4 +1,4 @@
-package com.tributedummy.metbb.dummy3.Classes;
+package com.tributedummy.metbb.dummy3.classes;
 
 import java.time.LocalDate;
 

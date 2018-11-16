@@ -10,8 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.tributedummy.metbb.dummy3.Adapters.ReviewFragmentRVA;
-import com.tributedummy.metbb.dummy3.Classes.Concert;
+import com.tributedummy.metbb.dummy3.adapters.ReviewFragmentRVA;
+import com.tributedummy.metbb.dummy3.classes.Concert;
 
 import java.util.ArrayList;
 

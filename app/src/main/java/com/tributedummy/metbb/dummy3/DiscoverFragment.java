@@ -1,35 +1,24 @@
 package com.tributedummy.metbb.dummy3;
 
-import android.app.SearchableInfo;
-import android.content.Context;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
-import android.widget.ArrayAdapter;
-import android.widget.CursorAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ResourceCursorAdapter;
 import android.widget.SearchView;
-import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
-import com.tributedummy.metbb.dummy3.Adapters.DiscoverBlockRVA;
-import com.tributedummy.metbb.dummy3.Adapters.SearchcardRVA;
-import com.tributedummy.metbb.dummy3.Adapters.SmallCardRVA;
-import com.tributedummy.metbb.dummy3.Classes.Artist;
-import com.tributedummy.metbb.dummy3.Classes.Concert;
-import com.tributedummy.metbb.dummy3.Classes.ConcertStatus;
-import com.tributedummy.metbb.dummy3.Classes.DiscoverBlock;
+import com.tributedummy.metbb.dummy3.adapters.DiscoverBlockRVA;
+import com.tributedummy.metbb.dummy3.adapters.SearchcardRVA;
+import com.tributedummy.metbb.dummy3.adapters.SmallCardRVA;
+import com.tributedummy.metbb.dummy3.classes.Concert;
+import com.tributedummy.metbb.dummy3.classes.ConcertStatus;
+import com.tributedummy.metbb.dummy3.classes.DiscoverBlock;
 
 import java.util.ArrayList;
 

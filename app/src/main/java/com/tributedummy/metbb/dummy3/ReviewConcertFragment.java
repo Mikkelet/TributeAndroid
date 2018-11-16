@@ -12,8 +12,8 @@ import android.widget.RatingBar;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
-import com.tributedummy.metbb.dummy3.Classes.Concert;
-import com.tributedummy.metbb.dummy3.Classes.User;
+import com.tributedummy.metbb.dummy3.classes.Concert;
+import com.tributedummy.metbb.dummy3.classes.User;
 
 
 /**

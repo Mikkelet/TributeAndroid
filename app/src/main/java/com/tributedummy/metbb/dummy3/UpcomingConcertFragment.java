@@ -12,9 +12,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.tributedummy.metbb.dummy3.Adapters.LinearLayoutReviewsAdapter;
-import com.tributedummy.metbb.dummy3.Classes.Concert;
-import com.tributedummy.metbb.dummy3.Classes.Review;
+import com.tributedummy.metbb.dummy3.adapters.LinearLayoutReviewsAdapter;
+import com.tributedummy.metbb.dummy3.classes.Concert;
+import com.tributedummy.metbb.dummy3.classes.Review;
 
 
 /**
