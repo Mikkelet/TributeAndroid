@@ -4,6 +4,9 @@
         <variable
             name="image"
             type="Integer"/>
+        <variable
+            name="onClickListener"
+            type="android.view.View.OnClickListener"/>
     </data>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -14,7 +17,6 @@
 
     <ImageView
         android:id="@+id/concertphotoImageview"
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="8dp"
@@ -23,6 +25,7 @@
         android:layout_marginBottom="8dp"
         android:scaleType="centerCrop"
         imageUrl="@{image}"
+        android:onClick="@{onClickListener}"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

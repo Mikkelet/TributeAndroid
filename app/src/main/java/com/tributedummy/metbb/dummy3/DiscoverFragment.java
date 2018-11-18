@@ -27,9 +27,7 @@ public class DiscoverFragment extends Fragment {
 
     // Discover block
     ArrayList<DiscoverBlock> discoverBlockArrayList = new ArrayList<>();
-    private String dbTitleToday = "Live Today";
-    private String dbTitleLastreviewed = "Last reviewed";
-    private String dbTitleUpcoming = "Upcoming concerts";
+
 
     // vars
     private MainActivity mainActivity;
@@ -66,6 +64,9 @@ public class DiscoverFragment extends Fragment {
         setupSearch();
 
         // add horizontal scroll wheels
+        String dbTitleToday = "Live Today";
+        String dbTitleLastreviewed = "Last reviewed";
+        String dbTitleUpcoming = "Upcoming concerts";
         addDiscoverBlock(dbTitleToday, onClickToast(dbTitleToday),MainActivity.getIndexedConcerts(ConcertStatus.TODAY));
         addDiscoverBlock(dbTitleLastreviewed,onClickToast(dbTitleLastreviewed),MainActivity.getIndexedConcerts(ConcertStatus.DONE));
         addDiscoverBlock(dbTitleUpcoming, onClickToast(dbTitleUpcoming),MainActivity.getIndexedConcerts(ConcertStatus.UPCOMING));

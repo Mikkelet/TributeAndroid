@@ -199,10 +199,9 @@ public class MainActivity extends AppCompatActivity {
         reviewConcertFragment.setConcert(concert);
         return reviewConcertFragment;
     }
-    public SolopageFragment getSolopageFragment(ConcertElement concertElement, Fragment previousFragment) {
+    public SolopageFragment getSolopageFragment(ConcertElement concertElement) {
         setActionBarVisibility(false);
         solopageFragment.setConcertElement(concertElement);
-        solopageFragment.setPreviousFragment(previousFragment);
         return solopageFragment;
     }
     public SeeAllFragment getSeeAllFragment(String title,ArrayList<Concert> concerts) {

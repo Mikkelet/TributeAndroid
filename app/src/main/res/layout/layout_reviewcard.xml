@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="review"
+            type="com.tributedummy.metbb.dummy3.classes.Review"/>
+        <variable
+            name="concert"
+            type="com.tributedummy.metbb.dummy3.classes.Concert"/>
+    </data>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/reviewCardview"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -23,7 +31,7 @@
             android:background="@drawable/bgsearchrating"
             android:gravity="start|center"
             android:paddingLeft="@dimen/standardpadding"
-            android:text="4.1"
+            android:text="@{String.valueOf(review.getRating())}"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -36,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="User"
+            android:text="@{review.getSubmittedBy().getName()}"
             android:textColor="#000"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/reviewImageviewUser"
@@ -50,7 +58,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:maxHeight="100dp"
-            android:text="TextView"
+            android:text="@{review.getReview()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/reviewImageviewUser" />
@@ -60,7 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Date"
+            android:text="@{review.getDate()}"
             app:layout_constraintStart_toEndOf="@+id/reviewImageviewUser"
             app:layout_constraintTop_toBottomOf="@+id/reviewTextviewUser" />
 
@@ -71,6 +79,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:scaleType="centerCrop"
+            imageUrl="@{review.getSubmittedBy().getProfilePic()}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -102,7 +111,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:text="Kanye West / Parken"
+            android:text="@{concert.getArtistSlashVenue()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/reviewButtonGotoconcert"
             app:layout_constraintHorizontal_bias="1.0"
@@ -112,6 +121,7 @@
 
         <ImageButton
             android:id="@+id/reviewButtonGotoconcert"
+            android:contentDescription="go to"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginEnd="8dp"
@@ -126,7 +136,7 @@
             android:layout_height="24dp"
             android:layout_marginBottom="8dp"
             android:gravity="center"
-            android:text="3"
+            android:text="@{String.valueOf(review.getFavourites())}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/reviewImageviewFavStar" />
 
@@ -147,3 +157,4 @@
     </android.support.constraint.ConstraintLayout>
 
 </android.support.v7.widget.CardView>
+</layout>

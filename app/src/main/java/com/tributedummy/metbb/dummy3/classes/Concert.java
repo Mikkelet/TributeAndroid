@@ -25,6 +25,8 @@ public class Concert {
         status = ConcertStatus.TODAY;
         localDate = LocalDate.now();
 
+
+
         // TODO remove
         // subtract or add days to test upcoming concerts
         int rndOne = new Random().nextInt(3);
@@ -42,6 +44,14 @@ public class Concert {
         photos.add(R.mipmap.warondrugs);
         photos.add(R.mipmap.warondrugs);
         photos.add(R.mipmap.warondrugs);
+        photos.add(R.mipmap.warondrugs);
+        photos.add(R.mipmap.warondrugs);
+        photos.add(R.mipmap.warondrugs);
+        photos.add(R.mipmap.warondrugs);
+        photos.add(R.mipmap.warondrugs);
+        photos.add(R.mipmap.warondrugs);
+
+
     }
 
 
@@ -56,24 +66,21 @@ public class Concert {
     public Artist getArtist() {
         return artist;
     }
-
     public Venue getVenue() {
         return venue;
     }
-
     public String getDate() {
         String returnDate;
         String month = localDate.getMonth().name().charAt(0)+""+localDate.getMonth().name().substring(1,3).toLowerCase();
         returnDate = month+". "+localDate.getDayOfMonth()+", "+localDate.getYear();
         return returnDate;
     }
-
     public LocalDate getLocalDate() {
         return localDate;
     }
 
-    private void updateStatus(LocalDate now)
-    {
+    // Update state of the concert
+    private void updateStatus(LocalDate now) {
         if(localDate.isAfter(now))
         {
             status = ConcertStatus.DONE;
@@ -84,6 +91,11 @@ public class Concert {
         {
             status = ConcertStatus.UPCOMING;
         }
+    }
+
+    //get custom string: Artist / Venue
+    public String getArtistSlashVenue() {
+        return getArtist().getName().concat(" / ").concat(getVenue().getName());
     }
 
     public double getRating() {

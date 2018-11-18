@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.tributedummy.metbb.dummy3.R;
+import com.tributedummy.metbb.dummy3.classes.Concert;
 import com.tributedummy.metbb.dummy3.databinding.LayoutConcertphotosBinding;
 
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 public class ConcertPhotosRVA extends  RecyclerView.Adapter<ConcertPhotosRVA.ViewHolder> {
     private static final String TAG = "ConcertPhotosRVA";
 
-    LayoutConcertphotosBinding concertphotosBinding;
+    private LayoutConcertphotosBinding concertphotosBinding;
 
     private Context mContext;
     private ArrayList<Integer> photos;
@@ -33,25 +34,19 @@ public class ConcertPhotosRVA extends  RecyclerView.Adapter<ConcertPhotosRVA.Vie
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_concertphotos, viewGroup, false);
-
-
-        ViewHolder holder = new ViewHolder(view);
-        return holder;
+        concertphotosBinding = LayoutConcertphotosBinding.inflate(LayoutInflater.from(viewGroup.getContext()));
+        return new ViewHolder(concertphotosBinding.getRoot());
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int position) {
         Log.d(TAG, "onBindViewHolder: called");
-
-        viewHolder.imageViewArtist.setImageResource(photos.get(position));
-        viewHolder.imageViewArtist.setOnClickListener(new View.OnClickListener() {
-                                                         @Override
-                                                         public void onClick(View v) {
-                                                             Toast.makeText(mContext, photos.get(position), Toast.LENGTH_SHORT).show();
-                                                         }
-                                                     }
-
+        concertphotosBinding.setImage(photos.get(position));
+        concertphotosBinding.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, photos.get(position), Toast.LENGTH_SHORT).show(); }
+        }
         );
     }
 
@@ -60,15 +55,9 @@ public class ConcertPhotosRVA extends  RecyclerView.Adapter<ConcertPhotosRVA.Vie
         return photos.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
-
-        ImageView imageViewArtist;
-        ConstraintLayout constraintLayout;
-
+    public class ViewHolder extends RecyclerView.ViewHolder {
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageViewArtist = itemView.findViewById(R.id.concertphotoImageview);
-            constraintLayout = itemView.findViewById(R.id.concertphotoConstraint);
         }
     }
 }

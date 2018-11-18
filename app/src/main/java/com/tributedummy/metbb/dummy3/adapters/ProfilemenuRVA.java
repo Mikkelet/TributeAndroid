@@ -11,7 +11,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.tributedummy.metbb.dummy3.ProfileFragment;
 import com.tributedummy.metbb.dummy3.R;
+import com.tributedummy.metbb.dummy3.databinding.LayoutProfilemenuBinding;
 
 import java.util.ArrayList;
 
@@ -22,6 +24,7 @@ public class ProfilemenuRVA extends  RecyclerView.Adapter<ProfilemenuRVA.ViewHol
     private ArrayList<String> menuOptions;
     private ArrayList<View.OnClickListener> menuActions;
     private ArrayList<Integer> menuImages;
+    private LayoutProfilemenuBinding profilemenuBinding;
 
 
     public ProfilemenuRVA(Context mContext, ArrayList<String> menuOptions, ArrayList<Integer> menuImages, ArrayList<View.OnClickListener> menuActions) {
@@ -30,24 +33,20 @@ public class ProfilemenuRVA extends  RecyclerView.Adapter<ProfilemenuRVA.ViewHol
         this.menuImages = menuImages;
         this.menuActions = menuActions;
     }
-
-
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_smallcard, viewGroup, false);
-        ViewHolder holder = new ViewHolder(view);
-        return holder;
+        profilemenuBinding = LayoutProfilemenuBinding.inflate(LayoutInflater.from(viewGroup.getContext()));
+        return new ViewHolder(profilemenuBinding.getRoot());
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int position) {
         Log.d(TAG, "onBindViewHolder: called");
 
-        viewHolder.imageViewMenuImage.setImageResource(menuImages.get(position));
-        viewHolder.textViewMenuOption.setText(menuOptions.get(position));
-        viewHolder.constraintLayout.setOnClickListener(menuActions.get(position));
+        profilemenuBinding.setImage(menuImages.get(position));
+        profilemenuBinding.setMenuOption(menuOptions.get(position));
+        profilemenuBinding.setOnclick(menuActions.get(position));
     }
 
     @Override
@@ -56,16 +55,8 @@ public class ProfilemenuRVA extends  RecyclerView.Adapter<ProfilemenuRVA.ViewHol
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-
-        ImageView imageViewMenuImage;
-        TextView textViewMenuOption;
-        ConstraintLayout constraintLayout;
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageViewMenuImage = itemView.findViewById(R.id.profilemenuImageview);
-            textViewMenuOption = itemView.findViewById(R.id.profilemenuTextview);
-            constraintLayout = itemView.findViewById(R.id.profilemenuConstraint);
         }
     }
 

@@ -17,6 +17,7 @@ public class Review {
         localDate = LocalDate.now();
         //TODO implement date
         favourites = 3;
+
     }
 
     public User getSubmittedBy() {
@@ -45,4 +46,5 @@ public class Review {
     public int getFavourites() {
         return favourites;
     }
+
 }

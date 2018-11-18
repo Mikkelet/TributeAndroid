@@ -1,6 +1,7 @@
 package com.tributedummy.metbb.dummy3;
 
 import android.content.Context;
+import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
@@ -17,12 +18,14 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.tributedummy.metbb.dummy3.databinding.FragmentProfileBinding;
+import com.tributedummy.metbb.dummy3.databinding.LayoutProfilemenuBinding;
+
 import org.w3c.dom.Text;
 
 public class ProfileFragment extends Fragment {
 
-    LinearLayout linearLayout;
-    View v;
+    FragmentProfileBinding profileBinding;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -30,14 +33,13 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.fragment_profile, container, false);
-        linearLayout = v.findViewById(R.id.profileLinearLayout);
+        profileBinding = DataBindingUtil.bind(inflater.inflate(R.layout.fragment_profile, container, false));
 
         setupButtonLogout(inflater);
         setupButtonYourReviews(inflater);
 
         // Inflate the layout for this fragment
-        return v;
+        return profileBinding.getRoot();
     }
 
 
@@ -45,62 +47,55 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
-    void addButton(LayoutInflater inflater, String menuText, int resourceInt, View.OnClickListener action)
-    {
+    void addButton(LayoutInflater inflater, String menuText, int resourceInt, View.OnClickListener action) {
+        // gets the view to inflate
+        LayoutProfilemenuBinding profilemenuBinding = LayoutProfilemenuBinding.inflate(inflater);
 
-        View menuItem;
-        menuItem = inflater.inflate(R.layout.layout_profilemenu, linearLayout,false);
-        TextView text = menuItem.findViewById(R.id.profilemenuTextview);
-        ImageView image = menuItem.findViewById(R.id.profilemenuImageview);
-        ConstraintLayout constraintLayout = menuItem.findViewById(R.id.profilemenuConstraint);
-        text.setText(menuText);
-        image.setImageResource(resourceInt);
-        constraintLayout.setOnClickListener(action);
-        linearLayout.addView(menuItem);
+        // adds the features
+        profilemenuBinding.setMenuOption(menuText);
+        profilemenuBinding.setImage(resourceInt);
+        profilemenuBinding.setOnclick(action);
+
+        // addsview to layout
+        profileBinding.profileLinearLayout.addView(profilemenuBinding.getRoot());
     }
 
 
     // Default buttons
-    void setupButtonYourReviews(LayoutInflater inflater)
-    {
+    void setupButtonYourReviews(LayoutInflater inflater) {
+        // gets the view to inflate
+        LayoutProfilemenuBinding profilemenuBinding = LayoutProfilemenuBinding.inflate(inflater);
 
-        View menuItem;
-        menuItem = inflater.inflate(R.layout.layout_profilemenu, linearLayout,false);
-        TextView text = menuItem.findViewById(R.id.profilemenuTextview);
-        ImageView image = menuItem.findViewById(R.id.profilemenuImageview);
-        Button button = menuItem.findViewById(R.id.profilemenuButton);
-        text.setText("Your Reviews");
-        image.setImageResource(R.drawable.ic_home_black_24dp);
-
+        // defines the onclick actions
         View.OnClickListener action = new View.OnClickListener(){@Override
-        public void onClick(View v) {
-            Toast.makeText(getContext(), "Go to your reviews", Toast.LENGTH_SHORT).show();}
+        public void onClick(View v) { Toast.makeText(getContext(), "Go to your reviews", Toast.LENGTH_SHORT).show();}
         };
 
-        button.setOnClickListener(action);
-        linearLayout.addView(menuItem);
+        // adds the features
+        profilemenuBinding.setMenuOption("Your Reviews");
+        profilemenuBinding.setImage(R.drawable.ic_home_black_24dp);
+        profilemenuBinding.setOnclick(action);
+
+        // addsview to layout
+        profileBinding.profileLinearLayout.addView(profilemenuBinding.getRoot());
     }
+    void setupButtonLogout(LayoutInflater inflater) {
+        // gets the view to inflate
+        LayoutProfilemenuBinding profilemenuBinding = LayoutProfilemenuBinding.inflate(inflater);
 
-    void setupButtonLogout(LayoutInflater inflater)
-    {
-
-        View menuItem;
-        menuItem = inflater.inflate(R.layout.layout_profilemenu, linearLayout,false);
-        TextView text = menuItem.findViewById(R.id.profilemenuTextview);
-        ImageView image = menuItem.findViewById(R.id.profilemenuImageview);
-        ConstraintLayout constraintLayout = menuItem.findViewById(R.id.profilemenuConstraint);
-        text.setText("Logout");
-        image.setImageResource(R.drawable.ic_home_black_24dp);
-        View.OnClickListener action = new View.OnClickListener(){
-            @Override
-        public void onClick(View v) {
-            Toast.makeText(getContext(), "Go to your reviews", Toast.LENGTH_SHORT).show();
-            }
+        // defines the onclick actions
+        View.OnClickListener action = new View.OnClickListener(){@Override
+        public void onClick(View v) { Toast.makeText(getContext(), "Logout", Toast.LENGTH_SHORT).show();}
         };
-        constraintLayout.setOnClickListener(action);
-        linearLayout.addView(menuItem);
+
+        // adds the features
+        profilemenuBinding.setMenuOption("Logout");
+        profilemenuBinding.setImage(R.drawable.ic_home_black_24dp);
+        profilemenuBinding.setOnclick(action);
+
+        // addsview to layout
+        profileBinding.profileLinearLayout.addView(profilemenuBinding.getRoot());
     }
 }
