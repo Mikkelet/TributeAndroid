@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="element"
+            type="com.tributedummy.metbb.dummy3.classes.ConcertElement"/>
+    </data>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,31 +14,30 @@
     android:layout_marginTop="0dp"
     android:fillViewport="true">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <android.support.constraint.ConstraintLayout
         android:id="@+id/solopageConstraint"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:minHeight="600dp">
 
         <ImageView
             android:id="@+id/solopageImageviewCover"
+            imageUrl="@{element.getImage()}"
             android:layout_width="match_parent"
             android:layout_height="220dp"
             android:layout_marginBottom="8dp"
             android:scaleType="centerCrop"
-            android:src="@mipmap/warondrugs"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0"
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
         <ImageView
-            android:id="@+id/solopageImageviewArtist"
-
+            android:id="@+id/solopageImageViewFeature"
+            imageUrl="@{element.getImage()}"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginStart="8dp"
@@ -40,12 +45,12 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:scaleType="centerCrop"
-            android:src="@mipmap/image1"
-            app:layout_constraintBottom_toTopOf="@+id/solopageTextviewArtist"
+            app:layout_constraintBottom_toTopOf="@+id/solopageTextviewName"
             app:layout_constraintEnd_toEndOf="@+id/solopageImageviewCover"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="1.0"
+            tools:srcCompat="@tools:sample/avatars" />
 
         <Button
             android:id="@+id/solopageButtonBack"
@@ -68,28 +73,29 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/bgconcertrating"
             android:gravity="start|center"
-            android:paddingLeft="@dimen/standardpadding"
-            android:text="5.0"
-            android:textSize="20dp"
+            android:paddingStart="@dimen/standardpadding"
+            android:text="@{String.valueOf(element.getRating())}"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/solopageImageviewArtist" />
+            app:layout_constraintTop_toBottomOf="@+id/solopageImageViewFeature" />
 
         <TextView
-            android:id="@+id/solopageTextviewArtist"
+            android:id="@+id/solopageTextviewName"
             style="@style/H1bold"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="40dp"
             android:layout_marginEnd="11dp"
-            android:text="Artist"
+            android:text="@{element.getName()}"
             app:layout_constraintEnd_toStartOf="@+id/solopageTextviewRating"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/solopageImageviewCover" />
+            app:layout_constraintTop_toBottomOf="@+id/solopageImageviewCover"
+            tools:text="War on Drugs" />
 
         <TextView
             android:id="@+id/solopageTextviewReviews"
@@ -102,7 +108,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/solopageTextviewArtist" />
+            app:layout_constraintTop_toBottomOf="@+id/solopageTextviewName" />
 
         <TextView
             android:id="@+id/solopageTextviewConcerts"
@@ -139,7 +145,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:text="360 Reviews"
+            android:text="@{String.valueOf(element.getReviews())}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -160,3 +166,4 @@
     </android.support.constraint.ConstraintLayout>
 
 </ScrollView>
+</layout>
