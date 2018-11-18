@@ -15,8 +15,8 @@ public abstract class ConcertElement {
     public ConcertElement(String name, int image) {
         this.name = name;
         this.image = image;
-    }
 
+    }
     // methods
     public void addReview(String review, double rating) {
         Review r = new Review(new User("Mikkel"), review, rating);
