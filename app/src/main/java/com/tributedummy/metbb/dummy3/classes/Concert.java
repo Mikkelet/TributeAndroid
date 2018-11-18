@@ -64,6 +64,7 @@ public class Concert {
 
     // getters & setters
     public Artist getArtist() {
+
         return artist;
     }
     public Venue getVenue() {

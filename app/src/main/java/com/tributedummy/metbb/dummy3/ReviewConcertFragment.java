@@ -1,6 +1,7 @@
 package com.tributedummy.metbb.dummy3;
 
 
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 
 import com.tributedummy.metbb.dummy3.classes.Concert;
 import com.tributedummy.metbb.dummy3.classes.User;
+import com.tributedummy.metbb.dummy3.databinding.FragmentReviewConcertBinding;
 
 
 /**
@@ -22,15 +24,11 @@ import com.tributedummy.metbb.dummy3.classes.User;
 public class ReviewConcertFragment extends Fragment {
 
     // layout
-    private RatingBar reviewconcertRatingBarArtist;
-    private RatingBar reviewconcertRatingBarVenue;
-    private EditText reviewconcertEditTextReview;
-    private TableLayout reviewconcertTableLayout;
+    private FragmentReviewConcertBinding reviewConcertBinding;
 
     // fields
-    View v;
-    Concert concert;
-    User user;
+    private Concert concert;
+    private User user;
 
     public ReviewConcertFragment() {
         // Required empty public constructor
@@ -41,42 +39,30 @@ public class ReviewConcertFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        v = inflater.inflate(R.layout.fragment_review_concert, container, false);
-        setupData();
+        reviewConcertBinding = DataBindingUtil.bind(inflater.inflate(R.layout.fragment_review_concert, container, false));
+        // data binds the concert data
+        reviewConcertBinding.setConcert(concert);
 
-        return v;
-    }
-
-    private void setupData() {
-        reviewconcertRatingBarArtist = v.findViewById(R.id.reviewconcertRatingBarArtist);
-        reviewconcertRatingBarVenue = v.findViewById(R.id.reviewconcertRatingBarVenue);
-        reviewconcertEditTextReview = v.findViewById(R.id.reviewconcertEditTextReview);
-
-        ((TextView)(v.findViewById(R.id.reviewconcertTextViewArtist))).setText(concert.getArtist().getName());
-        ((ImageView)(v.findViewById(R.id.reviewconcertImageViewArtist))).setImageResource(concert.getArtist().getImage());;
-        ((TextView)(v.findViewById(R.id.reviewconcertTextViewVenue))).setText(concert.getVenue().getName());
-        ((ImageView)(v.findViewById(R.id.reviewconcertImageViewVenue))).setImageResource(concert.getVenue().getImage());
-
-        //todo add functionality to add photos
-        reviewconcertTableLayout = v.findViewById(R.id.reviewconcertTableLayout);
-
-        //todo delete
-        v.findViewById(R.id.reviewconcertTextViewAddphotos).setOnClickListener(new View.OnClickListener() {
+        // adds OCL to a button
+        reviewConcertBinding.reviewconcertTextViewAddphotos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addReview();
             }
         });
 
+        return reviewConcertBinding.getRoot();
     }
+
     public void setConcert(Concert concert) {
         this.concert = concert;
     }
     private void addReview() {
-        concert.addReview(reviewconcertEditTextReview.getText().toString(),calculateRating());
+        concert.addReview(reviewConcertBinding.reviewconcertEditTextReview.getText().toString(),calculateRating());
     }
     private double calculateRating() {
-        return (reviewconcertRatingBarVenue.getRating() + reviewconcertRatingBarArtist.getRating())/2;
+        return (reviewConcertBinding.reviewconcertRatingBarVenue.getRating() +
+                reviewConcertBinding.reviewconcertRatingBarArtist.getRating())/2;
     }
 
 }
