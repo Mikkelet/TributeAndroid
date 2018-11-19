@@ -1,20 +1,18 @@
 package com.tributedummy.metbb.dummy3;
 
 
+
+import android.databinding.DataBindingUtil;
+import com.tributedummy.metbb.dummy3.databinding.LayoutReviewcardBinding;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
 import com.tributedummy.metbb.dummy3.adapters.LinearLayoutReviewsAdapter;
 import com.tributedummy.metbb.dummy3.classes.Concert;
 import com.tributedummy.metbb.dummy3.classes.Review;
+import com.tributedummy.metbb.dummy3.databinding.FragmentUpcomingConcertBinding;
 
 
 /**
@@ -23,20 +21,10 @@ import com.tributedummy.metbb.dummy3.classes.Review;
 public class UpcomingConcertFragment extends Fragment {
 
     // fields
-    View v;
     Concert concert;
     LinearLayoutReviewsAdapter linearLayoutReviewsAdapter;
-
-    // Layout
-    private Button upcomingButtonBack;
-    private LinearLayout upcomingLinearLayout;
-    private ImageView upcomingImageViewCover;
-    private ImageView upcomingImageViewArtist;
-    private ImageView upcomingImageViewVenue;
-    private TextView upcomingTextViewBuytickets;
-    private TextView upcomingTextViewArtist;
-    private TextView upcomingTextViewVenue;
-    private TextView upcomingTextViewDate;
+    FragmentUpcomingConcertBinding upcomingConcertBinding;
+    MainActivity mainActivity;
 
     public UpcomingConcertFragment() {
         // Required empty public constructor
@@ -47,43 +35,46 @@ public class UpcomingConcertFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        v = inflater.inflate(R.layout.fragment_upcoming_concert, container, false);
+        upcomingConcertBinding = DataBindingUtil.bind(inflater.inflate(R.layout.fragment_upcoming_concert, container, false));
+        upcomingConcertBinding.setConcert(concert);
+        mainActivity = (MainActivity) getActivity();
 
         // setups
-        setupLayout();
-
-        // assign values
-        upcomingImageViewVenue.setImageResource(concert.getVenue().getImage());
-        upcomingImageViewCover.setImageResource(concert.getVenue().getImage());
-        upcomingImageViewArtist.setImageResource(concert.getArtist().getImage());
-        upcomingTextViewArtist.setText(concert.getArtist().getName());
-        upcomingTextViewVenue.setText(concert.getVenue().getName());
-        upcomingTextViewDate.setText(concert.getDate());
-        setupBackButton();
+        setupButtonArtist();
+        setupButtonBack();
+        setupButtonVenue();
         setupButtonBuyTicket();
         setupLinearLayoutReviews(inflater);
 
-        return v;
+        return upcomingConcertBinding.getRoot();
     }
 
-    private void setupLayout()
-    {
-        upcomingButtonBack = v.findViewById(R.id.upcomingButtonBack);
-        upcomingLinearLayout = v.findViewById(R.id.upcomingLinearLayout);
-        upcomingImageViewCover = v.findViewById(R.id.upcomingImageViewCover);
-        upcomingImageViewArtist = v.findViewById(R.id.upcomingImageViewArtist);
-        upcomingImageViewVenue = v.findViewById(R.id.upcomingImageViewVenue);
-        upcomingTextViewBuytickets = v.findViewById(R.id.upcomingTextViewBuytickets);
-        upcomingTextViewArtist = v.findViewById(R.id.upcomingTextViewArtist);
-        upcomingTextViewVenue = v.findViewById(R.id.upcomingTextViewVenue);
-        upcomingTextViewDate = v.findViewById(R.id.upcomingTextViewDate);
+    private void setupButtonArtist() {
+        upcomingConcertBinding.upcomingImageViewArtist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainActivity.switchFragment(mainActivity.getSolopageFragment(concert.getArtist()),true);
+            }
+        });
+    }
+    private void setupButtonVenue() {
+        upcomingConcertBinding.upcomingImageViewVenue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainActivity.switchFragment(mainActivity.getSolopageFragment(concert.getVenue()),true);
+            }
+        });
+    }
+    private void setupButtonBack() {
+        upcomingConcertBinding.upcomingButtonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainActivity.onBackPressed();
+            }
+        });
     }
 
     private void setupButtonBuyTicket()
-    {
-
-    }
-    private void setupBackButton()
     {
 
     }
@@ -91,29 +82,19 @@ public class UpcomingConcertFragment extends Fragment {
     {
         for (int i = 0; i < concert.getReviews().size(); i++) {
             Review currentReview = concert.getReviews().get(i);
-            // Inflate
-            View review = inflater.inflate(R.layout.layout_reviewcard, upcomingLinearLayout,false);
+            // view to inflate
+            LayoutReviewcardBinding reviewcardBinding = LayoutReviewcardBinding.inflate(inflater);
 
-            // inits
-            ImageView imageViewUser = review.findViewById(R.id.reviewImageviewUser);
-            TextView textViewUser = review.findViewById(R.id.reviewTextviewUser);
-            TextView textViewDate = review.findViewById(R.id.reviewTextviewDate);
-            TextView textViewRating = review.findViewById(R.id.reviewTextviewRating);
-            TextView textViewReview = review.findViewById(R.id.reviewTextviewReview);
-            TextView textViewFavourites = review.findViewById(R.id.reviewTextviewFavorites);
-            TextView textViewConcert = review.findViewById(R.id.reviewTextviewConcert);
-            ImageButton buttonGotoConcert = review.findViewById(R.id.reviewButtonGotoconcert);
+            reviewcardBinding.setConcert(concert);
+            reviewcardBinding.setReview(currentReview);
+            reviewcardBinding.reviewTextviewConcert.setVisibility(View.INVISIBLE);
+            reviewcardBinding.reviewButtonGotoconcert.setVisibility(View.INVISIBLE);
 
-            // assigns
-            imageViewUser.setImageResource(currentReview.getSubmittedBy().getProfilePic());
-            textViewUser.setText(currentReview.getSubmittedBy().getName());
-            textViewDate.setText(currentReview.getDate());
-            textViewRating.setText(""+currentReview.getRating());
-            textViewReview.setText(currentReview.getReview());
-            textViewFavourites.setText(""+currentReview.getFavourites());
-            textViewConcert.setVisibility(View.INVISIBLE);
-            buttonGotoConcert.setVisibility(View.INVISIBLE);
-            upcomingLinearLayout.addView(review);
+            upcomingConcertBinding.upcomingLinearLayout.addView(reviewcardBinding.getRoot());
         }
+    }
+
+    public void setConcert(Concert concert) {
+        this.concert = concert;
     }
 }

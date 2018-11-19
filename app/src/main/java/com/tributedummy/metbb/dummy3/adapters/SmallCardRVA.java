@@ -53,8 +53,11 @@ public class SmallCardRVA extends  RecyclerView.Adapter<SmallCardRVA.ViewHolder>
         viewHolder.textViewVenue.setText(concerts.get(position).getVenue().getName());
         viewHolder.imageViewArtist.setOnClickListener(new View.OnClickListener() {
                                                          @Override
-                                                         public void onClick(View v) { mainActivity.switchFragment(mainActivity.getConcertFragment(concerts.get(position)),true);
-                                                             Log.d(TAG, "onClick: imageViewArtist");
+                                                         public void onClick(View v) {
+                                                             if(concerts.get(position).getStatus() == ConcertStatus.UPCOMING)
+                                                                 mainActivity.switchFragment(mainActivity.getUpcomingConcertFragment(concerts.get(position)),true);
+                                                             else
+                                                                mainActivity.switchFragment(mainActivity.getConcertFragment(concerts.get(position)),true);
                                                          }
                                                      }
 

@@ -6,21 +6,13 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RatingBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tributedummy.metbb.dummy3.adapters.ConcertPhotosRVA;
 import com.tributedummy.metbb.dummy3.classes.Concert;
-import com.tributedummy.metbb.dummy3.classes.ConcertElement;
 import com.tributedummy.metbb.dummy3.classes.Review;
 import com.tributedummy.metbb.dummy3.databinding.FragmentConcertBinding;
 import com.tributedummy.metbb.dummy3.databinding.LayoutReviewcardBinding;
@@ -62,6 +54,7 @@ public class ConcertFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+       mainActivity.setActionBarVisibility(false);
     }
 
     @Override
@@ -119,7 +112,6 @@ public class ConcertFragment extends Fragment {
             Review currentReview = concert.getReviews().get(i);
             // view to inflate
             LayoutReviewcardBinding reviewcardBinding = LayoutReviewcardBinding.inflate(inflater);
-            //View review = inflater.inflate(R.layout.layout_reviewcard, linearLayoutReviews,false);
 
             reviewcardBinding.setConcert(concert);
             reviewcardBinding.setReview(currentReview);

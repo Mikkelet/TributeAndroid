@@ -68,8 +68,13 @@ public class SolopageFragment extends Fragment {
         return solopageBinding.getRoot();
     }
 
-    private void setupRecycleview()
-    {
+    @Override
+    public void onResume() {
+        super.onResume();
+        mainActivity.setActionBarVisibility(false);
+    }
+
+    private void setupRecycleview() {
         addDiscoverBlock("Last concerts",concerts, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,7 +89,6 @@ public class SolopageFragment extends Fragment {
         });
 
     }
-
     private void setupBackbutton() {
         solopageBinding.solopageButtonBack.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,6 +1,8 @@
 package com.tributedummy.metbb.dummy3;
 
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private ConcertFragment concertFragment = new ConcertFragment();
     private SolopageFragment solopageFragment = new SolopageFragment();
     private ReviewConcertFragment reviewConcertFragment = new ReviewConcertFragment();
+    private UpcomingConcertFragment upcomingConcertFragment = new UpcomingConcertFragment();
 
     ActivityMainBinding mainBinding;
 
@@ -68,22 +71,30 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+        // init data binding
         mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
+        // Initialize the action bar
         actionBar = getSupportActionBar();
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+        actionBar.setTitle("Tribute");
+        actionBar.hide();
+
+        // init the fragment manager
         fragmentManager = getSupportFragmentManager();
 
-        bottomNavigationView = findViewById(R.id.navigation);
-        bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        // init the bottom nav bar
+        bottomNavigationView = mainBinding.navigation;
+        mainBinding.navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        toggleMenu(false);
 
         Log.d(TAG,"onCreate: started");
-        generateData();
 
+        generateData();
         switchFragment(signupFragment,false);
-        toggleMenu(false);
+
     }
-    // Used for swithing fragments
+    // Used for switching fragments
     public void switchFragment(Fragment fragment, Boolean addToBackStack) {
         FragmentTransaction transaction = fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         transaction.replace(R.id.main_frame, fragment);
@@ -132,8 +143,14 @@ public class MainActivity extends AppCompatActivity {
             int rndVenue = new Random().nextInt(3);
             Concert concert = new Concert(allArtists.get(rndArtist), allVenues.get(rndVenue));
             concert.addReview("<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3\n<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3",(double)2);
-            concert.addReview("<3",(double)2);
-            concert.addReview("<3",(double)2);
+            concert.addReview("En dansktalende texaner. En folkespillende afroamerikaner. En fuglekiggende 21-årig. Conner Youngblood er en musiker fuld af modsætninger.\n" +
+                    "\n" +
+                    "Han gav onsag aften en fin koncert i intime rammer på ideal bar. Youngblood er uden tvivl en dygtig musiker. Samtidig en eksperimenterende musiker, der ikke lader sig begrænse af konventioner - koncerten bød på alt fra Bon Iver-inspireret autotune til sækkepibelydende strenginstrumenter.\n" +
+                    "\n" +
+                    "Koncerten føltes en smule lang flere gange undervejs, en tand for underspillet og med en vokal, der efter min smag ofte føltes - i mangel på et dansk ord - underwhelming. Koncerten var bedst, når Youngblood og hans band brød ud af deres cykliske rytmer og for alvor gav slip.\n" +
+                    "\n" +
+                    "Youngblood er en musiker med masser af potentiale. Og han er stadig ung. Jeg glæder mig til at følge ham i de kommende år.",(double)2);
+            concert.addReview("",(double)2);
             concert.addReview("<3",(double)2);
             concert.addReview("<3",(double)2);
 
@@ -194,6 +211,12 @@ public class MainActivity extends AppCompatActivity {
         concertFragment.setConcert(concert);
         return concertFragment;
     }
+
+    public UpcomingConcertFragment getUpcomingConcertFragment(Concert concert) {
+        upcomingConcertFragment.setConcert(concert);
+        return upcomingConcertFragment;
+    }
+
     public ReviewConcertFragment getReviewConcertFragment(Concert concert) {
         actionBar.setDisplayHomeAsUpEnabled(false);
         reviewConcertFragment.setConcert(concert);

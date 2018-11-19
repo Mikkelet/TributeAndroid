@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#b52d6e</color>
     <color name="colorAccent">#ff2d7e</color>
     <color name="colorWhite">#ffffff</color>
-    <color name="TributePink">#ff2d7e</color>
+    <color name="TributePink">#ff2d6e</color>
     <color name="tributePinkDark">#ff2d64</color>
     <color name="TributeGray">#a1a1a1</color>
     <color name="textFieldTextgray">#FF757575</color>
@@ -12,4 +12,6 @@
     <color name="transparent">#00FFFFFF</color>
     <color name="facebookBluelight">#3c6bfe</color>
     <color name="facebookBluedark">#4861ae</color>
+    <color name="blackFaded">#B3000000</color>
+    <color name="ratingNumberGray">#FF38444F</color>
 </resources>

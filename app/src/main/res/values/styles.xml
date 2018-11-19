@@ -62,9 +62,13 @@
         <item name="android:textStyle">bold</item>
         <item name="android:fontFamily">Roboto</item>
     </style>
+    <style name="ratingNumber">
+        <item name="android:color">#FF38444F</item>
+    </style>
     <style name="TributeTextfield" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="android:backgroundTint">@color/TributePink</item>
     </style>
-    <style name="testStyle">
+    <style name="MyToolbar" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@color/colorWhite</item>
     </style>
 </resources>

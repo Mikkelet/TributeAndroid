@@ -25,8 +25,6 @@ public class Concert {
         status = ConcertStatus.TODAY;
         localDate = LocalDate.now();
 
-
-
         // TODO remove
         // subtract or add days to test upcoming concerts
         int rndOne = new Random().nextInt(3);
@@ -64,7 +62,6 @@ public class Concert {
 
     // getters & setters
     public Artist getArtist() {
-
         return artist;
     }
     public Venue getVenue() {

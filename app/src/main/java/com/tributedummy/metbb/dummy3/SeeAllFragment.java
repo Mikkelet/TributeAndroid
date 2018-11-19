@@ -22,7 +22,6 @@ public class SeeAllFragment extends Fragment {
 
     private String filterTitle;
     private ArrayList<Concert> concerts;
-
     private RecyclerView recyclerView;
 
 
@@ -33,9 +32,7 @@ public class SeeAllFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -56,7 +53,6 @@ public class SeeAllFragment extends Fragment {
     public void setFilterTitle(String filterTitle) {
         this.filterTitle = filterTitle;
     }
-
     public void setConcerts(ArrayList<Concert> concerts) {
         this.concerts = concerts;
     }

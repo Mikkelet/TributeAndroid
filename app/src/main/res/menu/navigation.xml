@@ -4,6 +4,7 @@
     <item
         android:id="@+id/navigation_discover"
         android:icon="@drawable/ic_action_discovergray"
+        android:iconTint="@color/TributePink"
         android:title="@string/title_home" />
 
     <item

@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 public class Review {
     private User submittedBy;
-    private String review;
+    private String review = "";
     private double rating;
     private LocalDate localDate;
     private int favourites;
@@ -17,7 +17,6 @@ public class Review {
         localDate = LocalDate.now();
         //TODO implement date
         favourites = 3;
-
     }
 
     public User getSubmittedBy() {
@@ -45,6 +44,11 @@ public class Review {
 
     public int getFavourites() {
         return favourites;
+    }
+
+    public boolean hasText() {
+        // return true if review has actual text
+        return !review.equals("");
     }
 
 }
