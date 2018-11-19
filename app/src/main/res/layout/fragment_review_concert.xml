@@ -39,7 +39,7 @@
 
         <ImageView
             android:id="@+id/reviewconcertImageViewArtist"
-            imageUrl="@{concert.getArtist().getImage()}"
+            circleImageUrl="@{concert.getArtist().getImage()}"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginStart="16dp"
@@ -47,7 +47,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/avatars" />
+            tools:src="@tools:sample/avatars"
+            />
     </android.support.constraint.ConstraintLayout>
 
     <RatingBar
@@ -90,7 +91,7 @@
 
         <ImageView
             android:id="@+id/reviewconcertImageViewVenue"
-            imageUrl="@{concert.getVenue().getImage()}"
+            circleImageUrl="@{concert.getVenue().getImage()}"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginStart="16dp"

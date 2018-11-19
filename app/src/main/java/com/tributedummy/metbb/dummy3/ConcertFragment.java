@@ -11,11 +11,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.github.aakira.expandablelayout.ExpandableLayoutListener;
 import com.tributedummy.metbb.dummy3.adapters.ConcertPhotosRVA;
 import com.tributedummy.metbb.dummy3.classes.Concert;
 import com.tributedummy.metbb.dummy3.classes.Review;
 import com.tributedummy.metbb.dummy3.databinding.FragmentConcertBinding;
 import com.tributedummy.metbb.dummy3.databinding.LayoutReviewcardBinding;
+import com.tributedummy.metbb.dummy3.utils.StringUtils;
 
 
 /**
@@ -39,6 +41,7 @@ public class ConcertFragment extends Fragment {
         mainActivity = (MainActivity) getActivity();
         concertBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_concert, container, false);
         concertBinding.setConcert(concert);
+        //concertBinding.concertTextviewArtist.setText(StringUtils.);
         setupButtonRatingDetails();
         setupButtonReviewConcert();
         setupButtonArtist();
@@ -70,11 +73,16 @@ public class ConcertFragment extends Fragment {
             }
         });
     }
+    private void setupRatingDetails()
+    {
+
+    }
     private void setupButtonRatingDetails() {
+        concertBinding.concertExpandableLayout.collapse();
         concertBinding.concertButtonRatingdetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), "Ratingdetails", Toast.LENGTH_SHORT).show();
+                concertBinding.concertExpandableLayout.toggle();
             }
         });
     }

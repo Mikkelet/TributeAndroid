@@ -66,7 +66,7 @@ public class UpcomingConcertFragment extends Fragment {
         });
     }
     private void setupButtonBack() {
-        upcomingConcertBinding.upcomingButtonBack.setOnClickListener(new View.OnClickListener() {
+        upcomingConcertBinding.upcomingconcertImageButtonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mainActivity.onBackPressed();

@@ -10,7 +10,7 @@ import java.util.Random;
 public class Concert {
     private Artist artist;
     private Venue venue;
-    private double rating;
+    private float rating;
     private ArrayList<Review> reviews;
     private ArrayList<Integer> photos;
     private ConcertStatus status;
@@ -30,11 +30,10 @@ public class Concert {
         int rndOne = new Random().nextInt(3);
         int rndTwo = new Random().nextInt(3);
         long newDays = rndOne - rndTwo;
-        if(newDays < 0)
-        {
+        if (newDays < 0) {
             localDate = localDate.minusDays(newDays);
             status = ConcertStatus.UPCOMING;
-        }else if(newDays > 0){
+        } else if (newDays > 0) {
             localDate = localDate.plusDays(newDays);
             status = ConcertStatus.DONE;
         }
@@ -52,10 +51,7 @@ public class Concert {
 
     }
 
-
-
-    public void addReview(String review, double rating)
-    {
+    public void addReview(String review, double rating) {
         Review r = new Review(new User("Mikkel"), review, rating);
         reviews.add(r);
     }
@@ -64,48 +60,56 @@ public class Concert {
     public Artist getArtist() {
         return artist;
     }
+
     public Venue getVenue() {
         return venue;
     }
+
     public String getDate() {
         String returnDate;
-        String month = localDate.getMonth().name().charAt(0)+""+localDate.getMonth().name().substring(1,3).toLowerCase();
-        returnDate = month+". "+localDate.getDayOfMonth()+", "+localDate.getYear();
+        String month = localDate.getMonth().name().charAt(0) + "" + localDate.getMonth().name().substring(1, 3).toLowerCase();
+        returnDate = month + ". " + localDate.getDayOfMonth() + ", " + localDate.getYear();
         return returnDate;
     }
+
     public LocalDate getLocalDate() {
         return localDate;
     }
 
     // Update state of the concert
     private void updateStatus(LocalDate now) {
-        if(localDate.isAfter(now))
-        {
+        if (localDate.isAfter(now)) {
             status = ConcertStatus.DONE;
-        }else if(localDate == now)
-        {
+        } else if (localDate == now) {
             status = ConcertStatus.TODAY;
-        }else if(localDate.isBefore(now))
-        {
+        } else if (localDate.isBefore(now)) {
             status = ConcertStatus.UPCOMING;
         }
     }
 
-    //get custom string: Artist / Venue
-    public String getArtistSlashVenue() {
-        return getArtist().getName().concat(" / ").concat(getVenue().getName());
-    }
 
-    public double getRating() {
+    public float getRating() {
         return rating;
     }
+
     public ArrayList<Review> getReviews() {
         return reviews;
     }
+
     public ArrayList<Integer> getPhotos() {
         return photos;
     }
+
     public ConcertStatus getStatus() {
         return status;
     }
+
+    // used for databinding
+    public boolean showRating() { //to hide the rating if rating is unavailable
+        return status == ConcertStatus.DONE;
+    }
+    public String getArtistSlashVenue() {   //get custom string: Artist / Venue
+        return getArtist().getName().concat(" / ").concat(getVenue().getName());
+    }
 }
+

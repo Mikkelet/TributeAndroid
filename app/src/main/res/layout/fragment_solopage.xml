@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <variable
             name="element"
             type="com.tributedummy.metbb.dummy3.classes.ConcertElement"/>
     </data>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
     android:id="@+id/solopageScrollview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -100,11 +101,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:text="many reviews"
+            android:text="@{element.getReviewsStrings()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/solopageTextviewName" />
+            app:layout_constraintTop_toBottomOf="@+id/solopageTextviewName"
+            tools:text="Reviews" />
 
         <TextView
             android:id="@+id/solopageTextviewConcerts"
@@ -113,11 +115,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:text="Many concerts"
+            android:text="@{element.getConcertsString()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/solopageTextviewReviews" />
+            app:layout_constraintTop_toBottomOf="@+id/solopageTextviewReviews"
+            tools:text="Concerts" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/solopageRecycleviewConcerts"
