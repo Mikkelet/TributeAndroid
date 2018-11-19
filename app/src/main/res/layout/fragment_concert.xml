@@ -14,14 +14,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ConcertFragment"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:background="@color/colorWhite">
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/concertConstraint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="600dp"
-        >
+        android:minHeight="600dp"        >
 
         <ImageView
             android:id="@+id/concertImageviewCover"
@@ -119,46 +119,17 @@
         <TextView
             android:id="@+id/concertTextviewArtist"
             style="@style/H1bold"
-            android:text="@{StringUtils.formatConcertHTML(Concert)}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            android:text="@{StringUtils.formatConcertHTML(Concert)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/concertTextviewRating"
-            tools:text="artist" />
-
-        <TextView
-            android:id="@+id/concertTextviewAt"
-            style="@style/H1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="at"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/concertTextviewArtist"
-            app:layout_constraintTop_toBottomOf="@+id/concertTextviewRating"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
-            android:id="@+id/concertTextviewVenue"
-            style="@style/H1bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="@{Concert.getVenue().getName()}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/concertTextviewAt"
-            app:layout_constraintTop_toBottomOf="@+id/concertTextviewRating"
-            tools:text="venue" />
+            tools:text="artist at venue" />
 
         <TextView
             android:id="@+id/concertTextviewDate"
@@ -199,24 +170,23 @@
 
             <LinearLayout
                 android:id="@+id/concertExpandableLinearLayout"
-                contentPadding="@dimen/standardpadding"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
-                android:orientation="vertical"
-                android:paddingVertical="@dimen/standardpadding">
+                android:orientation="vertical">
 
                 <android.support.constraint.ConstraintLayout
                     android:id="@+id/concertConstraintExpandableAritst"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:layout_marginTop="@dimen/standardpadding">
 
                     <ImageView
                         android:id="@+id/concertImageViewExpandableArtist"
                         circleImageUrl="@{Concert.getArtist().getImage()}"
-                        android:layout_width="31dp"
-                        android:layout_height="29dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:layout_marginStart="8dp"
                         android:scaleType="centerCrop"
                         app:layout_constraintStart_toStartOf="parent"
@@ -253,7 +223,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/concertImageViewExpandableArtistStar"
                         app:layout_constraintRight_toLeftOf="@id/concertImageViewExpandableArtistStar"
-
+                        android:text="@{StringUtils.formatRating(Concert.getArtist().getRating())}"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:text="5.0" />
 
@@ -263,13 +233,14 @@
                     android:id="@+id/concertConstraintExpandableVenue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:layout_marginTop="@dimen/standardpadding">
 
                     <ImageView
                         android:id="@+id/concertImageViewExpandableVenue"
                         circleImageUrl="@{Concert.getVenue().getImage()}"
-                        android:layout_width="31dp"
-                        android:layout_height="29dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:layout_marginStart="8dp"
                         android:scaleType="centerCrop"
                         app:layout_constraintStart_toStartOf="parent"
@@ -307,7 +278,8 @@
                         app:layout_constraintRight_toLeftOf="@id/concertImageViewExpandableVenueStar"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.45999998"
-                        tools:text="5.0" />
+                        tools:text="5.0"
+                        android:text="@{StringUtils.formatRating(Concert.getArtist().getRating())}"/>
 
                 </android.support.constraint.ConstraintLayout>
 
@@ -316,7 +288,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:minWidth="100dp">
+                    android:minWidth="100dp"
+                    android:layout_marginTop="@dimen/standardpadding">
 
                     <TextView
                         android:id="@+id/concertTextViewExpandableTotal"
@@ -349,7 +322,8 @@
                         app:layout_constraintRight_toLeftOf="@id/concertImageViewExpandableTotalStar"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.45999998"
-                        tools:text="5.0" />
+                        tools:text="5.0"
+                        android:text="@{StringUtils.formatRating(Concert.getRating())}"/>
 
                 </android.support.constraint.ConstraintLayout>
             </LinearLayout>
@@ -406,21 +380,22 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:text=""
-            app:layout_constraintBottom_toTopOf="@+id/concertLinearlayoutReviews"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/concertButtonReviewconcert" />
+            app:layout_constraintTop_toBottomOf="@+id/concertButtonReviewconcert"
+            tools:text="REVIEWS" />
 
         <LinearLayout
             android:id="@+id/concertLinearlayoutReviews"
+            android:minHeight="200dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/concertTextviewReviewsexpanded" />
 
     </android.support.constraint.ConstraintLayout>
 

@@ -51,9 +51,10 @@ public class Concert {
 
     }
 
-    public void addReview(String review, double rating) {
-        Review r = new Review(new User("Mikkel"), review, rating);
-        reviews.add(r);
+    public void addReview(Review review) {
+        artist.addReview(review);
+        venue.addReview(review);
+        reviews.add(review);
     }
 
     // getters & setters
@@ -89,7 +90,9 @@ public class Concert {
 
 
     public float getRating() {
-        return rating;
+        float artistRating = artist.getRating();
+        float venueRating = venue.getRating();
+        return (artistRating+venueRating)/2;
     }
 
     public ArrayList<Review> getReviews() {

@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.github.aakira.expandablelayout.ExpandableLayoutListener;
@@ -58,6 +59,8 @@ public class ConcertFragment extends Fragment {
     public void onResume() {
         super.onResume();
        mainActivity.setActionBarVisibility(false);
+       //scrolls up
+       concertBinding.concertsScrollview.fullScroll(ScrollView.FOCUS_UP);
     }
 
     @Override
@@ -73,15 +76,11 @@ public class ConcertFragment extends Fragment {
             }
         });
     }
-    private void setupRatingDetails()
-    {
-
-    }
     private void setupButtonRatingDetails() {
-        concertBinding.concertExpandableLayout.collapse();
         concertBinding.concertButtonRatingdetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(mainActivity, "view rating deets", Toast.LENGTH_SHORT).show();
                 concertBinding.concertExpandableLayout.toggle();
             }
         });

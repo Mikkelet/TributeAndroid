@@ -12,7 +12,7 @@ public class StringUtils {
     public static String formatConcertSlash(Concert concert) {
         return concert.getArtist().getName()+" / "+concert.getVenue().getName();
     }
-
+    @SuppressWarnings("deprecation")
     public static Spanned formatConcertHTML(Concert concert)
     {
         return Html.fromHtml("<b>"+concert.getArtist().getName() + "</b> at <b>" +concert.getVenue().getName()+"</b>");

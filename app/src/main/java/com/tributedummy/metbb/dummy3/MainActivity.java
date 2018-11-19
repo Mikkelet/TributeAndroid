@@ -19,6 +19,8 @@ import com.tributedummy.metbb.dummy3.classes.Artist;
 import com.tributedummy.metbb.dummy3.classes.Concert;
 import com.tributedummy.metbb.dummy3.classes.ConcertElement;
 import com.tributedummy.metbb.dummy3.classes.ConcertStatus;
+import com.tributedummy.metbb.dummy3.classes.Review;
+import com.tributedummy.metbb.dummy3.classes.User;
 import com.tributedummy.metbb.dummy3.classes.Venue;
 import com.tributedummy.metbb.dummy3.databinding.ActivityMainBinding;
 
@@ -116,10 +118,6 @@ public class MainActivity extends AppCompatActivity {
         Artist artistKanyeWest = new Artist("Kanye West", R.mipmap.warondrugs);
         Artist artistLonelyIsland = new Artist("Lonely Island", R.mipmap.warondrugs);
 
-        artistWaronDrugs.addReview("pretty good", (double)5);
-        artistKanyeWest.addReview("could be betta",(double)2);
-        artistLonelyIsland.addReview("cool I guess",(double)3);
-
         ArrayList<Artist> allArtists = new ArrayList<>();
         allArtists.add(artistWaronDrugs);
         allArtists.add(artistKanyeWest);
@@ -129,30 +127,24 @@ public class MainActivity extends AppCompatActivity {
         Venue venueRoyalArena = new Venue("Royal Arena", R.mipmap.judith_opener);
         Venue venueVega = new Venue("Vega", R.mipmap.judith_opener);
 
-        venueParken.addReview("bleh",(double)1);
-        venueVega.addReview("NICE",(double)5);
-        venueRoyalArena.addReview("bad internet",(double)3);
-
         ArrayList<Venue> allVenues = new ArrayList<>();
         allVenues.add(venueParken);
         allVenues.add(venueRoyalArena);
         allVenues.add(venueVega);
-
+        User user = new User("Mikkel");
         for (int i = 0; i < 50; i++) {
             int rndArtist = new Random().nextInt(3);
             int rndVenue = new Random().nextInt(3);
             Concert concert = new Concert(allArtists.get(rndArtist), allVenues.get(rndVenue));
-            concert.addReview("<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3\n<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3",(double)2);
-            concert.addReview("En dansktalende texaner. En folkespillende afroamerikaner. En fuglekiggende 21-årig. Conner Youngblood er en musiker fuld af modsætninger.\n" +
-                    "\n" +
-                    "Han gav onsag aften en fin koncert i intime rammer på ideal bar. Youngblood er uden tvivl en dygtig musiker. Samtidig en eksperimenterende musiker, der ikke lader sig begrænse af konventioner - koncerten bød på alt fra Bon Iver-inspireret autotune til sækkepibelydende strenginstrumenter.\n" +
-                    "\n" +
-                    "Koncerten føltes en smule lang flere gange undervejs, en tand for underspillet og med en vokal, der efter min smag ofte føltes - i mangel på et dansk ord - underwhelming. Koncerten var bedst, når Youngblood og hans band brød ud af deres cykliske rytmer og for alvor gav slip.\n" +
-                    "\n" +
-                    "Youngblood er en musiker med masser af potentiale. Og han er stadig ung. Jeg glæder mig til at følge ham i de kommende år.",(double)2);
-            concert.addReview("",(double)2);
-            concert.addReview("<3",(double)2);
-            concert.addReview("<3",(double)2);
+            Review review1 = new Review(user,concert,"ehhh",5,4);
+            Review review2 = new Review(user,concert,"ehhh",1,1);
+            Review review3 = new Review(user,concert,"ehhh\nehhhh",2,4);
+            Review review4 = new Review(user,concert,"ehhh",5,3);
+
+            concert.addReview(review1);
+            concert.addReview(review2);
+            concert.addReview(review3);
+            concert.addReview(review4);
 
             concerts.add(concert);
         }

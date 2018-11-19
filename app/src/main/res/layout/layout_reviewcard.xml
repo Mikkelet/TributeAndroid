@@ -2,6 +2,7 @@
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
+        <import type="com.tributedummy.metbb.dummy3.utils.StringUtils"/>
         <variable
             name="review"
             type="com.tributedummy.metbb.dummy3.classes.Review"/>
@@ -38,7 +39,7 @@
                 android:background="@drawable/bgsearchrating"
                 android:gravity="start|center"
                 android:paddingLeft="@dimen/standardpadding"
-                android:text="@{String.valueOf(review.getRating())}"
+                android:text="@{StringUtils.formatRating(review.getRatingTotal())}"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -126,7 +127,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
-                android:text="@{concert.getArtistSlashVenue()}"
+                android:text="@{StringUtils.formatConcertSlash(concert)}"
                 android:visibility="@{review.hasText()? view.VISIBLE : view.INVISIBLE}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/reviewButtonGotoconcert"

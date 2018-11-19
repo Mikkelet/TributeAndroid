@@ -8,10 +8,12 @@
             type="com.tributedummy.metbb.dummy3.classes.Concert"/>
     </data>
     <ScrollView
+        android:id="@+id/upcomingconcertScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="0dp"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:background="@color/colorWhite">
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/upcomingConstraint"
     android:layout_width="match_parent"

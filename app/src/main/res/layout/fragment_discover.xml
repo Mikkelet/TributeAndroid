@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/standardpadding"
-    tools:context=".DiscoverFragment">
+    tools:context=".DiscoverFragment"
+    android:background="@color/colorWhite">
 
     <!-- TODO: Update blank fragment layout -->
 
