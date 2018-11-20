@@ -3,18 +3,15 @@ package com.tributedummy.metbb.dummy3.databinding;
 import android.content.Context;
 import android.databinding.BindingAdapter;
 import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.ColorFilter;
-import android.graphics.Picture;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.MultiTransformation;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.tributedummy.metbb.dummy3.R;
-
 import jp.co.cyberagent.android.gpuimage.filter.GPUImageMultiplyBlendFilter;
 import jp.wasabeef.blurry.Blurry;
 import jp.wasabeef.glide.transformations.BlurTransformation;
@@ -69,6 +66,19 @@ public class BindingAdapters {
                 .setDefaultRequestOptions(requestOptions)
                 .load(imageUrl)
                 .apply(RequestOptions.bitmapTransform(new CircleCrop()))
+                .into(view);
+    }
+    @BindingAdapter("roundedImageUrl")
+    public static void setImageResourceRounded(ImageView view, int imageUrl) {
+        Context context = view.getContext();
+        RequestOptions requestOptions = new RequestOptions()
+                .placeholder(R.drawable.ic_launcher_background)
+                .apply(RequestOptions.bitmapTransform(new RoundedCorners(3)))
+                .error(R.drawable.ic_launcher_background);
+        Glide.with(context)
+                .setDefaultRequestOptions(requestOptions)
+                .load(imageUrl)
+                .apply(RequestOptions.bitmapTransform(new RoundedCorners(3)))
                 .into(view);
     }
 }
