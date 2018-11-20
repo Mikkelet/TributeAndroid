@@ -1,13 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <variable
             name="element"
             type="com.tributedummy.metbb.dummy3.classes.ConcertElement"/>
     </data>
+<<<<<<< HEAD
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/solopageScrollview"
+=======
+<ScrollView
+    android:id="@+id/solopageScrollview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="0dp"
+    android:fillViewport="true"
+    android:background="@color/colorWhite">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/solopageConstraint"
+>>>>>>> 781c801388d6222f44c6bd27263fcdac89534d9b
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="0dp"
@@ -78,6 +93,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/solopageImageViewFeature" />
 
+<<<<<<< HEAD
             <TextView
                 android:id="@+id/solopageTextviewName"
                 style="@style/H1bold"
@@ -105,6 +121,35 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/solopageTextviewName" />
+=======
+        <TextView
+            android:id="@+id/solopageTextviewReviews"
+            style="@style/subH1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@{element.getReviewsStrings()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/solopageTextviewName"
+            tools:text="Reviews" />
+
+        <TextView
+            android:id="@+id/solopageTextviewConcerts"
+            style="@style/subH1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@{element.getConcertsString()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/solopageTextviewReviews"
+            tools:text="Concerts" />
+>>>>>>> 781c801388d6222f44c6bd27263fcdac89534d9b
 
             <TextView
                 android:id="@+id/solopageTextviewConcerts"

@@ -45,7 +45,7 @@ public class LinearLayoutReviewsAdapter extends RecyclerView.Adapter<LinearLayou
         viewHolder.imageViewUser.setImageResource(currentReview.getSubmittedBy().getProfilePic());
         viewHolder.textViewUser.setText(currentReview.getSubmittedBy().getName());
         viewHolder.textViewDate.setText(currentReview.getDate());
-        viewHolder.textViewRating.setText(""+currentReview.getRating());
+        viewHolder.textViewRating.setText(""+currentReview.getRatingTotal());
         viewHolder.textViewConcert.setText(concerts.getArtist().getName()+" / "+concerts.getVenue().getName());
         viewHolder.textViewReview.setText(currentReview.getReview());
         viewHolder.textViewFavourites.setText(""+currentReview.getFavourites());

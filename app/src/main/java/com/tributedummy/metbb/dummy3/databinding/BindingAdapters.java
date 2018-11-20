@@ -69,7 +69,12 @@ public class BindingAdapters {
                 .into(view);
     }
     @BindingAdapter("roundedImageUrl")
+<<<<<<< HEAD
     public static void setImageResourceRounded(ImageView view, int imageUrl) {
+=======
+    public static void setImageResourceRounded(ImageView view, int imageUrl)
+    {
+>>>>>>> 781c801388d6222f44c6bd27263fcdac89534d9b
         Context context = view.getContext();
         RequestOptions requestOptions = new RequestOptions()
                 .placeholder(R.drawable.ic_launcher_background)

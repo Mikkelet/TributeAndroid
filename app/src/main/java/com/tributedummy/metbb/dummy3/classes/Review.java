@@ -6,14 +6,18 @@ import java.time.LocalDate;
 public class Review {
     private User submittedBy;
     private String review = "";
-    private double rating;
+    private float ratingArtist;
+    private float ratingVenue;
     private LocalDate localDate;
     private int favourites;
+    private Concert concert;
 
-    public Review(User submittedBy, String review, double rating) {
+    public Review(User submittedBy,Concert concert, String review, float ratingArtist, float ratingVenue) {
         this.submittedBy = submittedBy;
         this.review = review;
-        this.rating = rating;
+        this.ratingArtist = ratingArtist;
+        this.ratingVenue = ratingVenue;
+        this.concert = concert;
         localDate = LocalDate.now();
         //TODO implement date
         favourites = 3;
@@ -27,8 +31,16 @@ public class Review {
         return review;
     }
 
-    public double getRating() {
-        return rating;
+    public float getRatingTotal() {
+        return (ratingArtist+ratingVenue)/2;
+    }
+
+    public float getRatingArtist() {
+        return ratingArtist;
+    }
+
+    public float getRatingVenue() {
+        return ratingVenue;
     }
 
     public String getDate() {

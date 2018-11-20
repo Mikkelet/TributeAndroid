@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
             name="concert"
             type="com.tributedummy.metbb.dummy3.classes.Concert"/>
     </data>
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/solopageScrollview"
+    <ScrollView
+        android:id="@+id/upcomingconcertScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="0dp"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:background="@color/colorWhite">
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/upcomingConstraint"
     android:layout_width="match_parent"
@@ -67,21 +69,17 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <Button
-        android:id="@+id/upcomingButtonBack"
+    <ImageButton
+        android:id="@+id/upcomingconcertImageButtonBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="69dp"
-        android:text="back"
-        app:layout_constraintBottom_toTopOf="@+id/upcomingImageViewVenue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        android:background="#0000"
+        android:tint="@color/colorWhite"
+        app:layout_constraintStart_toStartOf="@+id/upcomingImageViewCover"
+        app:layout_constraintTop_toTopOf="@+id/upcomingImageViewCover"
+        app:srcCompat="?attr/homeAsUpIndicator" />
 
     <TextView
         android:id="@+id/upcomingTextViewBuytickets"
@@ -160,7 +158,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/upcomingTextViewArtist" />
+        app:layout_constraintTop_toBottomOf="@+id/upcomingTextViewArtist"
+        tools:text="date" />
 
     <TextView
         android:id="@+id/upcomingTextViewPreviousRating"

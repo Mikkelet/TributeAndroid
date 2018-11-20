@@ -36,7 +36,6 @@ public class SolopageFragment extends Fragment {
     private FragmentSolopageBinding solopageBinding;
 
     //adapters
-    private ReviewFragmentRVA reviewRVA;
     private DiscoverBlockRVA discoverBlockRVA;
 
 

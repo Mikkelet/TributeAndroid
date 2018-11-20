@@ -5,7 +5,8 @@
     android:id="@+id/seeallFrameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SeeAllFragment">
+    tools:context=".SeeAllFragment"
+    android:background="@color/colorWhite">
 
     <!-- TODO: Update blank fragment layout -->
 

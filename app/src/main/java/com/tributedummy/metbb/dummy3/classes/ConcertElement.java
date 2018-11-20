@@ -18,12 +18,9 @@ public abstract class ConcertElement {
 
     }
     // methods
-    public void addReview(String review, double rating) {
-        Review r = new Review(new User("Mikkel"), review, rating);
-        reviews.add(r);
-
+    public void addReview(Review review) {
+        reviews.add(review);
     }
-
     public ArrayList<Concert> getConcerts() {
         ArrayList<Concert> concerts = new ArrayList<>();
         for (Concert c: MainActivity.concerts) {
@@ -48,5 +45,14 @@ public abstract class ConcertElement {
     }
     public ArrayList<Integer> getPhotos() {
         return photos;
+    }
+
+    // databinding
+    public String getReviewsStrings()
+    {
+        return reviews.size()+" reviews";
+    }
+    public String getConcertsString(){
+        return "200 concerts";
     }
 }

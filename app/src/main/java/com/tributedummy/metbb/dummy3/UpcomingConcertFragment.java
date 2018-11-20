@@ -9,6 +9,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ScrollView;
+
 import com.tributedummy.metbb.dummy3.adapters.LinearLayoutReviewsAdapter;
 import com.tributedummy.metbb.dummy3.classes.Concert;
 import com.tributedummy.metbb.dummy3.classes.Review;
@@ -48,6 +50,12 @@ public class UpcomingConcertFragment extends Fragment {
 
         return upcomingConcertBinding.getRoot();
     }
+    @Override
+    public void onResume() {
+        super.onResume();
+        //scroll up to top on load in
+        upcomingConcertBinding.upcomingconcertScrollView.fullScroll(ScrollView.FOCUS_UP);
+    }
 
     private void setupButtonArtist() {
         upcomingConcertBinding.upcomingImageViewArtist.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +74,7 @@ public class UpcomingConcertFragment extends Fragment {
         });
     }
     private void setupButtonBack() {
-        upcomingConcertBinding.upcomingButtonBack.setOnClickListener(new View.OnClickListener() {
+        upcomingConcertBinding.upcomingconcertImageButtonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mainActivity.onBackPressed();

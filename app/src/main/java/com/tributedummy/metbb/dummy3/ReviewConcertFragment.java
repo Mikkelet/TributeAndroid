@@ -12,8 +12,10 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TableLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.tributedummy.metbb.dummy3.classes.Concert;
+import com.tributedummy.metbb.dummy3.classes.Review;
 import com.tributedummy.metbb.dummy3.classes.User;
 import com.tributedummy.metbb.dummy3.databinding.FragmentReviewConcertBinding;
 
@@ -58,11 +60,19 @@ public class ReviewConcertFragment extends Fragment {
         this.concert = concert;
     }
     private void addReview() {
-        concert.addReview(reviewConcertBinding.reviewconcertEditTextReview.getText().toString(),calculateRating());
+        Review review = new Review(new User("mikkel"),
+                concert,
+                reviewConcertBinding.reviewconcertEditTextReview.getText().toString(),
+                reviewConcertBinding.reviewconcertRatingBarArtist.getRating(),
+                reviewConcertBinding.reviewconcertRatingBarVenue.getRating());
+        concert.addReview(review);
     }
     private double calculateRating() {
-        return (reviewConcertBinding.reviewconcertRatingBarVenue.getRating() +
+        float rating = (reviewConcertBinding.reviewconcertRatingBarVenue.getRating() +
                 reviewConcertBinding.reviewconcertRatingBarArtist.getRating())/2;
+        Toast.makeText(getActivity(), "", Toast.LENGTH_SHORT).show();
+        return rating;
+
     }
 
 }
