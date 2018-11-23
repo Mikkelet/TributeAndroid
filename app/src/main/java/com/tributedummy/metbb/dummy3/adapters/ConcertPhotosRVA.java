@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.tributedummy.metbb.dummy3.R;
 import com.tributedummy.metbb.dummy3.classes.Concert;
 import com.tributedummy.metbb.dummy3.databinding.LayoutConcertphotosBinding;
 
