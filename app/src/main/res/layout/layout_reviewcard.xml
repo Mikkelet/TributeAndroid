@@ -22,8 +22,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/standardpadding"
-        app:cardCornerRadius="0dp"
-        app:cardElevation="10dp">
+        app:cardCornerRadius="1dp"
+        app:cardElevation="24dp">
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/reviewConstraint"
@@ -32,18 +32,15 @@
 
             <TextView
                 android:id="@+id/reviewTextviewRating"
-                android:layout_width="65dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/bgsearchrating"
                 android:gravity="start|center"
                 android:paddingLeft="@dimen/standardpadding"
                 android:text="@{StringUtils.formatRating(review.getRatingTotal())}"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/reviewTextviewUser"
+                app:layout_constraintEnd_toStartOf="@+id/reviewImageviewRatingStar"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="5.0" />
 
@@ -70,11 +67,11 @@
                 android:layout_marginEnd="16dp"
                 android:maxHeight="100dp"
                 android:text="@{review.getReview()}"
+                android:visibility="@{review.hasText()? view.VISIBLE : view.INVISIBLE}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/reviewImageviewUser"
-                tools:text="@android:string/paste_as_plain_text"
-                android:visibility="@{review.hasText()? view.VISIBLE : view.INVISIBLE}"/>
+                tools:text="@android:string/paste_as_plain_text" />
 
             <TextView
                 android:id="@+id/reviewTextviewDate"
@@ -100,8 +97,8 @@
 
             <ImageView
                 android:id="@+id/reviewImageviewFavStar"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="8dp"
                 android:visibility="@{review.hasText()? view.VISIBLE : view.INVISIBLE}"
@@ -111,39 +108,35 @@
 
             <ImageView
                 android:id="@+id/reviewImageviewRatingStar"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                app:layout_constraintEnd_toEndOf="@+id/reviewTextviewRating"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_star_pink" />
 
             <TextView
                 android:id="@+id/reviewTextviewConcert"
                 android:layout_width="wrap_content"
-                android:layout_height="22dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
                 android:text="@{StringUtils.formatConcertSlash(concert)}"
                 android:visibility="@{review.hasText()? view.VISIBLE : view.INVISIBLE}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/reviewButtonGotoconcert"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/reviewTextviewFavorites"
-                app:layout_constraintTop_toBottomOf="@+id/reviewTextviewReview"
-                app:layout_constraintVertical_bias="1.0"
                 tools:text="Artist / Venue" />
 
             <ImageButton
                 android:id="@+id/reviewButtonGotoconcert"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="8dp"
+                android:backgroundTint="@color/colorWhite"
                 android:contentDescription="go to"
+                android:elevation="0dp"
                 android:src="@android:drawable/ic_media_play"
                 android:visibility="@{review.hasText()? view.VISIBLE : view.INVISIBLE}"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -153,10 +146,11 @@
             <TextView
                 android:id="@+id/reviewTextviewFavorites"
                 android:layout_width="wrap_content"
-                android:layout_height="24dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:gravity="center"
                 android:text="@{String.valueOf(review.getFavourites())}"
+                android:textSize="12sp"
                 android:visibility="@{review.hasText()? view.VISIBLE : view.INVISIBLE}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/reviewImageviewFavStar"

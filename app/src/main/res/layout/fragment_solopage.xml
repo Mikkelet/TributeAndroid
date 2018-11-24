@@ -15,41 +15,25 @@
     android:fillViewport="true"
     android:background="@color/colorWhite">
 
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/solopageConstraint"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="600dp">
-
             <LinearLayout
+                android:id="@+id/solopageLinearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:minHeight="600dp">
 
                 <android.support.constraint.ConstraintLayout
+                    android:id="@+id/solopageConstraintHeader"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
-
-                    <Button
-                        android:id="@+id/solopageButtonBack"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:text="back"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:id="@+id/solopageImageviewCover"
                         blurryImageUrl="@{element.getImage()}"
                         android:layout_width="match_parent"
                         android:layout_height="220dp"
-                        android:layout_marginBottom="8dp"
+                        android:layout_marginBottom="14dp"
                         android:scaleType="centerCrop"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -72,15 +56,54 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:srcCompat="@tools:sample/avatars" />
+
+                    <ImageButton
+                        android:id="@+id/solopageButtonBack"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:background="#0000"
+                        android:tint="@color/colorWhite"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="?attr/homeAsUpIndicator" />
                 </android.support.constraint.ConstraintLayout>
 
                 <android.support.constraint.ConstraintLayout
+                    android:id="@+id/solopageConstraintName"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1">
 
+                    <TextView
+                        android:id="@+id/solopageTextviewName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:text="@{element.getName()}"
+                        tools:text="Travis Scott" />
+
+                    <TextView
+                        android:id="@+id/solopageTextviewRating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/bgconcertrating"
+                        android:gravity="start|center"
+                        android:paddingStart="@dimen/standardpadding"
+                        android:text="@{String.valueOf(element.getRating())}"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/solopageImageviewStar"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="5.0" />
+
                     <ImageView
-                        android:id="@+id/imageView2"
+                        android:id="@+id/solopageImageviewStar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
@@ -88,21 +111,13 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/ic_star_pink" />
+                </android.support.constraint.ConstraintLayout>
 
-                    <TextView
-                        android:id="@+id/solopageTextviewRating"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:background="@drawable/bgconcertrating"
-                        android:gravity="start|center"
-                        android:paddingStart="@dimen/standardpadding"
-                        android:text="@{String.valueOf(element.getRating())}"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toStartOf="@+id/imageView2"
-                        tools:text="5.0" />
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/solopageConstraintRating"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
 
                     <TextView
                         android:id="@+id/solopageTextviewReviews"
@@ -118,6 +133,7 @@
                 </android.support.constraint.ConstraintLayout>
 
                 <android.support.constraint.ConstraintLayout
+                    android:id="@+id/solopageConstraintConcerts"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
@@ -127,10 +143,9 @@
                         style="@style/subH1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Many concerts"
+                        android:text="200 concerts"
                         app:layout_constraintBottom_toTopOf="@+id/solopageRecycleviewConcerts"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/solopageTextviewReviews" />
+                        app:layout_constraintStart_toStartOf="parent" />
 
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/solopageRecycleviewConcerts"
@@ -146,6 +161,7 @@
                 </android.support.constraint.ConstraintLayout>
 
                 <android.support.constraint.ConstraintLayout
+                    android:id="@+id/solopageConstraintReviews"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1">
@@ -171,10 +187,6 @@
                         tools:listitem="@layout/layout_reviewcard" />
 
                 </android.support.constraint.ConstraintLayout>
-
             </LinearLayout>
-
-        </android.support.constraint.ConstraintLayout>
-
     </ScrollView>
 </layout>
