@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <import type="com.tributedummy.metbb.dummy3.utils.StringUtils"/>
+        <import type="android.view.View"/>
         <variable
             name="review"
             type="com.tributedummy.metbb.dummy3.classes.Review"/>
@@ -12,9 +13,6 @@
         <variable
             name="user"
             type="com.tributedummy.metbb.dummy3.classes.User"/>
-        <variable
-            name="view"
-            type="android.view.View"/>
     </data>
 
     <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -67,7 +65,7 @@
                 android:layout_marginEnd="16dp"
                 android:maxHeight="100dp"
                 android:text="@{review.getReview()}"
-                android:visibility="@{review.hasText()? view.VISIBLE : view.INVISIBLE}"
+                android:visibility="@{review.hasText()? View.VISIBLE : View.INVISIBLE}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/reviewImageviewUser"
@@ -101,7 +99,7 @@
                 android:layout_height="16dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="8dp"
-                android:visibility="@{review.hasText()? view.VISIBLE : view.INVISIBLE}"
+                android:visibility="@{review.hasText()? View.VISIBLE : View.INVISIBLE}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:srcCompat="@drawable/ic_star_pink" />
@@ -123,7 +121,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
                 android:text="@{StringUtils.formatConcertSlash(concert)}"
-                android:visibility="@{review.hasText()? view.VISIBLE : view.INVISIBLE}"
+                android:visibility="@{review.hasText()? View.VISIBLE : View.INVISIBLE}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/reviewButtonGotoconcert"
                 tools:text="Artist / Venue" />
@@ -138,7 +136,7 @@
                 android:contentDescription="go to"
                 android:elevation="0dp"
                 android:src="@android:drawable/ic_media_play"
-                android:visibility="@{review.hasText()? view.VISIBLE : view.INVISIBLE}"
+                android:visibility="@{review.hasText()? View.VISIBLE : View.INVISIBLE}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 tools:src="@android:drawable/ic_media_play" />
@@ -151,7 +149,7 @@
                 android:gravity="center"
                 android:text="@{String.valueOf(review.getFavourites())}"
                 android:textSize="12sp"
-                android:visibility="@{review.hasText()? view.VISIBLE : view.INVISIBLE}"
+                android:visibility="@{review.hasText()? View.VISIBLE : View.INVISIBLE}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/reviewImageviewFavStar"
                 tools:text="3" />
@@ -164,14 +162,12 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
                 android:background="?android:attr/listDivider"
-                android:visibility="@{review.hasText()? view.VISIBLE : view.INVISIBLE}"
+                android:visibility="@{review.hasText()? View.VISIBLE : View.INVISIBLE}"
                 app:layout_constraintBottom_toTopOf="@+id/reviewTextviewConcert"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/reviewTextviewReview"
                 app:layout_constraintVertical_bias="0.0" />
-
         </android.support.constraint.ConstraintLayout>
-
     </android.support.v7.widget.CardView>
 </layout>

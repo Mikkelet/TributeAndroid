@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.github.aakira.expandablelayout.ExpandableLayoutListener;
 import com.tributedummy.metbb.dummy3.adapters.ConcertPhotosRVA;
+import com.tributedummy.metbb.dummy3.adapters.ReviewAdapter;
 import com.tributedummy.metbb.dummy3.classes.Concert;
 import com.tributedummy.metbb.dummy3.classes.Review;
 import com.tributedummy.metbb.dummy3.databinding.FragmentConcertBinding;
@@ -49,8 +50,7 @@ public class ConcertFragment extends Fragment {
         setupButtonVenue();
         setupButtonBack();
         setupRecyclerviewPhotos();
-
-        setupLinearLayoutReviews(inflater);
+        setupLinearLayoutReviews();
 
         return concertBinding.getRoot();
     }
@@ -114,20 +114,10 @@ public class ConcertFragment extends Fragment {
         ConcertPhotosRVA adapter = new ConcertPhotosRVA(getContext(),concert.getPhotos());
         concertBinding.concertRecycleviewConcerts.setAdapter(adapter);
     }
-    private void setupLinearLayoutReviews(LayoutInflater inflater) {
-        for (int i = 0; i < concert.getReviews().size(); i++) {
-            Review currentReview = concert.getReviews().get(i);
-            // view to inflate
-            LayoutReviewcardBinding reviewcardBinding = LayoutReviewcardBinding.inflate(inflater);
-
-            reviewcardBinding.setConcert(concert);
-            reviewcardBinding.setReview(currentReview);
-
-            reviewcardBinding.reviewTextviewConcert.setVisibility(View.INVISIBLE);
-            reviewcardBinding.reviewButtonGotoconcert.setVisibility(View.INVISIBLE);
-
-            concertBinding.concertLinearlayoutReviews.addView(reviewcardBinding.getRoot());
-        }
+    private void setupLinearLayoutReviews() {
+        ReviewAdapter reviewAdapter = new ReviewAdapter(getContext(),concert);
+        concertBinding.concertRecycleViewReviews.setLayoutManager(new LinearLayoutManager(getContext()));
+        concertBinding.concertRecycleViewReviews.setAdapter(reviewAdapter);
     }
 
     //getters and setters

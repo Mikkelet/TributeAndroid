@@ -24,10 +24,13 @@ import com.tributedummy.metbb.dummy3.classes.User;
 import com.tributedummy.metbb.dummy3.classes.Venue;
 import com.tributedummy.metbb.dummy3.databinding.ActivityMainBinding;
 
+import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
+
+    public static MainActivity mainActivity;
 
     private DiscoverFragment discoverFragment = new DiscoverFragment();
     private SeeAllFragment seeAllFragment = new SeeAllFragment();
@@ -72,6 +75,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if(mainActivity == null)
+            mainActivity = this;
 
         // init data binding
         mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
