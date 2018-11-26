@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <import type="com.tributedummy.metbb.dummy3.utils.StringUtils"/>
@@ -15,159 +16,158 @@
             type="com.tributedummy.metbb.dummy3.classes.User"/>
     </data>
 
-    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/reviewCardview"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/reviewFrame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/standardpadding"
-        app:cardCornerRadius="1dp"
-        app:cardElevation="24dp">
+        android:padding="8dp">
 
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/reviewConstraint"
+        <android.support.v7.widget.CardView
+            android:id="@+id/reviewCardview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:elevation="10dp"
+            app:cardElevation="11dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/reviewTextviewRating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/bgsearchrating"
-                android:gravity="start|center"
-                android:paddingLeft="@dimen/standardpadding"
-                android:text="@{StringUtils.formatRating(review.getRatingTotal())}"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/reviewImageviewRatingStar"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="5.0" />
-
-            <TextView
-                android:id="@+id/reviewTextviewUser"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="@{review.getSubmittedBy().getName()}"
-                android:textColor="#000"
-                android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/reviewImageviewUser"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="User name" />
-
-            <TextView
-                android:id="@+id/reviewTextviewReview"
-                style="@style/ratingNumber"
+            <LinearLayout
+                android:id="@+id/reviewLinearLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:maxHeight="100dp"
-                android:text="@{review.getReview()}"
-                android:visibility="@{review.hasText()? View.VISIBLE : View.INVISIBLE}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/reviewImageviewUser"
-                tools:text="@android:string/paste_as_plain_text" />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/reviewTextviewDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="@{review.getDate()}"
-                app:layout_constraintStart_toEndOf="@+id/reviewImageviewUser"
-                app:layout_constraintTop_toBottomOf="@+id/reviewTextviewUser"
-                tools:text="date" />
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/reviewImageviewUser"
-                circleImageUrl="@{review.getSubmittedBy().getProfilePic()}"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:scaleType="centerCrop"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/avatars" />
+                    <ImageView
+                        android:id="@+id/reviewImageviewUser"
+                        circleImageUrl="@{review.getSubmittedBy().getProfilePic()}"
+                        android:layout_width="45dp"
+                        android:layout_height="46dp"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:srcCompat="@tools:sample/avatars" />
 
-            <ImageView
-                android:id="@+id/reviewImageviewFavStar"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginBottom="8dp"
-                android:visibility="@{review.hasText()? View.VISIBLE : View.INVISIBLE}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/ic_star_pink" />
+                    <TextView
+                        android:id="@+id/reviewTextviewUser"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{review.getSubmittedBy().getName()}"
+                        android:textColor="#000"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@+id/reviewImageviewUser"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="User name" />
 
-            <ImageView
-                android:id="@+id/reviewImageviewRatingStar"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_star_pink" />
+                    <TextView
+                        android:id="@+id/reviewTextviewDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{review.getDate()}"
+                        app:layout_constraintStart_toEndOf="@+id/reviewImageviewUser"
+                        app:layout_constraintTop_toBottomOf="@+id/reviewTextviewUser"
+                        tools:text="date" />
 
-            <TextView
-                android:id="@+id/reviewTextviewConcert"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:text="@{StringUtils.formatConcertSlash(concert)}"
-                android:visibility="@{review.hasText()? View.VISIBLE : View.INVISIBLE}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/reviewButtonGotoconcert"
-                tools:text="Artist / Venue" />
+                    <ImageView
+                        android:id="@+id/reviewImageviewRatingStar"
+                        android:layout_width="22dp"
+                        android:layout_height="19dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_star_pink" />
 
-            <ImageButton
-                android:id="@+id/reviewButtonGotoconcert"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="8dp"
-                android:backgroundTint="@color/colorWhite"
-                android:contentDescription="go to"
-                android:elevation="0dp"
-                android:src="@android:drawable/ic_media_play"
-                android:visibility="@{review.hasText()? View.VISIBLE : View.INVISIBLE}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                tools:src="@android:drawable/ic_media_play" />
+                    <TextView
+                        android:id="@+id/reviewTextviewRating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bgsearchrating"
+                        android:gravity="start|center"
+                        android:paddingLeft="@dimen/standardpadding"
+                        android:text="@{StringUtils.formatRating(review.getRatingTotal())}"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@+id/reviewImageviewRatingStar"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="5.0" />
+                </android.support.constraint.ConstraintLayout>
 
-            <TextView
-                android:id="@+id/reviewTextviewFavorites"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:gravity="center"
-                android:text="@{String.valueOf(review.getFavourites())}"
-                android:textSize="12sp"
-                android:visibility="@{review.hasText()? View.VISIBLE : View.INVISIBLE}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/reviewImageviewFavStar"
-                tools:text="3" />
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-            <View
-                android:id="@+id/divider"
-                android:layout_width="368dp"
-                android:layout_height="1dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="?android:attr/listDivider"
-                android:visibility="@{review.hasText()? View.VISIBLE : View.INVISIBLE}"
-                app:layout_constraintBottom_toTopOf="@+id/reviewTextviewConcert"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/reviewTextviewReview"
-                app:layout_constraintVertical_bias="0.0" />
-        </android.support.constraint.ConstraintLayout>
-    </android.support.v7.widget.CardView>
+                    <TextView
+                        android:id="@+id/reviewTextviewReview"
+                        style="@style/ratingNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:maxHeight="100dp"
+                        android:visibility="@{review.hasText()? View.VISIBLE : View.INVISIBLE}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="\na\na\na\na\na\na\na" />
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageButton
+                        android:id="@+id/reviewButtonGotoconcert"
+                        android:layout_width="16dp"
+                        android:layout_height="17dp"
+                        android:backgroundTint="@color/colorWhite"
+                        android:contentDescription="go to"
+                        android:elevation="0dp"
+                        android:src="@android:drawable/ic_media_play"
+                        android:visibility="@{review.hasText()? View.VISIBLE : View.INVISIBLE}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        tools:src="@android:drawable/ic_media_play" />
+
+                    <TextView
+                        android:id="@+id/reviewTextviewFavorites"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@{String.valueOf(review.getFavourites())}"
+                        android:textSize="12sp"
+                        android:visibility="@{review.hasText()? View.VISIBLE : View.INVISIBLE}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/reviewImageviewFavStar"
+                        tools:text="3" />
+
+                    <ImageView
+                        android:id="@+id/reviewImageviewFavStar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="@{review.hasText()? View.VISIBLE : View.INVISIBLE}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:srcCompat="@drawable/ic_star_pink" />
+
+                    <TextView
+                        android:id="@+id/reviewTextviewConcert"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{StringUtils.formatConcertSlash(concert)}"
+                        android:visibility="@{review.hasText()? View.VISIBLE : View.INVISIBLE}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/reviewButtonGotoconcert"
+                        tools:text="Artist / Venue" />
+                </android.support.constraint.ConstraintLayout>
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </android.support.constraint.ConstraintLayout>
+
 </layout>

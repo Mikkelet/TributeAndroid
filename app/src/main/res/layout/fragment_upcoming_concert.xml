@@ -37,35 +37,29 @@
 
     <ImageView
         android:id="@+id/upcomingImageViewArtist"
+        circleImageUrl="@{concert.getArtist().getImage()}"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginStart="84dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
         android:scaleType="centerCrop"
-        circleImageUrl="@{concert.getArtist().getImage()}"
         app:layout_constraintBottom_toBottomOf="@+id/upcomingImageViewCover"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/upcomingImageViewCover"
+        app:layout_constraintEnd_toStartOf="@+id/upcomingImageViewVenue"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
     <ImageView
         android:id="@+id/upcomingImageViewVenue"
+        circleImageUrl="@{concert.getVenue().getImage()}"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="84dp"
         android:layout_marginBottom="8dp"
         android:scaleType="centerCrop"
-        circleImageUrl="@{concert.getVenue().getImage()}"
         app:layout_constraintBottom_toBottomOf="@+id/upcomingImageViewCover"
         app:layout_constraintEnd_toEndOf="@+id/upcomingImageViewCover"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 

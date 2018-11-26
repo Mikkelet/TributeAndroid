@@ -31,10 +31,8 @@ public class SolopageFragment extends Fragment {
     private HashMap<String,DiscoverBlock> discoverBlockHashMap = new HashMap<>();
     private ArrayList<Concert> concerts;
     private MainActivity mainActivity;
-
     // layouts
     private FragmentSolopageBinding solopageBinding;
-
     //adapters
     private DiscoverBlockRVA discoverBlockRVA;
 
@@ -59,7 +57,6 @@ public class SolopageFragment extends Fragment {
         solopageBinding.setElement(concertElement);
 
         // setups
-
         setupRecycleview();
         setupBackbutton();
         applyDatatoAdapters();
@@ -74,7 +71,7 @@ public class SolopageFragment extends Fragment {
     }
 
     private void setupRecycleview() {
-        addDiscoverBlock("Last concerts",concerts, new View.OnClickListener() {
+        addDiscoverBlock("Last concerts", concerts, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(), "last concercts", Toast.LENGTH_SHORT).show();
@@ -82,11 +79,10 @@ public class SolopageFragment extends Fragment {
         });
         addDiscoverBlock("Upcoming concerts", concerts, new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 Toast.makeText(getContext(), "upcoming concerts", Toast.LENGTH_SHORT).show();
             }
         });
-
     }
     private void setupBackbutton() {
         solopageBinding.solopageButtonBack.setOnClickListener(new View.OnClickListener() {
