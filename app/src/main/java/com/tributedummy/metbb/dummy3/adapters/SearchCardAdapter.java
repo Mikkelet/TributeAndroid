@@ -17,14 +17,14 @@ import com.tributedummy.metbb.dummy3.R;
 
 import java.util.ArrayList;
 
-public class SearchcardRVA extends  RecyclerView.Adapter<SearchcardRVA.ViewHolder> {
+public class SearchCardAdapter extends  RecyclerView.Adapter<SearchCardAdapter.ViewHolder> {
     private static final String TAG = "";
 
     private Context mContext;
     private ArrayList<Concert> concerts;
     private MainActivity mainActivity;
 
-    public SearchcardRVA(Context mContext, ArrayList<Concert> concerts) {
+    public SearchCardAdapter(Context mContext, ArrayList<Concert> concerts) {
         this.mContext = mContext;
         this.concerts = concerts;
     }

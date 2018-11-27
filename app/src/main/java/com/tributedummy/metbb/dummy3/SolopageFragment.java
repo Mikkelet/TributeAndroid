@@ -10,9 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.tributedummy.metbb.dummy3.adapters.DiscoverBlockRVA;
-import com.tributedummy.metbb.dummy3.adapters.ReviewFragmentRVA;
-import com.tributedummy.metbb.dummy3.adapters.SmallCardRVA;
+import com.tributedummy.metbb.dummy3.adapters.DiscoverBlockAdapter;
+import com.tributedummy.metbb.dummy3.adapters.SmallCardAdapter;
 import com.tributedummy.metbb.dummy3.classes.Concert;
 import com.tributedummy.metbb.dummy3.classes.ConcertElement;
 import com.tributedummy.metbb.dummy3.classes.DiscoverBlock;
@@ -34,7 +33,7 @@ public class SolopageFragment extends Fragment {
     // layouts
     private FragmentSolopageBinding solopageBinding;
     //adapters
-    private DiscoverBlockRVA discoverBlockRVA;
+    private DiscoverBlockAdapter discoverBlockAdapter;
 
 
     public SolopageFragment() {
@@ -96,7 +95,7 @@ public class SolopageFragment extends Fragment {
     public void addDiscoverBlock(String title,  ArrayList<Concert> concerts, View.OnClickListener action)
     {
         // TODO add different adapters for different lists
-        SmallCardRVA adapter = new SmallCardRVA(getContext(), concerts);
+        SmallCardAdapter adapter = new SmallCardAdapter(getContext(), concerts);
         // This gets called from OnCreateView, which gets called every time the fragment loads. This check is to make sure multiple blocks wont get added on every load.
         if(!discoverBlockHashMap.containsKey(title)) {
             discoverBlockHashMap.put(title, new DiscoverBlock(title, action, adapter));
@@ -106,8 +105,8 @@ public class SolopageFragment extends Fragment {
     private void applyDatatoAdapters()
     {
         solopageBinding.solopageRecycleviewConcerts.setLayoutManager(new LinearLayoutManager(getContext()));
-        discoverBlockRVA = new DiscoverBlockRVA(getContext(), new ArrayList<>(discoverBlockHashMap.values()));
-        solopageBinding.solopageRecycleviewConcerts.setAdapter(discoverBlockRVA);
+        discoverBlockAdapter = new DiscoverBlockAdapter(getContext(), new ArrayList<>(discoverBlockHashMap.values()));
+        solopageBinding.solopageRecycleviewConcerts.setAdapter(discoverBlockAdapter);
     }
 
     // Setter

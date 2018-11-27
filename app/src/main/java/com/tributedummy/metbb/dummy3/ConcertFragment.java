@@ -12,14 +12,10 @@ import android.view.ViewGroup;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
-import com.github.aakira.expandablelayout.ExpandableLayoutListener;
-import com.tributedummy.metbb.dummy3.adapters.ConcertPhotosRVA;
+import com.tributedummy.metbb.dummy3.adapters.ConcertPhotosAdapter;
 import com.tributedummy.metbb.dummy3.adapters.ReviewAdapter;
 import com.tributedummy.metbb.dummy3.classes.Concert;
-import com.tributedummy.metbb.dummy3.classes.Review;
 import com.tributedummy.metbb.dummy3.databinding.FragmentConcertBinding;
-import com.tributedummy.metbb.dummy3.databinding.LayoutReviewcardBinding;
-import com.tributedummy.metbb.dummy3.utils.StringUtils;
 
 
 /**
@@ -111,7 +107,7 @@ public class ConcertFragment extends Fragment {
     }
     private void setupRecyclerviewPhotos() {
         concertBinding.concertRecycleviewConcerts.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL,false));
-        ConcertPhotosRVA adapter = new ConcertPhotosRVA(getContext(),concert.getPhotos());
+        ConcertPhotosAdapter adapter = new ConcertPhotosAdapter(getContext(),concert.getPhotos());
         concertBinding.concertRecycleviewConcerts.setAdapter(adapter);
     }
     private void setupLinearLayoutReviews() {

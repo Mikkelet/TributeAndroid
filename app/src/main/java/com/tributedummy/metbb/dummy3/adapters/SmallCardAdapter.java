@@ -1,26 +1,21 @@
 package com.tributedummy.metbb.dummy3.adapters;
 
 import android.content.Context;
-import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.tributedummy.metbb.dummy3.classes.Concert;
 import com.tributedummy.metbb.dummy3.classes.ConcertStatus;
 import com.tributedummy.metbb.dummy3.MainActivity;
-import com.tributedummy.metbb.dummy3.R;
 import com.tributedummy.metbb.dummy3.databinding.LayoutSmallcardBinding;
 
 import java.util.ArrayList;
 
-public class SmallCardRVA extends  RecyclerView.Adapter<SmallCardRVA.ViewHolder> {
+public class SmallCardAdapter extends  RecyclerView.Adapter<SmallCardAdapter.ViewHolder> {
     private static final String TAG = "";
 
     private Context mContext;
@@ -29,7 +24,7 @@ public class SmallCardRVA extends  RecyclerView.Adapter<SmallCardRVA.ViewHolder>
     private LayoutSmallcardBinding smallcardBinding;
 
 
-    public SmallCardRVA(Context mContext, ArrayList<Concert> concerts) {
+    public SmallCardAdapter(Context mContext, ArrayList<Concert> concerts) {
         this.mContext = mContext;
         this.concerts = concerts;
     }

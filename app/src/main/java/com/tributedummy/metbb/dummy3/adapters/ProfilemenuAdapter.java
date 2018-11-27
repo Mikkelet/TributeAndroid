@@ -2,22 +2,17 @@ package com.tributedummy.metbb.dummy3.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.tributedummy.metbb.dummy3.ProfileFragment;
-import com.tributedummy.metbb.dummy3.R;
 import com.tributedummy.metbb.dummy3.databinding.LayoutProfilemenuBinding;
 
 import java.util.ArrayList;
 
-public class ProfilemenuRVA extends  RecyclerView.Adapter<ProfilemenuRVA.ViewHolder> {
+public class ProfilemenuAdapter extends  RecyclerView.Adapter<ProfilemenuAdapter.ViewHolder> {
     private static final String TAG = "";
 
     private Context mContext;
@@ -27,7 +22,7 @@ public class ProfilemenuRVA extends  RecyclerView.Adapter<ProfilemenuRVA.ViewHol
     private LayoutProfilemenuBinding profilemenuBinding;
 
 
-    public ProfilemenuRVA(Context mContext, ArrayList<String> menuOptions, ArrayList<Integer> menuImages, ArrayList<View.OnClickListener> menuActions) {
+    public ProfilemenuAdapter(Context mContext, ArrayList<String> menuOptions, ArrayList<Integer> menuImages, ArrayList<View.OnClickListener> menuActions) {
         this.mContext = mContext;
         this.menuOptions = menuOptions;
         this.menuImages = menuImages;

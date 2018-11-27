@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.tributedummy.metbb.dummy3.adapters.ReviewFragmentRVA;
+import com.tributedummy.metbb.dummy3.adapters.ReviewFragmentAdapter;
 import com.tributedummy.metbb.dummy3.classes.Concert;
 
 import java.util.ArrayList;
@@ -45,7 +45,7 @@ public class SeeAllFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         recyclerView = getView().findViewById(R.id.seeallRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        ReviewFragmentRVA adapter = new ReviewFragmentRVA(getContext(),concerts);
+        ReviewFragmentAdapter adapter = new ReviewFragmentAdapter(getContext(),concerts);
         recyclerView.setAdapter(adapter);
         getActivity().setTitle(filterTitle);
     }

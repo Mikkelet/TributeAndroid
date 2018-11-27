@@ -13,9 +13,9 @@ import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
-import com.tributedummy.metbb.dummy3.adapters.DiscoverBlockRVA;
-import com.tributedummy.metbb.dummy3.adapters.SearchcardRVA;
-import com.tributedummy.metbb.dummy3.adapters.SmallCardRVA;
+import com.tributedummy.metbb.dummy3.adapters.DiscoverBlockAdapter;
+import com.tributedummy.metbb.dummy3.adapters.SearchCardAdapter;
+import com.tributedummy.metbb.dummy3.adapters.SmallCardAdapter;
 import com.tributedummy.metbb.dummy3.classes.Concert;
 import com.tributedummy.metbb.dummy3.classes.ConcertStatus;
 import com.tributedummy.metbb.dummy3.classes.DiscoverBlock;
@@ -33,8 +33,8 @@ public class DiscoverFragment extends Fragment {
     private MainActivity mainActivity;
     private ArrayList<Concert> concerts;
 
-    private DiscoverBlockRVA discoverBlockRVA;
-    private SearchcardRVA searchcardRVA;
+    private DiscoverBlockAdapter discoverBlockAdapter;
+    private SearchCardAdapter searchCardAdapter;
 
     // Layout elements
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -84,7 +84,7 @@ public class DiscoverFragment extends Fragment {
     private void addDiscoverBlock(String title, View.OnClickListener action, ArrayList<Concert> concerts) {
         // TODO add different adapters for different lists
 
-        SmallCardRVA adapter = new SmallCardRVA(v.getContext(), concerts);
+        SmallCardAdapter adapter = new SmallCardAdapter(v.getContext(), concerts);
         DiscoverBlock discoverBlock = new DiscoverBlock(title,action,adapter);
         // This gets called from OnCreateView, which gets called every time the fragment loads. This check is to make sure multiple blocks wont get added on every load.
         // it compares titles with contains
@@ -94,9 +94,9 @@ public class DiscoverFragment extends Fragment {
     private void applyDatatoAdapters() {
         recyclerView.setLayoutManager(new LinearLayoutManager(v.getContext()));
 
-        discoverBlockRVA = new DiscoverBlockRVA(v.getContext(), discoverBlockArrayList);
-        searchcardRVA = new SearchcardRVA(v.getContext(), concerts);
-        recyclerView.setAdapter(discoverBlockRVA);
+        discoverBlockAdapter = new DiscoverBlockAdapter(v.getContext(), discoverBlockArrayList);
+        searchCardAdapter = new SearchCardAdapter(v.getContext(), concerts);
+        recyclerView.setAdapter(discoverBlockAdapter);
     }
     private void setupSearch() {
         searchView = v.findViewById(R.id.discoverSearchview);
@@ -108,7 +108,7 @@ public class DiscoverFragment extends Fragment {
         final SearchView.OnCloseListener onCloseListener = new SearchView.OnCloseListener() {
             @Override
             public boolean onClose() {
-                recyclerView.setAdapter(discoverBlockRVA);
+                recyclerView.setAdapter(discoverBlockAdapter);
                 mainActivity.toggleMenu(true);
                 return false;
             }
@@ -117,7 +117,7 @@ public class DiscoverFragment extends Fragment {
         final SearchView.OnClickListener onSearchListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                recyclerView.setAdapter(searchcardRVA);
+                recyclerView.setAdapter(searchCardAdapter);
                 mainActivity.toggleMenu(false);
             }
         };
@@ -133,7 +133,7 @@ public class DiscoverFragment extends Fragment {
             public boolean onQueryTextSubmit(String query) {
                 Log.d(TAG, "onQueryTextSubmit: "+MainActivity.concerts.size());
                 ArrayList<Concert> c = MainActivity.concerts;
-                searchcardRVA.search(c ,query);
+                searchCardAdapter.search(c ,query);
                 return false;
             }
 

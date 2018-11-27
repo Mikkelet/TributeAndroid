@@ -18,7 +18,7 @@ import com.tributedummy.metbb.dummy3.R;
 
 import java.util.ArrayList;
 
-public class DiscoverBlockRVA extends  RecyclerView.Adapter<DiscoverBlockRVA.ViewHolder> {
+public class DiscoverBlockAdapter extends  RecyclerView.Adapter<DiscoverBlockAdapter.ViewHolder> {
 
     private static final String TAG = "DiscoverblockRVA";
 
@@ -27,7 +27,7 @@ public class DiscoverBlockRVA extends  RecyclerView.Adapter<DiscoverBlockRVA.Vie
 
     private RecyclerView recyclerView;
 
-    public DiscoverBlockRVA(Context mContext, ArrayList<DiscoverBlock> discoverBlocks) {
+    public DiscoverBlockAdapter(Context mContext, ArrayList<DiscoverBlock> discoverBlocks) {
         this.mContext = mContext;
         this.discoverBlocks = discoverBlocks;
     }
@@ -49,7 +49,7 @@ public class DiscoverBlockRVA extends  RecyclerView.Adapter<DiscoverBlockRVA.Vie
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int position) {
         mainActivity = ((MainActivity) mContext);
         RecyclerView recyclerView = viewHolder.getRecycleView();
-        final ArrayList<Concert> concertsFiltered = ((SmallCardRVA) discoverBlocks.get(position).getAdapter()).getConcerts();
+        final ArrayList<Concert> concertsFiltered = ((SmallCardAdapter) discoverBlocks.get(position).getAdapter()).getConcerts();
         final String blockTitle = discoverBlocks.get(position).getTitle();
         recyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setAdapter(discoverBlocks.get(position).getAdapter());

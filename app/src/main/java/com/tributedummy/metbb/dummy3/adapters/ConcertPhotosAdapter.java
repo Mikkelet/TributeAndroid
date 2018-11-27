@@ -1,31 +1,27 @@
 package com.tributedummy.metbb.dummy3.adapters;
 
 import android.content.Context;
-import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.tributedummy.metbb.dummy3.classes.Concert;
 import com.tributedummy.metbb.dummy3.databinding.LayoutConcertphotosBinding;
 
 import java.util.ArrayList;
 
-public class ConcertPhotosRVA extends  RecyclerView.Adapter<ConcertPhotosRVA.ViewHolder> {
-    private static final String TAG = "ConcertPhotosRVA";
+public class ConcertPhotosAdapter extends  RecyclerView.Adapter<ConcertPhotosAdapter.ViewHolder> {
+    private static final String TAG = "ConcertPhotosAdapter";
 
     private LayoutConcertphotosBinding concertphotosBinding;
 
     private Context mContext;
     private ArrayList<Integer> photos;
 
-    public ConcertPhotosRVA(Context mContext, ArrayList<Integer> photos) {
+    public ConcertPhotosAdapter(Context mContext, ArrayList<Integer> photos) {
         this.mContext = mContext;
         this.photos = photos;
     }
